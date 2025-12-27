@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.geo.admin.ch/V_D/AV/1.0/Extract"
+  xmlns:data="http://schemas.geo.admin.ch/V_D/AV/1.0/ExtractData"
+  xmlns:geo="http://www.interlis.ch/geometry/1.0"  
+  targetNamespace=
+  "http://schemas.geo.admin.ch/V_D/AV/1.0/Extract"
+  elementFormDefault="qualified" attributeFormDefault="unqualified"
+  version="1.0.0"
+>
+  <xsd:import namespace="http://www.interlis.ch/geometry/1.0" 
+    schemaLocation="geometry.xsd"/>
+  <xsd:import namespace=
+    "http://schemas.geo.admin.ch/V_D/AV/1.0/ExtractData"
+schemaLocation="ExtractData.xsd"/>
+
+  <xsd:element name="GetExtractByIdResponse" type="GetExtractByIdResponseType"/>
+  <xsd:complexType name="GetExtractByIdResponseType">
+    <xsd:sequence>
+      <xsd:element ref="data:Extract">
+      </xsd:element>
+    </xsd:sequence>  
+  </xsd:complexType>
+  
+  <xsd:element name="GetEGRIDResponse" type="GetEGRIDResponseType"/>
+  <xsd:complexType name="GetEGRIDResponseType">
+    <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="egrid" type="xsd:token"/>
+      <xsd:element name="number" type="xsd:token"/>
+      <xsd:element name="identDN" type="xsd:token"/>
+      <xsd:element name="type" type="data:PropertyTypeCode"/>
+      <xsd:element name="limit" type="geo:MultiSurfaceType" minOccurs="0">
+      </xsd:element>
+    </xsd:sequence>    
+  </xsd:complexType>
+
+  <xsd:element name="GetCapabilitiesResponse" type="GetCapabilitiesResponseType"/>
+  <xsd:complexType name="GetCapabilitiesResponseType">
+    <xsd:sequence>
+      <xsd:element name="municipality" type="data:MunicipalityCode" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="language" type="xsd:token" minOccurs="1" maxOccurs="unbounded"/>
+      <xsd:element name="crs" type="xsd:token" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>    
+  </xsd:complexType>
+  
+</xsd:schema>
