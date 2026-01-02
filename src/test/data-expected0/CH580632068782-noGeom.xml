@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:GetExtractByIdResponse
+	xmlns:ns1="http://www.interlis.ch/geometry/1.0"
+	xmlns:ns2="http://schemas.geo.admin.ch/V_D/AV/1.0/Versioning"
+	xmlns:ns3="http://schemas.geo.admin.ch/V_D/AV/1.0/ExtractData"
+	xmlns:ns4="http://schemas.geo.admin.ch/V_D/AV/1.0/Extract"
+	>
+	<ns3:Extract>
+		<ns3:CreationDate>${xmlunit.ignore}</ns3:CreationDate>
+		<ns3:FederalLogoRef>http://localhost/logo/ch</ns3:FederalLogoRef>
+		<ns3:CantonalLogoRef>http://localhost/logo/ch.SO</ns3:CantonalLogoRef>
+		<ns3:MunicipalityLogoRef>http://localhost/logo/ch.2498</ns3:MunicipalityLogoRef>
+		<ns3:PropertyInformationLogoRef>http://localhost/logo/ch.pi</ns3:PropertyInformationLogoRef>
+		<ns3:ExtractIdentifier>${xmlunit.ignore}</ns3:ExtractIdentifier>
+		<ns3:UpdateDateCS>2019-07-15T00:00:00.000+02:00</ns3:UpdateDateCS>
+		<ns3:Disclaimer>
+			<ns3:Title>
+				<ns3:LocalisedText>
+					<ns3:Language>de</ns3:Language>
+					<ns3:Text>Eigentumsbeschränkungen im Grundbuch</ns3:Text>
+				</ns3:LocalisedText>
+				<ns3:LocalisedText>
+					<ns3:Language>fr</ns3:Language>
+					<ns3:Text>Restrictions de propriété dans le registre foncier</ns3:Text>
+				</ns3:LocalisedText>
+				<ns3:LocalisedText>
+					<ns3:Language>it</ns3:Language>
+					<ns3:Text>Restrizioni della proprietà nel registro fondiario</ns3:Text>
+				</ns3:LocalisedText>
+				<ns3:LocalisedText>
+					<ns3:Language>rm</ns3:Language>
+					<ns3:Text>Restricziuns da la proprietad en il register funsil</ns3:Text>
+				</ns3:LocalisedText>
+				<ns3:LocalisedText>
+					<ns3:Language>en</ns3:Language>
+					<ns3:Text>Ownership restrictions in the land register</ns3:Text>
+				</ns3:LocalisedText>
+			</ns3:Title>
+			<ns3:Content>
+				<ns3:LocalisedText>
+					<ns3:Language>de</ns3:Language>
+					<ns3:Text>Zusätzlich zu den Angaben in diesem Auszug können Eigentumsbeschränkungen auch im Grundbuch angemerkt sein.</ns3:Text>
+				</ns3:LocalisedText>
+				<ns3:LocalisedText>
+					<ns3:Language>fr</ns3:Language>
+					<ns3:Text>Il est possible que des restrictions de propriété fassent l'objet d'une mention au registre foncier, en plus des indications figurant sur cet extrait.</ns3:Text>
+				</ns3:LocalisedText>
+				<ns3:LocalisedText>
+					<ns3:Language>it</ns3:Language>
+					<ns3:Text>Oltre alle informazioni contenute nel presente estratto, le restrizioni della proprietà possono essere annotate anche nel registro fondiario.</ns3:Text>
+				</ns3:LocalisedText>
+				<ns3:LocalisedText>
+					<ns3:Language>rm</ns3:Language>
+					<ns3:Text>Supplementarmain a las indicaziuns en quest extract pon restricziuns da la proprietad er esser remartgadas en il register funsil.</ns3:Text>
+				</ns3:LocalisedText>
+				<ns3:LocalisedText>
+					<ns3:Language>en</ns3:Language>
+					<ns3:Text>In addition to the information contained in this extract, ownership restrictions may also be cited in the land register.</ns3:Text>
+				</ns3:LocalisedText>
+			</ns3:Content>
+		</ns3:Disclaimer>
+		<ns3:PropertyInformationAuthority>
+			<ns3:Name>
+				<ns3:LocalisedText>
+					<ns3:Language>de</ns3:Language>
+					<ns3:Text>Amt für Geoinformation</ns3:Text>
+				</ns3:LocalisedText>
+			</ns3:Name>
+			<ns3:OfficeAtWeb>
+				<ns3:LocalisedText>
+					<ns3:Text>https://www.agi.so.ch</ns3:Text>
+				</ns3:LocalisedText>
+			</ns3:OfficeAtWeb>
+			<ns3:Street>Rötistrasse</ns3:Street>
+			<ns3:Number>4</ns3:Number>
+			<ns3:PostalCode>4501</ns3:PostalCode>
+			<ns3:City>Solothurn</ns3:City>
+		</ns3:PropertyInformationAuthority>
+		<ns3:RealEstate_DPR>
+			<ns3:Number>514</ns3:Number>
+			<ns3:IdentDN>SO0200002498</ns3:IdentDN>
+			<ns3:EGRID>CH580632068782</ns3:EGRID>
+			<ns3:Type>
+				<ns3:Code>DistinctPermanentRight</ns3:Code>
+				<ns3:Text>
+					<ns3:LocalisedText>
+						<ns3:Language>de</ns3:Language>
+						<ns3:Text>Baurecht</ns3:Text>
+					</ns3:LocalisedText>
+				</ns3:Text>
+			</ns3:Type>
+			<ns3:Canton>SO</ns3:Canton>
+			<ns3:MunicipalityName>Rohr (SO)</ns3:MunicipalityName>
+			<ns3:MunicipalityCode>2498</ns3:MunicipalityCode>
+			<ns3:SubUnitOfLandRegister>Rohr</ns3:SubUnitOfLandRegister>
+			<ns3:LandRegistryArea>185</ns3:LandRegistryArea>
+			<ns3:PlanForLandRegister>
+				<ns3:ReferenceWMS>
+					<ns3:LocalisedText>
+						<ns3:Text>https://geo.so.ch/api/wms?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=ch.so.agi.hintergrundkarte_farbig&amp;STYLES=&amp;CRS=EPSG%3A2056&amp;TILED=false&amp;OPACITIES=255&amp;t=675&amp;SRS=EPSG:2056&amp;BBOX=2638366.414141414,1251418.98989899,2638403.585858586,1251441.01010101&amp;DPI=200&amp;HEIGHT=779&amp;WIDTH=1370</ns3:Text>
+					</ns3:LocalisedText>
+				</ns3:ReferenceWMS>
+				<ns3:min>
+					<ns1:c1>2638366.414141414</ns1:c1>
+					<ns1:c2>1251418.98989899</ns1:c2>
+				</ns3:min>
+				<ns3:max>
+					<ns1:c1>2638403.585858586</ns1:c1>
+					<ns1:c2>1251441.01010101</ns1:c2>
+				</ns3:max>
+			</ns3:PlanForLandRegister>
+			<ns3:PlanForLandRegisterMainPage>
+				<ns3:ReferenceWMS>
+					<ns3:LocalisedText>
+						<ns3:Text>https://geo.so.ch/api/wms?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=ch.so.agi.hintergrundkarte_farbig&amp;STYLES=&amp;CRS=EPSG%3A2056&amp;TILED=false&amp;OPACITIES=255&amp;t=675&amp;SRS=EPSG:2056&amp;BBOX=2638366.414141414,1251418.98989899,2638403.585858586,1251441.01010101&amp;DPI=200&amp;HEIGHT=779&amp;WIDTH=1370</ns3:Text>
+					</ns3:LocalisedText>
+				</ns3:ReferenceWMS>
+				<ns3:min>
+					<ns1:c1>2638366.414141414</ns1:c1>
+					<ns1:c2>1251418.98989899</ns1:c2>
+				</ns3:min>
+				<ns3:max>
+					<ns1:c1>2638403.585858586</ns1:c1>
+					<ns1:c2>1251441.01010101</ns1:c2>
+				</ns3:max>
+			</ns3:PlanForLandRegisterMainPage>
+			<ns3:PlanForSituation>
+				<ns3:ReferenceWMS>
+					<ns3:LocalisedText>
+						<ns3:Text>https://geo.so.ch/api/wms?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=ch.so.agi.hintergrundkarte_farbig&amp;STYLES=&amp;CRS=EPSG%3A2056&amp;TILED=false&amp;OPACITIES=255&amp;t=675&amp;SRS=EPSG:2056&amp;BBOX=2638366.414141414,1251418.98989899,2638403.585858586,1251441.01010101&amp;DPI=200&amp;HEIGHT=779&amp;WIDTH=1370</ns3:Text>
+					</ns3:LocalisedText>
+				</ns3:ReferenceWMS>
+				<ns3:min>
+					<ns1:c1>2638366.414141414</ns1:c1>
+					<ns1:c2>1251418.98989899</ns1:c2>
+				</ns3:min>
+				<ns3:max>
+					<ns1:c1>2638403.585858586</ns1:c1>
+					<ns1:c2>1251441.01010101</ns1:c2>
+				</ns3:max>
+			</ns3:PlanForSituation>
+		<ns3:ResponsibleOffice>
+			<ns3:Name>
+				<ns3:LocalisedText>
+					<ns3:Language>de</ns3:Language>
+					<ns3:Text>Amt für Geoinformation</ns3:Text>
+				</ns3:LocalisedText>
+			</ns3:Name>
+			<ns3:OfficeAtWeb>
+				<ns3:LocalisedText>
+					<ns3:Text>https://www.agi.so.ch</ns3:Text>
+				</ns3:LocalisedText>
+			</ns3:OfficeAtWeb>
+			<ns3:Street>Rötistrasse</ns3:Street>
+			<ns3:Number>4</ns3:Number>
+			<ns3:PostalCode>4501</ns3:PostalCode>
+			<ns3:City>Solothurn</ns3:City>
+		</ns3:ResponsibleOffice>
+		</ns3:RealEstate_DPR>
+	</ns3:Extract>
+</ns4:GetExtractByIdResponse>

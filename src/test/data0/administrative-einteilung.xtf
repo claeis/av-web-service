@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANSFER
+	xmlns="http://www.interlis.ch/INTERLIS2.3">
+	<HEADERSECTION
+		SENDER="ili2pg-3.11.3-20180413"
+		VERSION="2.3">
+		<MODELS>
+			<MODEL NAME="OeREBKRMkvs_V2_0" VERSION="2021-04-14" URI="https://models.geo.admin.ch/V_D/OeREB/"/>
+		</MODELS>
+	</HEADERSECTION>
+	<DATASECTION>
+		<OeREBKRMkvs_V2_0.Konfiguration	BID="25000">
+			<OeREBKRMkvs_V2_0.Konfiguration.GrundbuchKreis TID="6026c3dc-86ff-4f3d-b954-832e1d87f3e7">
+				<Kanton>SO</Kanton>
+				<Gemeinde>2498</Gemeinde>
+				<NBIdent>SO0200002498</NBIdent>
+				<Name>Rohr</Name>
+				<eGRIS_SubKreis>2498</eGRIS_SubKreis>
+			</OeREBKRMkvs_V2_0.Konfiguration.GrundbuchKreis>
+			<OeREBKRMkvs_V2_0.Konfiguration.GrundbuchKreis TID="b25f6636-0c31-478c-a3ea-a9b9cc63b720">
+				<Kanton>SO</Kanton>
+				<Gemeinde>2500</Gemeinde>
+				<NBIdent>SO0200002500</NBIdent>
+				<Name>Trimbach</Name>
+				<eGRIS_SubKreis>2500</eGRIS_SubKreis>
+			</OeREBKRMkvs_V2_0.Konfiguration.GrundbuchKreis>
+		</OeREBKRMkvs_V2_0.Konfiguration>
+	</DATASECTION>
+</TRANSFER>

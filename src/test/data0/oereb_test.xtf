@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANSFER xmlns="http://www.interlis.ch/INTERLIS2.3">
+	<HEADERSECTION SENDER="ili2pg-4.1.1-SNAPSHOT-8fb74e2ab67f6868fcef326cd2d77729454f6f28" VERSION="2.3">
+		<MODELS>
+			<MODEL NAME="OeREBKRMtrsfr_V2_0" VERSION="2021-04-14" URI="http://models.geo.admin.ch/V_D/OeREB/"></MODEL>
+		</MODELS>
+	</HEADERSECTION>
+	<DATASECTION>
+		<OeREBKRMtrsfr_V2_0.Transferstruktur BID="1000000000101">
+
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung TID="12377.1f">
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<DarstellungsDienst REF="1000000000821"></DarstellungsDienst>
+				<Legende REF="L9901f"/>
+				<ZustaendigeStelle REF="ch.2498"></ZustaendigeStelle>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+				<Eigentumsbeschraenkung REF="12377.1f"></Eigentumsbeschraenkung>
+				<Vorschrift REF="_05ec505faf864aa"></Vorschrift>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie TID="12557.1f">
+				<Flaeche>
+					<SURFACE>
+						<BOUNDARY>
+							<POLYLINE>
+								<COORD>
+									<C1>2638365.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638372.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638372.000</C1>
+									<C2>1251422.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638365.000</C1>
+									<C2>1251422.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638365.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+							</POLYLINE>
+						</BOUNDARY>
+					</SURFACE>
+				</Flaeche>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<Eigentumsbeschraenkung REF="12377.1f"></Eigentumsbeschraenkung>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie>
+
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung TID="12377.1l">
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<DarstellungsDienst REF="1000000000821"></DarstellungsDienst>
+				<Legende REF="L9901l"/>
+				<ZustaendigeStelle REF="ch.2498"></ZustaendigeStelle>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+				<Eigentumsbeschraenkung REF="12377.1l"></Eigentumsbeschraenkung>
+				<Vorschrift REF="_05ec505faf864aa"></Vorschrift>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie TID="12557.1l1">
+				<Linie>
+							<POLYLINE>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638372.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+							</POLYLINE>
+				</Linie>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<Eigentumsbeschraenkung REF="12377.1l"></Eigentumsbeschraenkung>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie TID="12557.1l2">
+				<Linie>
+							<POLYLINE>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251422.000</C2>
+								</COORD>
+							</POLYLINE>
+				</Linie>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<Eigentumsbeschraenkung REF="12377.1l"></Eigentumsbeschraenkung>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie>
+			
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung TID="12377.1p">
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<DarstellungsDienst REF="1000000000821"></DarstellungsDienst>
+				<Legende REF="L9901p"/>
+				<ZustaendigeStelle REF="ch.2498"></ZustaendigeStelle>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+				<Eigentumsbeschraenkung REF="12377.1p"></Eigentumsbeschraenkung>
+				<Vorschrift REF="_05ec505faf864aa"></Vorschrift>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie TID="12557.1p1">
+				<Punkt>
+					<COORD>
+						<C1>2638371.000</C1>
+						<C2>1251421.000</C2>
+					</COORD>
+				</Punkt>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<Eigentumsbeschraenkung REF="12377.1p"></Eigentumsbeschraenkung>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie TID="12557.1p2">
+				<Punkt>
+					<COORD>
+						<C1>2638372.000</C1>
+						<C2>1251421.000</C2>
+					</COORD>
+				</Punkt>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<Eigentumsbeschraenkung REF="12377.1p"></Eigentumsbeschraenkung>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie>
+			
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung TID="12377.2">
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<DarstellungsDienst REF="1000000000821"></DarstellungsDienst>
+				<Legende REF="L9902"/>
+				<ZustaendigeStelle REF="ch.2498"></ZustaendigeStelle>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+				<Eigentumsbeschraenkung REF="12377.2"></Eigentumsbeschraenkung>
+				<Vorschrift REF="_05ec505faf864aa"></Vorschrift>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+			
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung TID="12377.3">
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<DarstellungsDienst REF="1000000000821"></DarstellungsDienst>
+				<Legende REF="L9903"/>
+				<ZustaendigeStelle REF="ch.2498"></ZustaendigeStelle>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Eigentumsbeschraenkung>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+				<Eigentumsbeschraenkung REF="12377.3"></Eigentumsbeschraenkung>
+				<Vorschrift REF="_05ec505faf864aa"></Vorschrift>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+				<Eigentumsbeschraenkung REF="12377.3"></Eigentumsbeschraenkung>
+				<Vorschrift REF="_05ec505faf864aaB"></Vorschrift>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.HinweisVorschrift>
+
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie TID="12557.2">
+				<Flaeche>
+					<SURFACE>
+						<BOUNDARY>
+							<POLYLINE>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638372.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638372.000</C1>
+									<C2>1251422.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251422.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+							</POLYLINE>
+						</BOUNDARY>
+					</SURFACE>
+				</Flaeche>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<Eigentumsbeschraenkung REF="12377.2"></Eigentumsbeschraenkung>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie>
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie TID="12557.3">
+				<Flaeche>
+					<SURFACE>
+						<BOUNDARY>
+							<POLYLINE>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638372.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638372.000</C1>
+									<C2>1251422.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251422.000</C2>
+								</COORD>
+								<COORD>
+									<C1>2638371.000</C1>
+									<C2>1251421.000</C2>
+								</COORD>
+							</POLYLINE>
+						</BOUNDARY>
+					</SURFACE>
+				</Flaeche>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2002-04-23</publiziertAb>
+				<Eigentumsbeschraenkung REF="12377.3"></Eigentumsbeschraenkung>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.Geometrie>
+
+
+			<OeREBKRM_V2_0.Amt.Amt TID="ch.2498">
+				<Name>
+					<LocalisationCH_V1.MultilingualText>
+						<LocalisedText>
+							<LocalisationCH_V1.LocalisedText>
+								<Language>de</Language>
+								<Text>Gemeinde Rohr (SO)</Text>
+							</LocalisationCH_V1.LocalisedText>
+						</LocalisedText>
+					</LocalisationCH_V1.MultilingualText>
+				</Name>
+				<AmtImWeb>
+					<OeREBKRM_V2_0.MultilingualUri><LocalisedText><OeREBKRM_V2_0.LocalisedUri><Text>http://www.rohr-so.ch/</Text></OeREBKRM_V2_0.LocalisedUri></LocalisedText></OeREBKRM_V2_0.MultilingualUri>
+				</AmtImWeb>
+			</OeREBKRM_V2_0.Amt.Amt>
+
+			<OeREBKRMtrsfr_V2_0.Transferstruktur.DarstellungsDienst TID="1000000000821">
+				<VerweisWMS>
+					<OeREBKRM_V2_0.MultilingualUri><LocalisedText><OeREBKRM_V2_0.LocalisedUri><Text>https://geo.so.ch/api/wms?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=ch.so.arp.nutzungsplanung.grundnutzung&amp;STYLES=&amp;SRS=EPSG%3A2056&amp;CRS=EPSG%3A2056&amp;DPI=96&amp;WIDTH=1200&amp;HEIGHT=1146&amp;BBOX=2591250%2C1211350%2C2646050%2C1263700</Text></OeREBKRM_V2_0.LocalisedUri></LocalisedText></OeREBKRM_V2_0.MultilingualUri>
+				</VerweisWMS>
+			</OeREBKRMtrsfr_V2_0.Transferstruktur.DarstellungsDienst>
+
+					<OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag TID="L9901f">
+						<Symbol>
+							<BINBLBOX>iVBORw0KGgoAAAANSUhEUgAAAEYAAAAjCAIAAACmdes6AAAAQklEQVR42u3PQREAIAgAMPpnswBJPF5IDtwaLM4imdndoaSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT0eekuUlVTevU8H0YtbDCYAAAAAElFTkSuQmCC</BINBLBOX>
+						</Symbol>
+						<LegendeText>
+							<LocalisationCH_V1.MultilingualText>
+								<LocalisedText>
+									<LocalisationCH_V1.LocalisedText>
+										<Language>de</Language>
+										<Text>Legendeeintrag Bundesthema Fläche</Text>
+									</LocalisationCH_V1.LocalisedText>
+								</LocalisedText>
+							</LocalisationCH_V1.MultilingualText>
+						</LegendeText>
+						<ArtCode>9901f</ArtCode>
+						<ArtCodeliste>urn:fdc:ilismeta.interlis.ch:2017:NP_Typ_Kanton_Grundnutzung.2498</ArtCodeliste>
+						<Thema>ch.ProjektierungszonenFlughafenanlagen</Thema>
+						<DarstellungsDienst REF="1000000000821"/>
+					</OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag>
+					<OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag TID="L9901l">
+						<Symbol>
+							<BINBLBOX>iVBORw0KGgoAAAANSUhEUgAAAEYAAAAjCAIAAACmdes6AAAAQklEQVR42u3PQREAIAgAMPpnswBJPF5IDtwaLM4imdndoaSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT0eekuUlVTevU8H0YtbDCYAAAAAElFTkSuQmCC</BINBLBOX>
+						</Symbol>
+						<LegendeText>
+							<LocalisationCH_V1.MultilingualText>
+								<LocalisedText>
+									<LocalisationCH_V1.LocalisedText>
+										<Language>de</Language>
+										<Text>Legendeeintrag Bundesthema Linie</Text>
+									</LocalisationCH_V1.LocalisedText>
+								</LocalisedText>
+							</LocalisationCH_V1.MultilingualText>
+						</LegendeText>
+						<ArtCode>9901l</ArtCode>
+						<ArtCodeliste>urn:fdc:ilismeta.interlis.ch:2017:NP_Typ_Kanton_Grundnutzung.2498</ArtCodeliste>
+						<Thema>ch.ProjektierungszonenFlughafenanlagen</Thema>
+						<DarstellungsDienst REF="1000000000821"/>
+					</OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag>
+					<OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag TID="L9901p">
+						<Symbol>
+							<BINBLBOX>iVBORw0KGgoAAAANSUhEUgAAAEYAAAAjCAIAAACmdes6AAAAQklEQVR42u3PQREAIAgAMPpnswBJPF5IDtwaLM4imdndoaSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT0eekuUlVTevU8H0YtbDCYAAAAAElFTkSuQmCC</BINBLBOX>
+						</Symbol>
+						<LegendeText>
+							<LocalisationCH_V1.MultilingualText>
+								<LocalisedText>
+									<LocalisationCH_V1.LocalisedText>
+										<Language>de</Language>
+										<Text>Legendeeintrag Bundesthema Punkt</Text>
+									</LocalisationCH_V1.LocalisedText>
+								</LocalisedText>
+							</LocalisationCH_V1.MultilingualText>
+						</LegendeText>
+						<ArtCode>9901p</ArtCode>
+						<ArtCodeliste>urn:fdc:ilismeta.interlis.ch:2017:NP_Typ_Kanton_Grundnutzung.2498</ArtCodeliste>
+						<Thema>ch.ProjektierungszonenFlughafenanlagen</Thema>
+						<DarstellungsDienst REF="1000000000821"/>
+					</OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag>
+					<OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag TID="L9902">
+						<Symbol>
+							<BINBLBOX>iVBORw0KGgoAAAANSUhEUgAAAEYAAAAjCAIAAACmdes6AAAAQklEQVR42u3PQREAIAgAMPpnswBJPF5IDtwaLM4imdndoaSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT0eekuUlVTevU8H0YtbDCYAAAAAElFTkSuQmCC</BINBLBOX>
+						</Symbol>
+						<LegendeText>
+							<LocalisationCH_V1.MultilingualText>
+								<LocalisedText>
+									<LocalisationCH_V1.LocalisedText>
+										<Language>de</Language>
+										<Text>Legendeeintrag kantonales Subthema zu Bundesthema</Text>
+									</LocalisationCH_V1.LocalisedText>
+								</LocalisedText>
+							</LocalisationCH_V1.MultilingualText>
+						</LegendeText>
+						<ArtCode>9902</ArtCode>
+						<ArtCodeliste>urn:fdc:ilismeta.interlis.ch:2017:NP_Typ_Kanton_Grundnutzung.2498</ArtCodeliste>
+						<Thema>ch.Nutzungsplanung</Thema>
+						<SubThema>ch.SO.Baulinien</SubThema>
+						<DarstellungsDienst REF="1000000000821"/>
+					</OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag>
+					<OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag TID="L9903">
+						<Symbol>
+							<BINBLBOX>iVBORw0KGgoAAAANSUhEUgAAAEYAAAAjCAIAAACmdes6AAAAQklEQVR42u3PQREAIAgAMPpnswBJPF5IDtwaLM4imdndoaSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT0eekuUlVTevU8H0YtbDCYAAAAAElFTkSuQmCC</BINBLBOX>
+						</Symbol>
+						<LegendeText>
+							<LocalisationCH_V1.MultilingualText>
+								<LocalisedText>
+									<LocalisationCH_V1.LocalisedText>
+										<Language>de</Language>
+										<Text>Legendeeintrag kantonales Thema (kein Subthema)</Text>
+									</LocalisationCH_V1.LocalisedText>
+								</LocalisedText>
+							</LocalisationCH_V1.MultilingualText>
+						</LegendeText>
+						<ArtCode>9903</ArtCode>
+						<ArtCodeliste>urn:fdc:ilismeta.interlis.ch:2017:NP_Typ_Kanton_Grundnutzung.2498</ArtCodeliste>
+						<Thema>ch.SO.Einzelschutz</Thema>
+						<DarstellungsDienst REF="1000000000821"/>
+					</OeREBKRMtrsfr_V2_0.Transferstruktur.LegendeEintrag>
+			
+			<OeREBKRM_V2_0.Dokumente.Dokument TID="_05ec505faf864aa">
+				<Typ>Rechtsvorschrift</Typ>
+				<Titel>
+					<LocalisationCH_V1.MultilingualText>
+						<LocalisedText>
+							<LocalisationCH_V1.LocalisedText>
+								<Language>de</Language>
+								<Text>Baureglement</Text>
+							</LocalisationCH_V1.LocalisedText>
+						</LocalisedText>
+					</LocalisationCH_V1.MultilingualText>
+				</Titel>
+				<Abkuerzung>
+					<LocalisationCH_V1.MultilingualText>
+						<LocalisedText>
+							<LocalisationCH_V1.LocalisedText>
+								<Language>de</Language>
+								<Text>BR</Text>
+							</LocalisationCH_V1.LocalisedText>
+						</LocalisedText>
+					</LocalisationCH_V1.MultilingualText>
+				</Abkuerzung>
+				<OffizielleNr>
+					<LocalisationCH_V1.MultilingualText>
+						<LocalisedText>
+							<LocalisationCH_V1.LocalisedText>
+								<Text>105_BR</Text>
+							</LocalisationCH_V1.LocalisedText>
+						</LocalisedText>
+					</LocalisationCH_V1.MultilingualText>
+				</OffizielleNr>
+				<TextImWeb>
+					<OeREBKRM_V2_0.MultilingualUri>
+						<LocalisedText>
+							<OeREBKRM_V2_0.LocalisedUri>
+								<Language>de</Language>
+								<Text>https://geo.so.ch/docs/ch.so.arp.zonenplaene/Zonenplaene_pdf/105-Rohr/Reglemente/105_BR.pdf</Text>
+							</OeREBKRM_V2_0.LocalisedUri>
+						</LocalisedText>
+					</OeREBKRM_V2_0.MultilingualUri>
+				</TextImWeb>
+				<AuszugIndex>1</AuszugIndex>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2017-08-14</publiziertAb>
+				<ZustaendigeStelle REF="ch.2498"></ZustaendigeStelle>
+			</OeREBKRM_V2_0.Dokumente.Dokument>
+			<OeREBKRM_V2_0.Dokumente.Dokument TID="_05ec505faf864aaB">
+				<Typ>Rechtsvorschrift</Typ>
+				<Titel>
+					<LocalisationCH_V1.MultilingualText>
+						<LocalisedText>
+							<LocalisationCH_V1.LocalisedText>
+								<Language>de</Language>
+								<Text>Baureglement B</Text>
+							</LocalisationCH_V1.LocalisedText>
+						</LocalisedText>
+					</LocalisationCH_V1.MultilingualText>
+				</Titel>
+				<Abkuerzung>
+					<LocalisationCH_V1.MultilingualText>
+						<LocalisedText>
+							<LocalisationCH_V1.LocalisedText>
+								<Language>de</Language>
+								<Text>BR_B</Text>
+							</LocalisationCH_V1.LocalisedText>
+						</LocalisedText>
+					</LocalisationCH_V1.MultilingualText>
+				</Abkuerzung>
+				<OffizielleNr>
+					<LocalisationCH_V1.MultilingualText>
+						<LocalisedText>
+							<LocalisationCH_V1.LocalisedText>
+								<Text>105_BR_B</Text>
+							</LocalisationCH_V1.LocalisedText>
+						</LocalisedText>
+					</LocalisationCH_V1.MultilingualText>
+				</OffizielleNr>
+				<NurInGemeinde>9999</NurInGemeinde>
+				<TextImWeb>
+					<OeREBKRM_V2_0.MultilingualUri>
+						<LocalisedText>
+							<OeREBKRM_V2_0.LocalisedUri>
+								<Language>de</Language>
+								<Text>https://geo.so.ch/docs/ch.so.arp.zonenplaene/Zonenplaene_pdf/105-Rohr/Reglemente/105_BR.pdf</Text>
+							</OeREBKRM_V2_0.LocalisedUri>
+						</LocalisedText>
+					</OeREBKRM_V2_0.MultilingualUri>
+				</TextImWeb>
+				<AuszugIndex>1</AuszugIndex>
+				<Rechtsstatus>inKraft</Rechtsstatus>
+				<publiziertAb>2017-08-14</publiziertAb>
+				<ZustaendigeStelle REF="ch.2498"></ZustaendigeStelle>
+			</OeREBKRM_V2_0.Dokumente.Dokument>
+
+
+		</OeREBKRMtrsfr_V2_0.Transferstruktur>
+	</DATASECTION>
+</TRANSFER>
+
+

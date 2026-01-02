@@ -1,0 +1,160 @@
+plugins {
+    //id 'org.springframework.boot' version '2.7.1'
+    id 'org.springframework.boot' version '3.5.9'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group='ch.ehi.avwebservice'
+version='1.0.0'+System.getProperty('release','-SNAPSHOT')
+
+configurations {
+	jaxb
+}
+
+repositories {
+	mavenLocal()
+    mavenCentral()
+    maven {
+        url="https://jars.interlis.ch"
+    }
+}
+
+// to get the latest SNAPSHOT uncomment the following lines
+//configurations.all {
+    // check for updates every build
+    //resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+//}
+
+Properties properties = new Properties()
+File propFile=project.rootProject.file('user.properties')
+if(propFile.exists()){
+	properties.load(propFile.newDataInputStream())
+}
+def git = System.getProperty('git',properties.get('git','git'))
+
+def generatedResources = "$buildDir/generated-resources/main"
+def generatedXjcSources = "$buildDir/xjc/java"
+
+def getGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine git, 'rev-parse', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+dependencies {
+    // Use JUnit test framework.
+    //testImplementation libs.junit
+
+    // This dependency is exported to consumers, that is to say found on their compile classpath.
+    //api libs.commons.math3
+
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    implementation 'ch.ehi:ehibasics:1.4.1'
+    implementation 'com.vividsolutions:jts-core:1.14.0'
+    
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework:spring-oxm'
+    implementation 'org.postgresql:postgresql'
+    
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+    testImplementation 'ch.interlis:ili2pg:5.5.1'
+    testImplementation 'ch.interlis:ili2c-tool:5.6.8'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.xmlunit:xmlunit-matchers:2.6.4'
+    testImplementation 'org.xmlunit:xmlunit-core:2.6.4'
+    testImplementation 'org.xmlunit:xmlunit-placeholders:2.6.4'
+    
+    jaxb 'org.glassfish.jaxb:jaxb-xjc:4.0.5'
+    jaxb 'org.glassfish.jaxb:jaxb-core:4.0.5'
+	jaxb 'org.glassfish.jaxb:jaxb-runtime:4.0.5'
+    implementation 'org.glassfish.jaxb:jaxb-core:4.0.5'
+	implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.5'
+	
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+    options.encoding = 'US-ASCII'
+}
+
+sourceSets {
+    main {
+    	output.dir(generatedResources, builtBy: 'generateMyResources')
+        java {
+            srcDirs = ['src/main/java',"$generatedXjcSources"]
+        }
+        resources {
+            srcDirs =[ 'src/main/resources','src/main/ili']
+            include 'META-INF/native-image/**'
+            include "**/*.properties"
+            exclude "**/Version.properties"
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/ili']
+        }
+    }
+}
+
+task generateMyResources {
+	def versionPropsFile = new File(generatedResources,"ch/ehi/avwebservice/Version.properties")
+	def version="$project.version"
+	def hash=getGitHash()
+	inputs.property("version","$project.version")
+	inputs.property("hash",getGitHash())
+	outputs.file versionPropsFile
+	doLast {
+		def versionProps = new Properties()
+		versionProps.setProperty('version', version)
+		versionProps.setProperty('versionCommit', hash)
+		versionPropsFile.getParentFile().mkdirs();
+		versionProps.store(versionPropsFile.newWriter(), null);
+	}
+}
+task jaxb {
+    System.setProperty('javax.xml.accessExternalSchema', 'all')
+    inputs.files fileTree(dir: 'src/main/xsd', include: ['*.xsd'])
+    inputs.files fileTree(dir: 'src/main/xjb', include: ['*.xjb'])
+    outputs.files fileTree(dir: "$generatedXjcSources")
+    
+    doLast {
+        mkdir "$generatedXjcSources"
+
+        ant.taskdef(
+            name: 'xjc',
+            classname: 'com.sun.tools.xjc.XJCTask',
+            classpath: configurations.jaxb.asPath
+        )
+
+        ant.xjc(
+            destdir: "$generatedXjcSources",
+            language: 'XMLSCHEMA',
+            extension: true,
+			encoding: 'US-ASCII'
+        ){
+            schema(dir: "src/main/xsd", includes: "*.xsd")
+            binding(dir: "src/main/xjb", includes: "*.xjb")
+            //arg(value: '-verbose')
+        }
+    }
+}
+compileJava.dependsOn jaxb

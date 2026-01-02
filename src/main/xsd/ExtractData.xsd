@@ -343,7 +343,7 @@
   </xsd:complexType>
   <xsd:complexType name="Disclaimer">
     <xsd:sequence>
-      <xsd:element name="Titel" type="MultilingualText"/>
+      <xsd:element name="Title" type="MultilingualText"/>
       <xsd:element name="Content" type="MultilingualText"/>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
@@ -590,11 +590,11 @@
           </xsd:restriction>
         </xsd:simpleType>
       </xsd:element>
-      <xsd:element name="SubUnitOfLandRegisterDesignation" type="MultilingualText" minOccurs="0"/>
+      <xsd:element name="SubUnitOfLandRegisterDesignation" type="xsd:normalizedString" minOccurs="0"/>
       <xsd:element name="MetadataOfGeographicalBaseData" type="xsd:anyURI" minOccurs="0"/>
       <xsd:element name="LandRegistryArea" type="Area"/>
-      <xsd:element name="Limit" type="geom:MultiSurfaceType"/>
-      <xsd:element name="Toponym" maxOccurs="unbounded">
+      <xsd:element name="Limit" minOccurs="0" type="geom:MultiSurfaceType"/>
+      <xsd:element name="Toponym" minOccurs="0" maxOccurs="unbounded">
         <xsd:simpleType>
           <xsd:restriction base="xsd:normalizedString">
             <xsd:maxLength value="80"/>
@@ -602,11 +602,11 @@
         </xsd:simpleType>
       </xsd:element>
       <xsd:element name="Building" type="Building" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="LandCover" type="LandCover" maxOccurs="unbounded"/>
+      <xsd:element name="LandCover" type="LandCover" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="Mutation" type="Mutation" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="Ownership" type="Ownership" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="PlanForLandRegister" type="Map"/>
-      <xsd:element name="PlanForLandregisterMainPage" type="Map"/>
+      <xsd:element name="PlanForLandRegisterMainPage" type="Map"/>
       <xsd:element name="PlanForSituation" type="Map"/>
       <xsd:element name="ResponsibleOffice" type="Office"/>
       <xsd:element name="SingleObject" type="SingleObject" minOccurs="0" maxOccurs="unbounded"/>
@@ -618,26 +618,22 @@
   <xsd:complexType name="ExtractType">
     <xsd:sequence>
       <xsd:element name="CreationDate" type="DateInclTime"/>
-      <xsd:element name="FederalLogo">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:base64Binary"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="CantonalLogo">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:base64Binary"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="MunicipalLogo">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:base64Binary"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="LogoPropertyInformation">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:base64Binary"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
+      <xsd:choice>
+        <xsd:element name="FederalLogo" type="xsd:base64Binary"> </xsd:element>
+        <xsd:element name="FederalLogoRef" type="xsd:anyURI"> </xsd:element>
+      </xsd:choice>
+      <xsd:choice>
+        <xsd:element name="CantonalLogo" type="xsd:base64Binary"> </xsd:element>
+        <xsd:element name="CantonalLogoRef" type="xsd:anyURI"> </xsd:element>
+      </xsd:choice>
+      <xsd:choice>
+        <xsd:element name="MunicipalityLogo" type="xsd:base64Binary"> </xsd:element>
+        <xsd:element name="MunicipalityLogoRef" type="xsd:anyURI"> </xsd:element>
+      </xsd:choice>
+      <xsd:choice>
+        <xsd:element name="PropertyInformationLogo" type="xsd:base64Binary"> </xsd:element>
+        <xsd:element name="PropertyInformationLogoRef" type="xsd:anyURI"> </xsd:element>
+      </xsd:choice>
       <xsd:element name="ExtractIdentifier">
         <xsd:simpleType>
           <xsd:restriction base="xsd:normalizedString">

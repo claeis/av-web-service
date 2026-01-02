@@ -28,7 +28,7 @@ schemaLocation="ExtractData.xsd"/>
       <xsd:element name="egrid" type="xsd:token"/>
       <xsd:element name="number" type="xsd:token"/>
       <xsd:element name="identDN" type="xsd:token"/>
-      <xsd:element name="type" type="data:PropertyTypeCode"/>
+      <xsd:element name="type" type="data:PropertyType"/>
       <xsd:element name="limit" type="geo:MultiSurfaceType" minOccurs="0">
       </xsd:element>
     </xsd:sequence>    

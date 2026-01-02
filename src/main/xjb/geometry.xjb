@@ -1,0 +1,11 @@
+<bindings xmlns="https://jakarta.ee/xml/ns/jaxb" version="3.0" 
+        xmlns:ds="http://www.interlis.ch/geometry/1.0" 
+  >
+ <bindings scd="x-schema::ds"> 
+   <schemaBindings>
+      <package name="ch.ehi.av.webservice.jaxb.geometry._1_0"/>
+    </schemaBindings>
+ </bindings>
+ 
+</bindings>
+

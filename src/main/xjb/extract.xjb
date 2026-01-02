@@ -1,0 +1,12 @@
+
+<bindings xmlns="https://jakarta.ee/xml/ns/jaxb" version="3.0" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:extract="http://schemas.geo.admin.ch/V_D/AV/1.0/Extract"
+	>
+	<bindings scd="x-schema::extract">
+		<schemaBindings>
+			<package name="ch.ehi.av.webservice.jaxb.extract._1_0"/>
+		</schemaBindings>
+	</bindings>
+</bindings>
+
