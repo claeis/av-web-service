@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ili:transfer 
+		xmlns:ili="http://www.interlis.ch/xtf/2.4/INTERLIS" 
+		xmlns:geom="http://www.interlis.ch/geometry/1.0" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:InternationalCodes_V2="http://www.interlis.ch/xtf/2.4/InternationalCodes_V2" 
+		xmlns:Localisation_V2="http://www.interlis.ch/xtf/2.4/Localisation_V2" 
+		xmlns:LocalisationCH_V2="http://www.interlis.ch/xtf/2.4/LocalisationCH_V2"
+		xmlns:Dictionaries_V2="http://www.interlis.ch/xtf/2.4/Dictionaries_V2" 
+		xmlns:DictionariesCH_V2="http://www.interlis.ch/xtf/2.4/DictionariesCH_V2" 
+		xmlns:Units="http://www.interlis.ch/xtf/2.4/Units" 
+		xmlns:CoordSys="http://www.interlis.ch/xtf/2.4/CoordSys" 
+		xmlns:CHAdminCodes_V2="http://www.interlis.ch/xtf/2.4/CHAdminCodes_V2" 
+		xmlns:AdministrativeUnits_V2="http://www.interlis.ch/xtf/2.4/AdministrativeUnits_V2" 
+		xmlns:AdministrativeUnitsCH_V2="http://www.interlis.ch/xtf/2.4/AdministrativeUnitsCH_V2" 
+		xmlns:DMAVTYM_Qualitaet_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Qualitaet_V1_0" 
+		xmlns:Geometry_V2="http://www.interlis.ch/xtf/2.4/Geometry_V2" 
+		xmlns:GeometryCHLV03_V2="http://www.interlis.ch/xtf/2.4/GeometryCHLV03_V2" 
+		xmlns:GeometryCHLV95_V2="http://www.interlis.ch/xtf/2.4/GeometryCHLV95_V2" 
+		xmlns:AV_WebService_V1_0="http://www.interlis.ch/xtf/2.4/AV_WebService_V1_0" >
+	<ili:headersection>
+		<ili:models>
+			<ili:model>AV_WebService_V1_0</ili:model>
+		</ili:models>
+		<ili:sender>ili2fme-8.0.0-SNAPSHOT-e54e6b737059e65116cd9569b27925ea4e38b914</ili:sender>
+	</ili:headersection>
+	<ili:datasection>
+		<AV_WebService_V1_0:Konfiguration ili:bid="b1">
+      <AV_WebService_V1_0:GrundstuecksArtTxt ili:tid="21">
+        <AV_WebService_V1_0:Code>Liegenschaft</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Liegenschaft</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>fr</Localisation_V2:Language>
+                <Localisation_V2:Text>Bien-fonds</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>it</Localisation_V2:Language>
+                <Localisation_V2:Text>Bene immobile</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>rm</Localisation_V2:Language>
+                <Localisation_V2:Text>Bain immobigliar</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>en</Localisation_V2:Language>
+                <Localisation_V2:Text>Property</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:GrundstuecksArtTxt>
+      <!--
+      <AV_WebService_V1_0:GrundstuecksArtTxt ili:tid="22">
+        <AV_WebService_V1_0:Code>SelbstRecht.Baurecht</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Baurecht</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>fr</Localisation_V2:Language>
+                <Localisation_V2:Text>Droit de superficie</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>it</Localisation_V2:Language>
+                <Localisation_V2:Text>Diritto di superficie</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>rm</Localisation_V2:Language>
+                <Localisation_V2:Text>Dretg da construcziun</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>en</Localisation_V2:Language>
+                <Localisation_V2:Text>Building right</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:GrundstuecksArtTxt> -->
+      <!-- <AV_WebService_V1_0:GrundstuecksArtTxt ili:tid="23">
+        <AV_WebService_V1_0:Code>SelbstRecht.Quellenrecht</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Quellenrecht</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>fr</Localisation_V2:Language>
+                <Localisation_V2:Text>Droit de source</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>it</Localisation_V2:Language>
+                <Localisation_V2:Text>Diritto di sorgente</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>rm</Localisation_V2:Language>
+                <Localisation_V2:Text>Dretg da funtauna</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>en</Localisation_V2:Language>
+                <Localisation_V2:Text>Right to spring water</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:GrundstuecksArtTxt> -->
+      <!-- <AV_WebService_V1_0:GrundstuecksArtTxt ili:tid="24">
+        <AV_WebService_V1_0:Code>SelbstRecht.Konzessionsrecht</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Konzessionsrecht</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>fr</Localisation_V2:Language>
+                <Localisation_V2:Text>Droit de concession</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>it</Localisation_V2:Language>
+                <Localisation_V2:Text>Diritto di concessione</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>rm</Localisation_V2:Language>
+                <Localisation_V2:Text>Dretg da concessiun</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>en</Localisation_V2:Language>
+                <Localisation_V2:Text>Right to licence</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:GrundstuecksArtTxt> -->
+      <!-- <AV_WebService_V1_0:GrundstuecksArtTxt ili:tid="25">
+        <AV_WebService_V1_0:Code>SelbstRecht.weitere</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>weiteres SDR</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>fr</Localisation_V2:Language>
+                <Localisation_V2:Text>Autre DDP</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>it</Localisation_V2:Language>
+                <Localisation_V2:Text>altre DSP</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>rm</Localisation_V2:Language>
+                <Localisation_V2:Text>ulteriur DIP</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>en</Localisation_V2:Language>
+                <Localisation_V2:Text>other distinct and permanent rights</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:GrundstuecksArtTxt> -->
+      <AV_WebService_V1_0:GrundstuecksArtTxt ili:tid="25">
+        <AV_WebService_V1_0:Code>SelbstaendigesDauerndesRecht</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>SDR</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>fr</Localisation_V2:Language>
+                <Localisation_V2:Text>DDP</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>it</Localisation_V2:Language>
+                <Localisation_V2:Text>DSP</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>rm</Localisation_V2:Language>
+                <Localisation_V2:Text>DIP</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>en</Localisation_V2:Language>
+                <Localisation_V2:Text>distinct and permanent right</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:GrundstuecksArtTxt>
+      <AV_WebService_V1_0:GrundstuecksArtTxt ili:tid="26">
+        <AV_WebService_V1_0:Code>Bergwerk</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Bergwerk</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>fr</Localisation_V2:Language>
+                <Localisation_V2:Text>Mine</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>it</Localisation_V2:Language>
+                <Localisation_V2:Text>Miniera</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>rm</Localisation_V2:Language>
+                <Localisation_V2:Text>Miniera</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>en</Localisation_V2:Language>
+                <Localisation_V2:Text>Mine</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:GrundstuecksArtTxt>
+          </AV_WebService_V1_0:Konfiguration>
+	</ili:datasection>
+</ili:transfer>

@@ -1,0 +1,107 @@
+INTERLIS 2.4;
+
+MODEL AV_WebService_V1_0 (de)
+  AT "mailto:ceis@localhost" VERSION "2026-01-05" =
+  IMPORTS DMAV_Grundstuecke_V1_0;
+  IMPORTS LocalisationCH_V2;
+  
+  DOMAIN
+    /** Unternehmensidentifikation (gemäss Bundesgesetz über die Unternehmens-Identifikationsnummer SR 431.03) ohne Formatierung z.B. CHE116068369
+     */
+    UID = TEXT*12;
+  
+  TOPIC Konfiguration =
+  
+    /** Anzeigetexte für die Aufzählung GrundstuecksArt
+     */
+    CLASS GrundstuecksArtTxt =
+      /** Code gemäss Aufzählung
+       */
+      Code : MANDATORY DMAV_Grundstuecke_V1_0.Grundstuecke.Grundstuecksart;
+      /** Anzeigetext
+       */
+      Titel : MANDATORY LocalisationCH_V2.MultilingualText;
+    END GrundstuecksArtTxt;
+    
+    CLASS ZustaendigeStelle =
+       NBIdent : MANDATORY TEXT*12;
+      /** "Verweis" auf Geometer
+       */
+       AV : URI;
+      /** "Verweis" auf Grundbuchamt
+       */
+       GB: URI;
+       UNIQUE NBIdent;
+    END ZustaendigeStelle;
+
+    CLASS MetadatenAV =
+       NBIdent : MANDATORY TEXT*12;
+       /** Stand der Grundlagedaten (AV)
+       */
+      Stand : MANDATORY INTERLIS.XMLDateTime;
+      /** Verweis auf Metadaten der Grundlagedaten
+       */
+      Metadaten : URI;
+       UNIQUE NBIdent;
+    END MetadatenAV;
+    
+    
+    /** Eine Organisationseinheit innerhalb der öffentlichen Verwaltung, z.B. eine für Geobasisdaten zuständige Stelle
+     */
+    CLASS Amt =
+      /** Name des Amtes, z.B. «Amt für Gemeinden und Raumordnung des Kantons Bern»
+       */
+      Name : MANDATORY LocalisationCH_V2.MultilingualText;
+      /** Verweis auf die Website des Amtes z.B. «https://www.jgk.be.ch/jgk/de/index/direktion/organisation/agr.html»
+       */
+      AmtImWeb : LocalisationCH_V2.MultilingualUri;
+      /** UID der Organisationseinheit
+       */
+      UID : UID;
+      /** Optionale zusätzliche Adresszeile
+       */
+      Zeile1 : TEXT*80;
+      /** Optionale zusätzliche Adresszeile
+       */
+      Zeile2 : TEXT*80;
+      /** Strasse
+       */
+      Strasse : TEXT*100;
+      /** Hausnummer
+       */
+      Hausnr : TEXT*7;
+      /** 4-stellige Postleitzahl
+       */
+      PLZ : TEXT*4;
+      /** Postalischer Ort
+       */
+      Ort : TEXT*40;
+      UNIQUE UID;
+    END Amt;
+    
+    /** Text für «Allgemeine Informationen» im statischen Auszug
+     */
+    CLASS Information =
+      /** ch.pi, ch.lr
+       */
+      Code : MANDATORY TEXT*60;
+      /** Allgemeine Informationen, Eigentumsbeschränkungen im Grundbuch
+       */
+      Inhalt : MANDATORY LocalisationCH_V2.MultilingualMText;
+    END Information;
+
+    /** Logos für den statischen Auszug
+     */
+    CLASS Logo =
+      /** ch.pi, ch, ch.{kanton} oder ch.{bfsnr}
+       */
+      Code : MANDATORY TEXT*60;
+      /** Bild
+       */
+      Bild : MANDATORY LocalisationCH_V2.MultilingualBlob;
+      UNIQUE Code;
+    END Logo;
+    
+  END Konfiguration;
+    
+END AV_WebService_V1_0.

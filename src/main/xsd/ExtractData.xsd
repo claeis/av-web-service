@@ -343,7 +343,6 @@
   </xsd:complexType>
   <xsd:complexType name="Disclaimer">
     <xsd:sequence>
-      <xsd:element name="Title" type="MultilingualText"/>
       <xsd:element name="Content" type="MultilingualText"/>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>

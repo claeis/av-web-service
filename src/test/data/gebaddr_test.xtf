@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TRANSFER xmlns="http://www.interlis.ch/INTERLIS2.3">
+	<HEADERSECTION SENDER="ili2gpkg-5.5.1-2ee4413c5be30411a59b684e351729d2e5d8dffd" VERSION="2.3">
+		<MODELS>
+			<MODEL NAME="OfficialIndexOfAddresses_V2_2" VERSION="2025-03-12" URI="https://models.geo.admin.ch/Swisstopo/"/>
+		</MODELS>
+	</HEADERSECTION>
+	<DATASECTION>
+		<OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses BID="OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses">
+			<OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.Address TID="100994223">
+				<ADR_EGAID>100994223</ADR_EGAID>
+				<STR_ESID>10025072</STR_ESID>
+				<BDG_EGID>1701805</BDG_EGID>
+				<ADR_EDID>0</ADR_EDID>
+				<STN_NAME>
+					<OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.STN>
+						<STN_TEXT>Kirchfeldstrasse</STN_TEXT>
+						<STN_INDEX>Kir</STN_INDEX>
+						<STN_LANGUAGE>de</STN_LANGUAGE>
+					</OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.STN>
+				</STN_NAME>
+				<BDG_CATEGORY>residential</BDG_CATEGORY>
+				<ZIP_ZIP6>
+					<OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.ZIP>
+						<ZIP_ZIP4>4655</ZIP_ZIP4>
+						<ZIP_ZIPA>2</ZIP_ZIPA>
+						<ZIP_NAME>Rohr b. Olten</ZIP_NAME>
+					</OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.ZIP>
+				</ZIP_ZIP6>
+				<COM_FOSNR>2498</COM_FOSNR>
+				<COM_NAME>Rohr (SO)</COM_NAME>
+				<ADR_STATUS>real</ADR_STATUS>
+				<ADR_OFFICIAL>true</ADR_OFFICIAL>
+				<ADR_MODIFIED>2024-11-15</ADR_MODIFIED>
+				<PNT_SHAPE>
+					<COORD>
+						<C1>2638380.0</C1>
+						<C2>1251430.0</C2>
+					</COORD>
+				</PNT_SHAPE>
+			</OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.Address>
+			<OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.Address TID="103447156">
+				<ADR_EGAID>103447156</ADR_EGAID>
+				<STR_ESID>10091801</STR_ESID>
+				<BDG_EGID>502360563</BDG_EGID>
+				<ADR_EDID>0</ADR_EDID>
+				<STN_NAME>
+					<OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.STN>
+						<STN_TEXT>Kirchfeldstrasse</STN_TEXT>
+						<STN_INDEX>Reg</STN_INDEX>
+						<STN_LANGUAGE>de</STN_LANGUAGE>
+					</OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.STN>
+				</STN_NAME>
+				<ADR_NUMBER>8</ADR_NUMBER>
+				<BDG_CATEGORY>non_residential</BDG_CATEGORY>
+				<ZIP_ZIP6>
+					<OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.ZIP>
+						<ZIP_ZIP4>4655</ZIP_ZIP4>
+						<ZIP_ZIPA>2</ZIP_ZIPA>
+						<ZIP_NAME>Rohr b. Olten</ZIP_NAME>
+					</OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.ZIP>
+				</ZIP_ZIP6>
+				<COM_FOSNR>2498</COM_FOSNR>
+				<COM_NAME>Rohr (SO)</COM_NAME>
+				<ADR_STATUS>real</ADR_STATUS>
+				<ADR_OFFICIAL>true</ADR_OFFICIAL>
+				<ADR_MODIFIED>2024-11-15</ADR_MODIFIED>
+				<PNT_SHAPE>
+					<COORD>
+						<C1>2634470.0</C1>
+						<C2>1246005.0</C2>
+					</COORD>
+				</PNT_SHAPE>
+			</OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses.Address>
+		</OfficialIndexOfAddresses_V2_2.OfficialIndexOfAddresses>
+	</DATASECTION>
+</TRANSFER>

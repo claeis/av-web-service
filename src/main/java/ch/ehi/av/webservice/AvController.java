@@ -90,7 +90,24 @@ import ch.ehi.av.webservice.jaxb.versioning._1_0.VersionType;
 @Controller
 public class AvController {
     
-    private static final String WMS_PARAM_WIDTH = "WIDTH";
+    private static final String LOCALISATION_V2_LOCALISEDBLOB = "localisation_v2_localisedblob";
+	private static final String LOCALISATION_V2_MULTILINGUALBLOB = "localisation_v2_multilingualblob";
+	private static final String AV_WBSRVC_V1_0KONFIGURATION_LOGO = "av_wbsrvc_v1_0konfiguration_logo";
+	private static final String AV_WBSRVC_V1_0KONFIGURATION_INFORMATION = "av_wbsrvc_v1_0konfiguration_information";
+	private static final String AV_WBSRVC_V1_0KONFIGURATION_ZUSTAENDIGESTELLE = "av_wbsrvc_v1_0konfiguration_zustaendigestelle";
+	private static final String AV_WBSRVC_V1_0KONFIGURATION_AMT = "av_wbsrvc_v1_0konfiguration_amt";
+	private static final String DMAVSP_CH_V1_0UNTERENHTGRNDBUCH_GRUNDBUCHKREIS = "dmavsp_ch_v1_0unterenhtgrndbuch_grundbuchkreis";
+	private static final String AV_WBSRVC_V1_0KONFIGURATION_METADATENAV = "av_wbsrvc_v1_0konfiguration_metadatenav";
+	private static final String DMADDR_STN = "offclndss_v2_2officlndxfddrsses_stn";
+	private static final String DMADDR_ZIP = "offclndss_v2_2officlndxfddrsses_zip";
+	private static final String DMADDR_ADDRESS = "offclndss_v2_2officlndxfddrsses_address";
+	private static final String DMKONFIG_GRUNDSTUECKSARTTXT = "av_wbsrvc_v1_0konfiguration_grundstuecksarttxt";
+	private static final String DMAV_BERGWERK = "dmav_grck_v1_0grundstuecke_bergwerk";
+	private static final String DMAV_SELBSTRECHT = "dmav_grck_v1_0grundstuecke_selbstaendigesdauerndesrecht";
+	private static final String DMAV_LIEGENSCHAFT = "dmav_grck_v1_0grundstuecke_liegenschaft";
+	private static final String DMAV_GRUNDSTUECK = "dmav_grck_v1_0grundstuecke_grundstueck";
+	private static final String DMAV_GEMEINDE = "dmav_hhnv_v1_0hoheitsgrenzenav_gemeinde";
+	private static final String WMS_PARAM_WIDTH = "WIDTH";
     private static final String WMS_PARAM_HEIGHT = "HEIGHT";
     private static final String WMS_PARAM_DPI = "DPI";
     private static final String WMS_PARAM_BBOX = "BBOX";
@@ -114,26 +131,6 @@ public class AvController {
     private static final String PARAM_EGRID = "EGRID";
     private static final String PARAM_EGID = "EGID";
     private static final String PARAM_GEOMETRY = "GEOMETRY";
-    private static final String OERBKRMVS_V2_0KONFIGURATION_GRUNDSTUECKSARTTXT = "oerbkrmvs_v2_0konfiguration_grundstuecksarttxt";
-    private static final String OEREBKRM_V2_0_LOCALISEDBLOB = "oerebkrm_v2_0_localisedblob";
-    private static final String OEREBKRM_V2_0_MULTILINGUALBLOB = "oerebkrm_v2_0_multilingualblob";
-    private static final String OERBKRMVS_V2_0KONFIGURATION_LOGO = "oerbkrmvs_v2_0konfiguration_logo";
-    private static final String OERBKRMVS_V2_0KONFIGURATION_HAFTUNGSHINWEIS = "oerbkrmvs_v2_0konfiguration_haftungshinweis";
-    private static final String OERBKRMVS_V2_0KONFIGURATION_INFORMATION = "oerbkrmvs_v2_0konfiguration_information";
-    private static final String OEREBKRM_V2_0_LOCALISEDURI = "oerebkrm_v2_0_localiseduri";
-    private static final String OEREBKRM_V2_0_MULTILINGUALURI = "oerebkrm_v2_0_multilingualuri";
-    private static final String OEREBKRM_V2_0AMT_AMT = "oerebkrm_v2_0amt_amt";
-    private static final String OERBKRMVS_V2_0KONFIGURATION_GEMEINDEMITOEREBK = "oerbkrmvs_v2_0konfiguration_gemeindemitoerebk";
-    private static final String OERBKRMVS_V2_0KONFIGURATION_GRUNDBUCHKREIS = "oerbkrmvs_v2_0konfiguration_grundbuchkreis";
-    private static final String TABLE_PLZOCH1LV95DPLZORTSCHAFT_PLZ6 = "plzoch1lv95dplzortschaft_plz6";
-    private static final String TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_GEBAEUDEEINGANG = "dm01vch24lv95dgebaeudeadressen_gebaeudeeingang";
-    private static final String TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_LOKALISATION = "dm01vch24lv95dgebaeudeadressen_lokalisation";
-    private static final String TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_LOKALISATIONSNAME = "dm01vch24lv95dgebaeudeadressen_lokalisationsname";
-    private static final String TABLE_DM01VCH24LV95DGEMEINDEGRENZEN_GEMEINDE = "dm01vch24lv95dgemeindegrenzen_gemeinde";
-    private static final String TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_LIEGENSCHAFT = "dm01vch24lv95dliegenschaften_liegenschaft";
-    private static final String TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_SELBSTRECHT = "dm01vch24lv95dliegenschaften_selbstrecht";
-    private static final String TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_BERGWERK = "dm01vch24lv95dliegenschaften_bergwerk";
-    private static final String TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK = "dm01vch24lv95dliegenschaften_grundstueck";
 
     private static final LanguageCode DE = LanguageCode.DE;
     private static final String LOGO_ENDPOINT = "logo";
@@ -161,7 +158,7 @@ public class AvController {
     @Value("${avws.dbschema}")
     private String dbschema;
     @Value("${avws.cadastreAuthorityUrl}")
-    private String plrCadastreAuthorityUrl;
+    private String cadastreAuthorityUrl;
     @Value("${avws.webAppUrl}")
     private String webAppUrl;
     @Value("${avws.canton:Solothurn}")
@@ -174,9 +171,14 @@ public class AvController {
     private int defaultMapDpi;
     
     @Value("${avws.planForLandregisterMainPage}")
-    private String oerebPlanForLandregisterMainPage;
+    private String avPlanForLandregisterMainPage;
     @Value("${avws.planForLandregister}")
-    private String oerebPlanForLandregister;
+    private String avPlanForLandregister;
+    @Value("${avws.planForSituation}")
+    private String avPlanForSituation;
+    
+    @Value("${avws.subUnitOfLandRegisterDesignation}")
+    private String subUnitOfLandRegisterDesignation;
     
     
     private static byte[] minimalImage=Base64.getDecoder().decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==");
@@ -199,7 +201,7 @@ public class AvController {
                 .contentType(MediaType.IMAGE_PNG).body(image);                
     }
     
-    @GetMapping("/getegrid")
+    @GetMapping("/getegrid/")
     public ResponseEntity<GetEGRIDResponse>  getEgrid(@RequestParam Map<String, String> queryParameters) {
         String geometryParam=queryParameters.get(PARAM_GEOMETRY);
         boolean withGeometry=geometryParam!=null?PARAM_CONST_TRUE.equalsIgnoreCase(geometryParam):false;
@@ -209,12 +211,13 @@ public class AvController {
         String postalcode=queryParameters.get(PARAM_POSTALCODE);
         String localisation=queryParameters.get(PARAM_LOCALISATION);
         String number=queryParameters.get(PARAM_NUMBER);
-        String egid=queryParameters.get(PARAM_EGID);
+        String egidParam=queryParameters.get(PARAM_EGID);
         if(identdn!=null) {
             return getEgridByNumber(withGeometry, identdn, number);
         }else if(en!=null || gnss!=null) {
             return getEgridByXY(withGeometry, en, gnss);
-        }else if(egid!=null) {
+        }else if(egidParam!=null) {
+            int egid=Integer.parseInt(egidParam);
             return getEgridByEgid(withGeometry, egid);
         }else if(postalcode!=null) {
             int plz=Integer.parseInt(postalcode);
@@ -230,7 +233,7 @@ public class AvController {
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
-                "SELECT egris_egrid,nummer,nbident,art AS type FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" WHERE nummer=? AND nbident=?", new RowMapper<JAXBElement<String>[]>() {
+                "SELECT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" WHERE nummer=? AND nbident=?", new RowMapper<JAXBElement<String>[]>() {
                     @Override
                     public JAXBElement[] mapRow(ResultSet rs, int rowNum) throws SQLException {
                         JAXBElement ret[]=new JAXBElement[5];
@@ -287,10 +290,10 @@ public class AvController {
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
-                "SELECT egris_egrid,nummer,nbident,art as type FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" g"
-                        +" LEFT JOIN (SELECT liegenschaft_von as von, geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_LIEGENSCHAFT
-                             +" UNION ALL SELECT selbstrecht_von as von,  geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_SELBSTRECHT
-                             +" UNION ALL SELECT bergwerk_von as von,     geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_BERGWERK+") b ON b.von=g.t_id WHERE ST_DWithin(ST_Transform(?,2056),b.geometrie,1.0)"
+                "SELECT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                        +" LEFT JOIN (SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
+                             +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
+                             +" UNION ALL SELECT grundstueck as von,     geometrie FROM "+getSchema()+"."+DMAV_BERGWERK+") b ON b.von=g.t_id WHERE ST_DWithin(ST_Transform(?,2056),b.geometrie,1.0)"
                 , new RowMapper<JAXBElement<String>[]>() {
                     @Override
                     public JAXBElement<String>[] mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -320,23 +323,21 @@ public class AvController {
          return new ResponseEntity<GetEGRIDResponse>(new GetEGRIDResponse(ret),gsList.size()>0?HttpStatus.OK:HttpStatus.NO_CONTENT);
     }
     
-    private ResponseEntity<GetEGRIDResponse>  getEgridByAddress(boolean withGeometry, int postalcode,String localisation,String number) {
+    ResponseEntity<GetEGRIDResponse>  getEgridByAddress(boolean withGeometry, int postalcode,String localisation,String number) {
         logger.debug("postalcode {}",postalcode);
         logger.debug("localisation {}",localisation);
         logger.debug("number {}",number);
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
-        String stmt="SELECT DISTINCT egris_egrid,nummer,nbident, art as type FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" as g"
+        String stmt="SELECT DISTINCT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
                 +" JOIN ("
-                + "(SELECT liegenschaft_von as von, geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_LIEGENSCHAFT
-                    +" UNION ALL SELECT selbstrecht_von as von,  geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_SELBSTRECHT
-                    +" UNION ALL SELECT bergwerk_von as von,     geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_BERGWERK+") as a "
-                            + " JOIN (select lage from (select lage from "+getSchema()+"."+TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_LOKALISATIONSNAME+" as lname " 
-                            + " JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_LOKALISATION+" AS lokn ON lokn.t_id=lname.benannte "
-                            + " JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_GEBAEUDEEINGANG+" as geb ON geb.gebaeudeeingang_von=lokn.t_id " 
-                            + " where (lname.atext=? or lname.kurztext=?)and geb.hausnummer=? " 
-                            + ") as adr "
-                            + " JOIN (select  flaeche from "+getSchema()+"."+TABLE_PLZOCH1LV95DPLZORTSCHAFT_PLZ6+" where plz=?) as plz ON ST_Intersects(adr.lage, plz.flaeche) " 
+                + "(SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
+                    +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
+                    +" UNION ALL SELECT grundstueck as von,     geometrie FROM "+getSchema()+"."+DMAV_BERGWERK+") as a "
+                            + " JOIN (select adr.pnt_shape as lage from  "+getSchema()+"."+DMADDR_ADDRESS+" as adr " 
+                            + " JOIN "+getSchema()+"."+DMADDR_ZIP+" AS zip ON adr.t_id=zip.offclndss_vrsss_ddress_zip_zip6  " 
+                            + " JOIN "+getSchema()+"."+DMADDR_STN+" AS stn ON adr.t_id=stn.offclndss_vrsss_ddress_stn_name  " 
+                            + " where zip.zip_zip4=? and stn.stn_text=? and adr.adr_number=? " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
             + ") as b ON b.von=g.t_id";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
@@ -357,7 +358,7 @@ public class AvController {
                         return ret;
                     }
                     
-                },localisation,localisation,number,postalcode);
+                },postalcode,localisation,number);
         for(JAXBElement[] gs:gsList) {
             ret.getEgridAndNumberAndIdentDN().add(gs[0]);
             ret.getEgridAndNumberAndIdentDN().add(gs[1]);
@@ -369,22 +370,20 @@ public class AvController {
         }
          return new ResponseEntity<GetEGRIDResponse>(new GetEGRIDResponse(ret),gsList.size()>0?HttpStatus.OK:HttpStatus.NO_CONTENT);
     }
-    private ResponseEntity<GetEGRIDResponse>  getEgridByAddress(boolean withGeometry,int postalcode,String localisation) {
+    ResponseEntity<GetEGRIDResponse>  getEgridByAddress(boolean withGeometry,int postalcode,String localisation) {
         logger.debug("postalcode {}",postalcode);
         logger.debug("localisation {}",localisation);
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
-        String stmt="SELECT DISTINCT egris_egrid,nummer,nbident,art as type FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" as g"
+        String stmt="SELECT DISTINCT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
                 +" JOIN ("
-                + "(SELECT liegenschaft_von as von, geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_LIEGENSCHAFT
-                    +" UNION ALL SELECT selbstrecht_von as von,  geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_SELBSTRECHT
-                    +" UNION ALL SELECT bergwerk_von as von,     geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_BERGWERK+") as a "
-                            + " JOIN (select lage from (select lage from "+getSchema()+"."+TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_LOKALISATIONSNAME+" as lname " 
-                            + " JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_LOKALISATION+" AS lokn ON lokn.t_id=lname.benannte "
-                            + " JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_GEBAEUDEEINGANG+" as geb ON geb.gebaeudeeingang_von=lokn.t_id " 
-                            + " where (lname.atext=? or lname.kurztext=?)and geb.hausnummer is null " 
-                            + ") as adr "
-                            + " JOIN (select  flaeche from "+getSchema()+"."+TABLE_PLZOCH1LV95DPLZORTSCHAFT_PLZ6+" where plz=?) as plz ON ST_Intersects(adr.lage, plz.flaeche) " 
+                + "(SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
+                    +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
+                    +" UNION ALL SELECT grundstueck as von,     geometrie FROM "+getSchema()+"."+DMAV_BERGWERK+") as a "
+                            + " JOIN (select adr.pnt_shape as lage from  "+getSchema()+"."+DMADDR_ADDRESS+" as adr " 
+                            + " JOIN "+getSchema()+"."+DMADDR_ZIP+" AS zip ON adr.t_id=zip.offclndss_vrsss_ddress_zip_zip6  " 
+                            + " JOIN "+getSchema()+"."+DMADDR_STN+" AS stn ON adr.t_id=stn.offclndss_vrsss_ddress_stn_name  " 
+                            + " where zip.zip_zip4=? and stn.stn_text=? and adr.adr_number is null " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
             + ") as b ON b.von=g.t_id";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
@@ -405,7 +404,7 @@ public class AvController {
                         return ret;
                     }
                     
-                },localisation,localisation,postalcode);
+                },postalcode,localisation);
         for(JAXBElement[] gs:gsList) {
             ret.getEgridAndNumberAndIdentDN().add(gs[0]);
             ret.getEgridAndNumberAndIdentDN().add(gs[1]);
@@ -417,18 +416,17 @@ public class AvController {
         }
          return new ResponseEntity<GetEGRIDResponse>(new GetEGRIDResponse(ret),gsList.size()>0?HttpStatus.OK:HttpStatus.NO_CONTENT);
     }
-    private ResponseEntity<GetEGRIDResponse>  getEgridByEgid(boolean withGeometry,String egid) {
+    ResponseEntity<GetEGRIDResponse>  getEgridByEgid(boolean withGeometry,int egid) {
         logger.debug("egid {}",egid);
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
-        String stmt="SELECT DISTINCT egris_egrid,nummer,nbident,art as type FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" as g"
+        String stmt="SELECT DISTINCT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
                 +" JOIN ("
-                + "(SELECT liegenschaft_von as von, geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_LIEGENSCHAFT
-                    +" UNION ALL SELECT selbstrecht_von as von,  geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_SELBSTRECHT
-                    +" UNION ALL SELECT bergwerk_von as von,     geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_BERGWERK+") as a "
-                            + " JOIN (" 
-                            + " SELECT lage FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DGEBAEUDEADRESSEN_GEBAEUDEEINGANG
-                            + " where gwr_egid=?" 
+                + "(SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
+                    +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
+                    +" UNION ALL SELECT grundstueck as von,     geometrie FROM "+getSchema()+"."+DMAV_BERGWERK+") as a "
+                            + " JOIN (select adr.pnt_shape as lage from  "+getSchema()+"."+DMADDR_ADDRESS+" as adr " 
+                            + " where adr.bdg_egid=? " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
             + ") as b ON b.von=g.t_id";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
@@ -462,7 +460,7 @@ public class AvController {
          return new ResponseEntity<GetEGRIDResponse>(new GetEGRIDResponse(ret),gsList.size()>0?HttpStatus.OK:HttpStatus.NO_CONTENT);
     }
     
-    @GetMapping(value="/extract/{format}",consumes=MediaType.ALL_VALUE,produces = {MediaType.APPLICATION_PDF_VALUE,MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(value="/extract/{format}/",consumes=MediaType.ALL_VALUE,produces = {MediaType.APPLICATION_PDF_VALUE,MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<?>  getExtract(@PathVariable String format,@RequestParam Map<String, String> queryParameters) {
         String geometryParam=queryParameters.get(PARAM_GEOMETRY);
         boolean withGeometry=geometryParam!=null?PARAM_CONST_TRUE.equalsIgnoreCase(geometryParam):false;
@@ -501,7 +499,7 @@ public class AvController {
         if(parcel==null) {
             return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
         }
-        java.sql.Date basedataDate=getBasedatadateOfMunicipality(parcel.getBfsNr());
+        java.sql.Date basedataDate=getBasedatadateOfMunicipality(parcel.getNbident());
         if(basedataDate==null) {
             // non unlocked municipality
             return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
@@ -533,7 +531,7 @@ public class AvController {
         if(parcel==null) {
             return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
         }
-        java.sql.Date basedataDate=getBasedatadateOfMunicipality(parcel.getBfsNr());
+        java.sql.Date basedataDate=getBasedatadateOfMunicipality(parcel.getNbident());
         if(basedataDate==null) {
             // non unlocked municipality
             return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
@@ -566,7 +564,7 @@ public class AvController {
         if(parcel==null) {
             return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
         }
-        java.sql.Date basedataDate=getBasedatadateOfMunicipality(parcel.getBfsNr());
+        java.sql.Date basedataDate=getBasedatadateOfMunicipality(parcel.getNbident());
         if(basedataDate==null) {
             // non unlocked municipality
             return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
@@ -609,7 +607,7 @@ public class AvController {
         if(parcel==null) {
             return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
         }
-        java.sql.Date basedataDate=getBasedatadateOfMunicipality(parcel.getBfsNr());
+        java.sql.Date basedataDate=getBasedatadateOfMunicipality(parcel.getNbident());
         if(basedataDate==null) {
             // non unlocked municipality
             return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
@@ -639,7 +637,7 @@ public class AvController {
         
         // Liste der vorhandenen Gemeinden;
         List<Integer> gemeinden=jdbcTemplate.query(
-                "SELECT bfsnr FROM "+getSchema()+".dm01vch24lv95dgemeindegrenzen_gemeinde", new RowMapper<Integer>() {
+                "SELECT bfsnummer FROM "+getSchema()+"."+DMAV_GEMEINDE, new RowMapper<Integer>() {
                     @Override
                     public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
                         return rs.getInt(1);
@@ -712,15 +710,17 @@ public class AvController {
         // Text
 
         setBaseData(extract,basedataDate);
-        setGeneralInformation();
-        extract.setDisclaimer(getDisclaimer());
-        // Oereb-Amt
-        Office plrCadastreAuthority = new Office();
-        plrCadastreAuthority.setName(createMultilingualTextType("OEREB-Katasteramt"));
-        plrCadastreAuthority.setOfficeAtWeb(createMultilingualUri(plrCadastreAuthorityUrl));
+        
+        extract.setDisclaimer(getDisclaimer("ch.pi"));
+        {
+            // Katasteramt
+            Office piAuthority = new Office();
+            piAuthority.setName(createMultilingualTextType("Katasteramt"));
+            piAuthority.setOfficeAtWeb(createMultilingualUri(cadastreAuthorityUrl));
 
-        setOffice(plrCadastreAuthority);
-        extract.setPropertyInformationAuthority(plrCadastreAuthority);
+            setOffice(piAuthority);
+            extract.setPropertyInformationAuthority(piAuthority);
+        }
         
         return new Extract(extract);
     }
@@ -765,11 +765,11 @@ public class AvController {
     }
     private byte[] getImageOrNull(String code) {
         java.util.List<Map<String,Object>> baseData=jdbcTemplate.queryForList(
-                "SELECT b.ablob as logo,b_de.ablob as logo_de FROM "+getSchema()+"."+OERBKRMVS_V2_0KONFIGURATION_LOGO+" AS l"
-                +" LEFT JOIN "+getSchema()+"."+OEREBKRM_V2_0_MULTILINGUALBLOB+" AS mb ON mb.oerbkrmvs_vnfgrtn_logo_bild=l.t_id"
-                +" LEFT JOIN (SELECT ablob,oerbkrm_v2_mltlnglblob_localisedblob FROM "+getSchema()+"."+OEREBKRM_V2_0_LOCALISEDBLOB+" WHERE alanguage IS NULL) AS b ON b.oerbkrm_v2_mltlnglblob_localisedblob=mb.t_id"
-                +" LEFT JOIN "+getSchema()+"."+OEREBKRM_V2_0_MULTILINGUALBLOB+" AS mb_de ON mb_de.oerbkrmvs_vnfgrtn_logo_bild=l.t_id"
-                +" LEFT JOIN (SELECT ablob,oerbkrm_v2_mltlnglblob_localisedblob FROM "+getSchema()+"."+OEREBKRM_V2_0_LOCALISEDBLOB+" WHERE alanguage='de') AS b_de ON b_de.oerbkrm_v2_mltlnglblob_localisedblob=mb_de.t_id"
+                "SELECT b.content as logo,b_de.content as logo_de FROM "+getSchema()+"."+AV_WBSRVC_V1_0KONFIGURATION_LOGO+" AS l"
+                +" LEFT JOIN "+getSchema()+"."+LOCALISATION_V2_MULTILINGUALBLOB+" AS mb ON mb.av_wbsrvc_vnfgrtn_logo_bild=l.t_id"
+                +" LEFT JOIN (SELECT content,loclstn_v2_mltlnglblob_localisedblob FROM "+getSchema()+"."+LOCALISATION_V2_LOCALISEDBLOB+" WHERE alanguage IS NULL) AS b ON b.loclstn_v2_mltlnglblob_localisedblob=mb.t_id"
+                +" LEFT JOIN "+getSchema()+"."+LOCALISATION_V2_MULTILINGUALBLOB+" AS mb_de ON mb_de.av_wbsrvc_vnfgrtn_logo_bild=l.t_id"
+                +" LEFT JOIN (SELECT content,loclstn_v2_mltlnglblob_localisedblob FROM "+getSchema()+"."+LOCALISATION_V2_LOCALISEDBLOB+" WHERE alanguage='de') AS b_de ON b_de.loclstn_v2_mltlnglblob_localisedblob=mb_de.t_id"
                 +" WHERE l.acode=?",code);
         if(baseData!=null && baseData.size()==1) {
             byte[] logo=(byte[])baseData.get(0).get("logo");
@@ -786,10 +786,8 @@ public class AvController {
         java.util.Map<String,Object> baseData=null;
         try {
             String sqlStmt=
-                    "SELECT aname,aname_de,ea_lu.atext as amtimweb,ea_lu_de.atext as amtimweb_de, auid,zeile1,zeile2,strasse,hausnr,plz,ort FROM "+getSchema()+"."+OEREBKRM_V2_0AMT_AMT+" AS ea"
-                            +" LEFT JOIN "+getSchema()+"."+OEREBKRM_V2_0_MULTILINGUALURI+" as ea_mu ON ea.t_id = ea_mu.oerebkrm_v2_0amt_amt_amtimweb"+" LEFT JOIN (SELECT atext,oerbkrm_v2__mltlngluri_localisedtext FROM "+getSchema()+"."+OEREBKRM_V2_0_LOCALISEDURI+" WHERE alanguage IS NULL) as ea_lu ON ea_mu.t_id = ea_lu.oerbkrm_v2__mltlngluri_localisedtext"
-                            +" LEFT JOIN "+getSchema()+"."+OEREBKRM_V2_0_MULTILINGUALURI+" as ea_mu_de ON ea.t_id = ea_mu_de.oerebkrm_v2_0amt_amt_amtimweb"+" LEFT JOIN (SELECT atext,oerbkrm_v2__mltlngluri_localisedtext FROM "+getSchema()+"."+OEREBKRM_V2_0_LOCALISEDURI+" WHERE alanguage='de') as ea_lu_de ON ea_mu_de.t_id = ea_lu_de.oerbkrm_v2__mltlngluri_localisedtext"
-                            +" WHERE ea_lu.atext=? OR ea_lu_de.atext=?";
+                    "SELECT aname,aname_de,amtimweb,amtimweb_de, auid,zeile1,zeile2,strasse,hausnr,plz,ort FROM "+getSchema()+"."+AV_WBSRVC_V1_0KONFIGURATION_AMT+" AS ea"
+                            +" WHERE amtimweb=? OR amtimweb_de=?";
             logger.info("stmt {} ",sqlStmt);
             String uri=getUri(office.getOfficeAtWeb());
             baseData=jdbcTemplate.queryForMap(sqlStmt
@@ -820,27 +818,16 @@ public class AvController {
         return null;
     }
 
-    private Disclaimer getDisclaimer() {
+    private Disclaimer getDisclaimer(String section) {
         java.util.List<java.util.Map<String,Object>> baseDataList=jdbcTemplate.queryForList(
-                "SELECT titel_de,titel_fr,titel_it,titel_rm,titel_en,inhalt_de,inhalt_fr,inhalt_it,inhalt_rm,inhalt_en FROM "+getSchema()+"."+OERBKRMVS_V2_0KONFIGURATION_HAFTUNGSHINWEIS+" ORDER BY auszugindex");
+                "SELECT inhalt_de,inhalt_fr,inhalt_it,inhalt_rm,inhalt_en FROM "+getSchema()+"."+AV_WBSRVC_V1_0KONFIGURATION_INFORMATION+" WHERE acode=?",section);
         for(java.util.Map<String,Object> baseData:baseDataList) {
             MultilingualText content = createMultilingualTextType(baseData,"inhalt");
-            MultilingualText title = createMultilingualTextType(baseData,"titel");
             Disclaimer exclOfLiab=new Disclaimer();
             exclOfLiab.setContent(content);
-            exclOfLiab.setTitle(title);
             return exclOfLiab;
         }
         return null;
-    }
-
-    private void setGeneralInformation() {
-        java.util.Map<String,Object> baseData=jdbcTemplate.queryForMap(
-                "SELECT inhalt_de,inhalt_fr,inhalt_it,inhalt_rm,inhalt_en FROM "+getSchema()+"."+OERBKRMVS_V2_0KONFIGURATION_INFORMATION);
-        Map<String,String> params=new HashMap<String,String>();
-        params.put("canton", plrCanton);
-        createMultilingualMTextType(baseData,"inhalt",params); // dummy call to keep function ref
-        // extract.getGeneralInformation().add(createMultilingualMTextType(baseData,"inhalt",params));
     }
 
     private void setBaseData(ExtractType extract,java.sql.Date basedataDate) {
@@ -1001,11 +988,11 @@ public class AvController {
         PrecisionModel precisionModel=new PrecisionModel(1000.0);
         GeometryFactory geomFactory=new GeometryFactory(precisionModel);
         List<Grundstueck> gslist=jdbcTemplate.query(
-                "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie,nummer,nbident,art,gesamteflaechenmass,l.flaechenmass as l_flaechenmass,s.flaechenmass as s_flaechenmass,b.flaechenmass as b_flaechenmass FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" g"
-                        +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_LIEGENSCHAFT+" l ON g.t_id=l.liegenschaft_von "
-                        +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_SELBSTRECHT+" s ON g.t_id=s.selbstrecht_von"
-                        +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_BERGWERK+" b ON g.t_id=b.bergwerk_von"
-                        +" WHERE g.egris_egrid=?", new RowMapper<Grundstueck>() {
+                "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie,nummer,nbident,grundstuecksart,gesamtflaechenmass,l.flaechenmass as l_flaechenmass,s.flaechenmass as s_flaechenmass,b.flaechenmass as b_flaechenmass FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_LIEGENSCHAFT+" l ON g.t_id=l.grundstueck "
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
+                        +" WHERE g.egrid=?", new RowMapper<Grundstueck>() {
                     WKBReader decoder=new WKBReader(geomFactory);
                     
                     @Override
@@ -1035,8 +1022,8 @@ public class AvController {
                         ret.setEgrid(egrid);
                         ret.setNummer(rs.getString("nummer"));
                         ret.setNbident(rs.getString("nbident"));
-                        ret.setArt(rs.getString("art"));
-                        int f=rs.getInt("gesamteflaechenmass");
+                        ret.setArt(rs.getString("grundstuecksart"));
+                        int f=rs.getInt("gesamtflaechenmass");
                         if(rs.wasNull()) {
                             if(l_geometrie!=null) {
                                 f=rs.getInt("l_flaechenmass");
@@ -1065,17 +1052,7 @@ public class AvController {
         Geometry multiPolygon=geomFactory.createMultiPolygon(polygons);
         Grundstueck gs=gslist.get(0);
         gs.setGeometrie(multiPolygon);
-        
-        // grundbuchkreis
-        try {
-            java.util.Map<String,Object> gbKreis=jdbcTemplate.queryForMap(
-                    "SELECT aname,gemeinde FROM "+getSchema()+"."+OERBKRMVS_V2_0KONFIGURATION_GRUNDBUCHKREIS+" WHERE nbident=?",gs.getNbident());
-            gs.setGbSubKreis((String)gbKreis.get("aname"));
-            gs.setBfsNr((Integer)gbKreis.get("gemeinde"));
-        }catch(EmptyResultDataAccessException ex) {
-            logger.warn("no gbkreis-name for nbident {}",gs.getNbident());
-        }
-        
+                
         return gs;
     }
     private Grundstueck getParcelByNumber(String nbident,String nr) {
@@ -1086,16 +1063,16 @@ public class AvController {
                 + " ST_AsBinary(l.geometrie) as l_geometrie"
                 + ",ST_AsBinary(s.geometrie) as s_geometrie"
                 + ",ST_AsBinary(b.geometrie) as b_geometrie"
-                + ",egris_egrid"
-                + ",art"
-                + ",gesamteflaechenmass"
+                + ",egrid"
+                + ",grundstuecksart"
+                + ",gesamtflaechenmass"
                 + ",l.flaechenmass as l_flaechenmass"
                 + ",s.flaechenmass as s_flaechenmass"
                 + ",b.flaechenmass as b_flaechenmass"
-                + " FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" g"
-                        +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_LIEGENSCHAFT+" l ON g.t_id=l.liegenschaft_von "
-                        +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_SELBSTRECHT+" s ON g.t_id=s.selbstrecht_von"
-                        +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_BERGWERK+" b ON g.t_id=b.bergwerk_von"
+                + " FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_LIEGENSCHAFT+" l ON g.t_id=l.grundstueck "
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
                         +" WHERE g.nbident=? AND g.nummer=?", new RowMapper<Grundstueck>() {
                     WKBReader decoder=new WKBReader(geomFactory);
                     
@@ -1123,11 +1100,11 @@ public class AvController {
                         }
                         Grundstueck ret=new Grundstueck();
                         ret.setGeometrie(polygon);
-                        ret.setEgrid(rs.getString("egris_egrid"));
+                        ret.setEgrid(rs.getString("egrid"));
                         ret.setNummer(nr);
                         ret.setNbident(nbident);
-                        ret.setArt(rs.getString("art"));
-                        int f=rs.getInt("gesamteflaechenmass");
+                        ret.setArt(rs.getString("grundstuecksart"));
+                        int f=rs.getInt("gesamtflaechenmass");
                         if(rs.wasNull()) {
                             if(l_geometrie!=null) {
                                 f=rs.getInt("l_flaechenmass");
@@ -1157,28 +1134,17 @@ public class AvController {
         Grundstueck gs=gslist.get(0);
         gs.setGeometrie(multiPolygon);
         
-        // grundbuchkreis
-        try {
-            
-            java.util.Map<String,Object> gbKreis=jdbcTemplate.queryForMap(
-                    "SELECT aname,gemeinde FROM "+getSchema()+"."+OERBKRMVS_V2_0KONFIGURATION_GRUNDBUCHKREIS+" WHERE nbident=?",gs.getNbident());
-            gs.setGbSubKreis((String)gbKreis.get("aname"));
-            gs.setBfsNr((Integer)gbKreis.get("gemeinde"));
-        }catch(EmptyResultDataAccessException ex) {
-            logger.warn("no gbkreis for nbident {}",gs.getNbident());
-        }
-        
         return gs;
     }
     private Geometry getParcelGeometryByEgrid(String egrid) {
             PrecisionModel precisionModel=new PrecisionModel(1000.0);
             GeometryFactory geomFactory=new GeometryFactory(precisionModel);
             List<Geometry> gslist=jdbcTemplate.query(
-                    "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" g"
-                            +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_LIEGENSCHAFT+" l ON g.t_id=l.liegenschaft_von "
-                            +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_SELBSTRECHT+" s ON g.t_id=s.selbstrecht_von"
-                            +" LEFT JOIN "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_BERGWERK+" b ON g.t_id=b.bergwerk_von"
-                            +" WHERE g.egris_egrid=?", new RowMapper<Geometry>() {
+                    "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                            +" LEFT JOIN "+getSchema()+"."+DMAV_LIEGENSCHAFT+" l ON g.t_id=l.grundstueck"
+                            +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
+                            +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
+                            +" WHERE g.egrid=?", new RowMapper<Geometry>() {
                         WKBReader decoder=new WKBReader(geomFactory);
                         
                         @Override
@@ -1235,7 +1201,7 @@ public class AvController {
         if(propertyTypes==null) {
             propertyTypes=new HashMap<String,PropertyType>();
             java.util.List<java.util.Map<String,Object>> baseData=jdbcTemplate.queryForList(
-                    "SELECT acode,titel_de,titel_fr,titel_it,titel_rm,titel_en FROM "+getSchema()+"."+OERBKRMVS_V2_0KONFIGURATION_GRUNDSTUECKSARTTXT);
+                    "SELECT acode,titel_de,titel_fr,titel_it,titel_rm,titel_en FROM "+getSchema()+"."+DMKONFIG_GRUNDSTUECKSARTTXT);
             for(java.util.Map<String,Object> status:baseData) {
                 MultilingualText codeTxt=createMultilingualTextType((String)status.get("titel_de"));
                 PropertyType gsType=new PropertyType();
@@ -1243,13 +1209,15 @@ public class AvController {
                 final String code = (String)status.get("acode");
                 if("Liegenschaft".equals(code)) {
                     gsType.setCode(PropertyTypeCode.REAL_ESTATE);
-                }else if("SelbstRecht.Baurecht".equals(code)) {
+                /*}else if("SelbstRecht.Baurecht".equals(code)) {
                     gsType.setCode(PropertyTypeCode.DISTINCT_PERMANENT_RIGHT);
                 }else if("SelbstRecht.Quellenrecht".equals(code)) {
                     gsType.setCode(PropertyTypeCode.DISTINCT_PERMANENT_RIGHT);
                 }else if("SelbstRecht.Konzessionsrecht".equals(code)) {
                     gsType.setCode(PropertyTypeCode.DISTINCT_PERMANENT_RIGHT);
                 }else if("SelbstRecht.weitere".equals(code)) {
+                    gsType.setCode(PropertyTypeCode.DISTINCT_PERMANENT_RIGHT);*/
+                }else if("SelbstaendigesDauerndesRecht".equals(code)) {
                     gsType.setCode(PropertyTypeCode.DISTINCT_PERMANENT_RIGHT);
                 }else if("Bergwerk".equals(code)) {
                     gsType.setCode(PropertyTypeCode.MINE);
@@ -1275,14 +1243,25 @@ public class AvController {
         gs.setCanton(CantonCode.fromValue(canton));
         gs.setIdentDN(nbident);
         gs.setNumber(parcel.getNummer());
-        gs.setSubUnitOfLandRegister(parcel.getGbSubKreis());
-        if(gs.getSubUnitOfLandRegister()!=null) {
-            gs.setSubUnitOfLandRegisterDesignation(getSubunitDesignationOfMunicipality(parcel.getBfsNr()));
+        {
+    		try {
+                java.util.Map<String,Object> gbKreis=jdbcTemplate.queryForMap(
+                        "SELECT aname,gemeinde,egris_subkreis,egris_los FROM "+getSchema()+"."+DMAVSP_CH_V1_0UNTERENHTGRNDBUCH_GRUNDBUCHKREIS+" WHERE nbident=?",nbident);
+                gs.setSubUnitOfLandRegister((String)gbKreis.get("aname"));
+                gs.setMunicipalityCode((Integer)gbKreis.get("gemeinde"));
+                //gs.setEgrisSubKreis((Integer)gbKreis.get("egris_subkreis"));
+                //gs.setEgrisLos((Integer)gbKreis.get("egris_los"));
+            }catch(EmptyResultDataAccessException ex) {
+                logger.warn("no GrundbuchKreis for nbident {}",nbident);
+            }
+        	
         }
-        gs.setMunicipalityCode(parcel.getBfsNr());
+        if(gs.getSubUnitOfLandRegister()!=null) {
+            gs.setSubUnitOfLandRegisterDesignation(subUnitOfLandRegisterDesignation);
+        }
         // gemeindename
         String gemeindename=jdbcTemplate.queryForObject(
-                "SELECT aname FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DGEMEINDEGRENZEN_GEMEINDE+" WHERE bfsnr=?",String.class,gs.getMunicipalityCode());
+                "SELECT aname FROM "+getSchema()+"."+DMAV_GEMEINDE+" WHERE bfsnummer=?",String.class,gs.getMunicipalityCode());
         gs.setMunicipalityName(gemeindename);
         gs.setLandRegistryArea((int)parcel.getFlaechenmas());
         String gsArt=parcel.getArt();
@@ -1297,7 +1276,7 @@ public class AvController {
         {
             // Planausschnitt 174 * 99 mm
         	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForLandregister=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
-            String fixedWmsUrl = getWmsUrl(bbox, oerebPlanForLandregister,dpi);
+            String fixedWmsUrl = getWmsUrl(bbox, avPlanForLandregister,dpi);
             planForLandregister.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
             gs.setPlanForLandRegister(planForLandregister);
             if(withImages) {
@@ -1313,7 +1292,7 @@ public class AvController {
         {
             // Planausschnitt 174 * 99 mm
         	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForLandregisterMainPage=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
-            String fixedWmsUrl = getWmsUrl(bbox, oerebPlanForLandregisterMainPage,dpi);
+            String fixedWmsUrl = getWmsUrl(bbox, avPlanForLandregisterMainPage,dpi);
             planForLandregisterMainPage.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
             gs.setPlanForLandRegisterMainPage(planForLandregisterMainPage);
             if(withImages) {
@@ -1326,6 +1305,39 @@ public class AvController {
             }
             setMapBBOX(planForLandregisterMainPage,bbox);
         }
+        {
+            // Planausschnitt 174 * 99 mm
+        	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForSituation=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
+            String fixedWmsUrl = getWmsUrl(bbox, avPlanForSituation,dpi);
+            planForSituation.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
+            gs.setPlanForSituation(planForSituation);
+            if(withImages) {
+                try {
+                    planForSituation.setImage(createMultilingualBlob(getWmsImage(fixedWmsUrl)));
+                } catch (IOException | URISyntaxException e) {
+                    logger.error("failed to get wms image",e);
+                    planForSituation.setImage(createMultilingualBlob(minimalImage));
+                }
+            }
+            setMapBBOX(planForSituation,bbox);
+        } 
+        {
+            // Geometer
+        	String geometerUri=null;
+        	Office office = new Office();
+            office.setName(createMultilingualTextType("Geometer"));
+            try {
+                geometerUri=jdbcTemplate.queryForObject(
+                        "SELECT av FROM "+getSchema()+"."+AV_WBSRVC_V1_0KONFIGURATION_ZUSTAENDIGESTELLE+" WHERE nbident=?",String.class,nbident);
+            }catch(EmptyResultDataAccessException ex) {
+                logger.error("failed to get geometer of nbident {}",nbident);
+            }
+            office.setOfficeAtWeb(createMultilingualUri(geometerUri));
+
+            setOffice(office);
+            gs.setResponsibleOffice(office);
+        }
+        
         extract.setRealEstateDPR(gs);
         
     }
@@ -1442,33 +1454,23 @@ public class AvController {
     private String  verifyEgrid(String egrid,String identdn,String number) {
         try {
             String ret=jdbcTemplate.queryForObject(
-                    "SELECT egris_egrid AS type FROM "+getSchema()+"."+TABLE_DM01VCH24LV95DLIEGENSCHAFTEN_GRUNDSTUECK+" WHERE egris_egrid=? OR (nummer=? AND nbident=?)", String.class,egrid,number,identdn);
+                    "SELECT egrid AS type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" WHERE egrid=? OR (nummer=? AND nbident=?)", String.class,egrid,number,identdn);
             return ret;
         }catch(EmptyResultDataAccessException ex) {
         }
         return null;
     }
 
-    private java.sql.Date getBasedatadateOfMunicipality(int bfsNr) {
+    private java.sql.Date getBasedatadateOfMunicipality(String nbident) {
         java.sql.Date ret=null;
         try {
-            ret=jdbcTemplate.queryForObject("SELECT grundlagedatenstand from "+getSchema()+"."+OERBKRMVS_V2_0KONFIGURATION_GEMEINDEMITOEREBK+" WHERE gemeinde=?",java.sql.Date.class,bfsNr);
+            ret=jdbcTemplate.queryForObject("SELECT stand from "+getSchema()+"."+AV_WBSRVC_V1_0KONFIGURATION_METADATENAV+" WHERE nbident=?",java.sql.Date.class,nbident);
         }catch(EmptyResultDataAccessException ex) {
             // a non-unlocked municipality has no entry
             return null;
         }
         if(ret==null) {
             ret=new java.sql.Date(System.currentTimeMillis());
-        }
-        return ret;
-    }
-    private String getSubunitDesignationOfMunicipality(int bfsNr) {
-        String ret=null;
-        try {
-            ret=jdbcTemplate.queryForObject("SELECT bezeichnunguntereinheitgrundbuch from "+getSchema()+"."+OERBKRMVS_V2_0KONFIGURATION_GEMEINDEMITOEREBK+" WHERE gemeinde=?",String.class,bfsNr);
-        }catch(EmptyResultDataAccessException ex) {
-            // a non-unlocked municipality has no entry
-            return null;
         }
         return ret;
     }

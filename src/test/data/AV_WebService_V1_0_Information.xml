@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ili:transfer 
+		xmlns:ili="http://www.interlis.ch/xtf/2.4/INTERLIS" 
+		xmlns:geom="http://www.interlis.ch/geometry/1.0" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:InternationalCodes_V2="http://www.interlis.ch/xtf/2.4/InternationalCodes_V2" 
+		xmlns:Localisation_V2="http://www.interlis.ch/xtf/2.4/Localisation_V2" 
+		xmlns:LocalisationCH_V2="http://www.interlis.ch/xtf/2.4/LocalisationCH_V2"
+		xmlns:Dictionaries_V2="http://www.interlis.ch/xtf/2.4/Dictionaries_V2" 
+		xmlns:DictionariesCH_V2="http://www.interlis.ch/xtf/2.4/DictionariesCH_V2" 
+		xmlns:Units="http://www.interlis.ch/xtf/2.4/Units" 
+		xmlns:CoordSys="http://www.interlis.ch/xtf/2.4/CoordSys" 
+		xmlns:CHAdminCodes_V2="http://www.interlis.ch/xtf/2.4/CHAdminCodes_V2" 
+		xmlns:AdministrativeUnits_V2="http://www.interlis.ch/xtf/2.4/AdministrativeUnits_V2" 
+		xmlns:AdministrativeUnitsCH_V2="http://www.interlis.ch/xtf/2.4/AdministrativeUnitsCH_V2" 
+		xmlns:DMAVTYM_Qualitaet_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Qualitaet_V1_0" 
+		xmlns:Geometry_V2="http://www.interlis.ch/xtf/2.4/Geometry_V2" 
+		xmlns:GeometryCHLV03_V2="http://www.interlis.ch/xtf/2.4/GeometryCHLV03_V2" 
+		xmlns:GeometryCHLV95_V2="http://www.interlis.ch/xtf/2.4/GeometryCHLV95_V2" 
+		xmlns:AV_WebService_V1_0="http://www.interlis.ch/xtf/2.4/AV_WebService_V1_0" >
+	<ili:headersection>
+		<ili:models>
+			<ili:model>AV_WebService_V1_0</ili:model>
+		</ili:models>
+		<ili:sender>ili2fme-8.0.0-SNAPSHOT-e54e6b737059e65116cd9569b27925ea4e38b914</ili:sender>
+	</ili:headersection>
+	<ili:datasection>
+		<AV_WebService_V1_0:Konfiguration ili:bid="b1">
+
+			<AV_WebService_V1_0:Information ili:tid="ch.pi">
+				<AV_WebService_V1_0:Code>ch.pi</AV_WebService_V1_0:Code>
+				<AV_WebService_V1_0:Inhalt>
+          <LocalisationCH_V2:MultilingualMText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedMText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Dieser Auszug stellt grundstückbezogene Inhalte aus verschiedenen Fachbereichen dar. Für weitergehende Fragen oder Informationen wenden Sie sich an die jeweils zuständige Stelle – der Kontakt ist im jeweiligen Abschnitt angegeben. Bei Systemproblemen wenden Sie sich an</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedMText>
+              </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualMText>
+				</AV_WebService_V1_0:Inhalt>
+			</AV_WebService_V1_0:Information>
+			<AV_WebService_V1_0:Information ili:tid="ch.lr">
+				<AV_WebService_V1_0:Code>ch.lr</AV_WebService_V1_0:Code>
+				<AV_WebService_V1_0:Inhalt>
+          <LocalisationCH_V2:MultilingualMText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedMText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Es handelt sich vorliegend um Eigentümerinformation, der nicht die Wirkung eines beglaubigten Grundbuchauszuges zukommt. Allfällige beim Grundbuchamt hängige Geschäfte betreffend Eigentumsübertragung werden hier nicht angezeigt.</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedMText>
+              </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualMText>
+				</AV_WebService_V1_0:Inhalt>
+			</AV_WebService_V1_0:Information>
+		
+          </AV_WebService_V1_0:Konfiguration>
+	</ili:datasection>
+</ili:transfer>

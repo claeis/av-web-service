@@ -25,6 +25,7 @@ import org.xmlunit.placeholder.PlaceholderDifferenceEvaluator;
 
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetEGRIDResponse;
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetExtractByIdResponse;
+import ch.ehi.basics.logging.EhiLogger;
 import ch.ehi.ili2db.base.Ili2db;
 import ch.ehi.ili2db.gui.Config;
 import ch.ehi.ili2pg.PgMain;
@@ -34,9 +35,9 @@ import ch.ehi.ili2pg.PgMain;
 @SpringBootTest
 //@Ignore
 public class GetExtractTest {
-    private static final String TEST_ILI = "src/test/ili0";
-    private static final String TEST_XTF = "src/test/data0";
-    private static final String TEST_EXPECTED = "src/test/data-expected0";
+    private static final String TEST_ILI = "src/test/ili";
+    private static final String TEST_XTF = "src/test/data";
+    private static final String TEST_EXPECTED = "src/test/data-expected";
     private static final String TEST_ILI2DB_OUT = "build/ili2db";
     static final String TEST_WS_OUT = "build/ws-out";
     private static final String MODEL_DIR=Ili2db.ILI_FROM_DB+ch.interlis.ili2c.Main.ILIDIR_SEPARATOR+TEST_ILI; // +ch.interlis.ili2c.Main.ILIDIR_SEPARATOR+ch.interlis.ili2c.Main.ILI_REPOSITORY); 
@@ -69,7 +70,7 @@ public class GetExtractTest {
                 new PgMain().initConfig(config);
                 config.setJdbcConnection(connection);
                 config.setDbschema(DBSCHEMA);
-                config.setLogfile(new File(TEST_ILI2DB_OUT,"ili1-import.log").getPath());
+                config.setLogfile(new File(TEST_ILI2DB_OUT,"ili23-import.log").getPath());
                 config.setFunction(Config.FC_SCHEMAIMPORT);
                 // --strokeArcs --createFk --createFkIdx --createGeomIdx   --createTidCol --createBasketCol --createImportTabs --createMetaInfo 
                 // --disableNameOptimization --defaultSrsCode 2056
@@ -86,21 +87,22 @@ public class GetExtractTest {
                 config.setNameOptimization(Config.NAME_OPTIMIZATION_DISABLE);
                 config.setDefaultSrsAuthority("EPSG");
                 config.setDefaultSrsCode("2056");
-                config.setModels("DM01AVCH24LV95D;PLZOCH1LV95D");
+                config.setModels("OfficialIndexOfAddresses_V2_2");
                 config.setModeldir(MODEL_DIR); 
                 Ili2db.readSettingsFromDb(config);
                 Ili2db.run(config,null);
                 connection.commit();
             }
+
             {        
                 Config config=new Config();
                 new PgMain().initConfig(config);
                 config.setJdbcConnection(connection);
                 config.setDbschema(DBSCHEMA);
-                config.setLogfile(new File(TEST_ILI2DB_OUT,"ili2-import.log").getPath());
+                config.setLogfile(new File(TEST_ILI2DB_OUT,"ili24-import.log").getPath());
                 config.setFunction(Config.FC_SCHEMAIMPORT);
-                // --models OeREBKRM_V1_1;OeREBKRMtrsfr_V1_1;OeREBKRMvs_V1_1;OeREB_ExtractAnnex_V1_0;SO_AGI_AV_GB_Administrative_Einteilungen_Publikation_20180822
-                config.setModels("OeREBKRM_V2_0;OeREBKRMtrsfr_V2_0;OeREBKRMkvs_V2_0");
+                //config.setModels("OeREBKRM_V2_0;OeREBKRMtrsfr_V2_0;OeREBKRMkvs_V2_0");
+                config.setModels("AV_WebService_V1_0;DMAV_Grundstuecke_V1_0;DMAV_HoheitsgrenzenAV_V1_0;DMAVSUP_UntereinheitGrundbuch_V1_0");
                 config.setModeldir(MODEL_DIR); 
                 Ili2db.readSettingsFromDb(config);
                 Ili2db.run(config,null);
@@ -108,65 +110,58 @@ public class GetExtractTest {
             }
             {
                 // AV-Daten
-                File data=new File(TEST_XTF,"av_test.itf");
+            	EhiLogger.getInstance().setTraceFilter(false);
+            	File data=new File(TEST_XTF,"av_test.xtf");
                 importFile(data);
             }
             {
-                // OEREB RM Codelisten
-                File data=new File(TEST_XTF,"OeREBKRM_V2_0_Texte.xml");
+                // Gebaeudeadressen-Daten
+            	EhiLogger.getInstance().setTraceFilter(false);
+            	File data=new File(TEST_XTF,"gebaddr_test.xtf");
                 importFile(data);
             }
             {
-                // Gesetze Bund
-                File data=new File(TEST_XTF,"OeREBKRM_V2_0_Logos.xml");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Texte.xml");
                 importFile(data);
             }
             {
-                // Gesetze Bund
-                File data=new File(TEST_XTF,"OeREBKRM_V2_0_Gesetze.xml");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_MetadatenAV.xml");
                 importFile(data);
             }
             {
-                // OEREB RM Codelisten
-                File data=new File(TEST_XTF,"OeREBKRM_V2_0_Themen.xml");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Amt.xml");
                 importFile(data);
             }
             {
-                // GB-Kreise
-                File data=new File(TEST_XTF,"administrative-einteilung.xtf");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_ZustaendigeStelle.xml");
                 importFile(data);
             }
             {
-                File data=new File(TEST_XTF,"annex-AktiveGemeinden.xtf");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Information.xml");
                 importFile(data);
             }
             {
-                File data=new File(TEST_XTF,"annex-KatatasterAmt.xtf");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Logo-ch.pi.xml");
                 importFile(data);
             }
             {
-                File data=new File(TEST_XTF,"annex-logos.xtf");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Logo-ch.xml");
                 importFile(data);
             }
             {
-                File data=new File(TEST_XTF,"annex-logos-2498.xtf");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Logo-ch.SO.xml");
                 importFile(data);
             }
             {
-                File data=new File(TEST_XTF,"annex-logos-2500.xtf");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Logo-ch.2498.xml");
                 importFile(data);
             }
             {
-                File data=new File(TEST_XTF,"annex-logos-2502.xtf");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Logo-ch.2500.xml");
                 importFile(data);
             }
             {
-                File data=new File(TEST_XTF,"annex-themen.xtf");
-                importFile(data);
-            }
-            {
-                // OEREB Transfer
-                File data=new File(TEST_XTF,"oereb_test.xtf");
+                File data=new File(TEST_XTF,"AV_WebService_V1_0_Logo-ch.2502.xml");
                 importFile(data);
             }
         }finally {
@@ -196,6 +191,7 @@ public class GetExtractTest {
             config.setImportTid(true);
             config.setModeldir(MODEL_DIR); 
             Ili2db.readSettingsFromDb(config);
+            config.setValidation(false);
             Ili2db.run(config,null);
             connection.commit();
         }finally {
@@ -254,6 +250,7 @@ public class GetExtractTest {
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithoutGeometryByEgrid("xml","CH580632068782",null,false,false,false,200);
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH580632068782-noGeom-out.xml")));
         File controlFile = new File(TEST_EXPECTED,"CH580632068782-noGeom.xml");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -273,6 +270,14 @@ public class GetExtractTest {
             System.out.println(diff.toString());
         }
         Assert.assertFalse(diffs.hasDifferences());
+    }
+    @Test
+    public void SDR_ohneGeometrie_mitBild() throws Exception 
+    {
+        Assert.assertNotNull(service);
+        ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithoutGeometryByEgrid("xml","CH580632068782",null,false,false,true,200);
+        Assert.assertEquals(200, response.getStatusCode().value());
+        marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH580632068782-noGeom-mitBild-out.xml")));
     }
 
     // CH133289063542 Liegenschaft ohne OEREBs, keine anderen OEREBs im sichtbaren Bereich
@@ -398,6 +403,31 @@ public class GetExtractTest {
             System.out.println(diff.toString());
         }
         Assert.assertFalse(diffs.hasDifferences());
+    }
+    @Test
+    public void egrid_adr() throws Exception 
+    {
+        Assert.assertNotNull(service);
+        ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByAddress(false,4655,"Kirchfeldstrasse");
+        marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-adr-out.xml")));
+    }
+    @Test
+    public void egrid_adr_nr() throws Exception 
+    {
+        Assert.assertNotNull(service);
+        ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByAddress(false,4655,"Kirchfeldstrasse","8");
+        marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-adr-nr-out.xml")));
+    }
+    @Test
+    public void egrid_egid() throws Exception 
+    {
+        Assert.assertNotNull(service);
+        ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByEgid(false,502360563);
+        marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-egid-out.xml")));
+    }
+    @Test
+    public void dbschema() throws Exception 
+    {
     }
     
 }
