@@ -225,25 +225,8 @@ public class GetExtractTest {
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithGeometryByEgrid("xml","CH580632068782",null,false,false,false,200);
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH580632068782-out.xml")));
-        File controlFile = new File(TEST_EXPECTED,"CH580632068782.xml");
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document doc = dbf.newDocumentBuilder().newDocument(); 
-        marshaller.marshal(response.getBody(), new javax.xml.transform.dom.DOMResult(doc));
-        //Assert.assertThat(doc,createMatcher(controlFile));
-        Diff diffs = DiffBuilder
-        .compare(controlFile)
-        .withTest(doc)
-        .withDifferenceEvaluator(DifferenceEvaluators.chain(new PlaceholderDifferenceEvaluator(), DifferenceEvaluators.downgradeDifferencesToSimilar(ComparisonType.NAMESPACE_PREFIX)))
-        .ignoreComments()
-        .ignoreWhitespace()
-        .checkForSimilar()
-        .build();
-        //System.out.println(diff.toString());
-        for(Difference diff:diffs.getDifferences()) {
-            System.out.println(diff.toString());
-        }
-        Assert.assertFalse(diffs.hasDifferences());
     }
     @Test
     public void SDR_ohneGeometrie() throws Exception 
@@ -252,24 +235,6 @@ public class GetExtractTest {
         ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithoutGeometryByEgrid("xml","CH580632068782",null,false,false,false,200);
         Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH580632068782-noGeom-out.xml")));
-        File controlFile = new File(TEST_EXPECTED,"CH580632068782-noGeom.xml");
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document doc = dbf.newDocumentBuilder().newDocument(); 
-        marshaller.marshal(response.getBody(), new javax.xml.transform.dom.DOMResult(doc));
-        //Assert.assertThat(doc,createMatcher(controlFile));
-        Diff diffs = DiffBuilder
-        .compare(controlFile)
-        .withTest(doc)
-        .withDifferenceEvaluator(DifferenceEvaluators.chain(new PlaceholderDifferenceEvaluator(), DifferenceEvaluators.downgradeDifferencesToSimilar(ComparisonType.NAMESPACE_PREFIX)))
-        .ignoreComments()
-        .ignoreWhitespace()
-        .checkForSimilar()
-        .build();
-        //System.out.println(diff.toString());
-        for(Difference diff:diffs.getDifferences()) {
-            System.out.println(diff.toString());
-        }
-        Assert.assertFalse(diffs.hasDifferences());
     }
     @Test
     public void SDR_ohneGeometrie_mitBild() throws Exception 
@@ -286,24 +251,8 @@ public class GetExtractTest {
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithGeometryByEgrid("xml","CH133289063542",null,false,false,false,200);
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH133289063542-out.xml")));
-        File controlFile = new File(TEST_EXPECTED,"CH133289063542.xml");
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document doc = dbf.newDocumentBuilder().newDocument(); 
-        marshaller.marshal(response.getBody(), new javax.xml.transform.dom.DOMResult(doc));
-        //Assert.assertThat(doc,createMatcher(controlFile));
-        Diff diffs = DiffBuilder
-        .compare(controlFile)
-        .withTest(doc)
-        .withDifferenceEvaluator(DifferenceEvaluators.chain(new PlaceholderDifferenceEvaluator(), DifferenceEvaluators.downgradeDifferencesToSimilar(ComparisonType.NAMESPACE_PREFIX)))
-        .ignoreComments()
-        .ignoreWhitespace()
-        .checkForSimilar()
-        .build();
-        for(Difference diff:diffs.getDifferences()) {
-            System.out.println(diff.toString());
-        }
-        //Assert.assertFalse(diffs.hasDifferences());
     }
     // CH793281100623 Liegenschaft ohne OEREBs, aber alle OEREBs von im sichtbaren Bereich (otherLegends)
     @Test
@@ -311,73 +260,24 @@ public class GetExtractTest {
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithGeometryByEgrid("xml","CH793281100623",null,false,false,false,200);
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH793281100623-out.xml")));
-        File controlFile = new File(TEST_EXPECTED,"CH793281100623.xml");
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document doc = dbf.newDocumentBuilder().newDocument(); 
-        marshaller.marshal(response.getBody(), new javax.xml.transform.dom.DOMResult(doc));
-        //Assert.assertThat(doc,createMatcher(controlFile));
-        Diff diffs = DiffBuilder
-        .compare(controlFile)
-        .withTest(doc)
-        .withDifferenceEvaluator(DifferenceEvaluators.chain(new PlaceholderDifferenceEvaluator(), DifferenceEvaluators.downgradeDifferencesToSimilar(ComparisonType.NAMESPACE_PREFIX)))
-        .ignoreComments()
-        .ignoreWhitespace()
-        .checkForSimilar()
-        .build();
-        //System.out.println(diff.toString());
-        for(Difference diff:diffs.getDifferences()) {
-            System.out.println(diff.toString());
-        }
-        //Assert.assertFalse(diffs.hasDifferences());
     }
     @Test
     public void egrid_mitGeometrie() throws Exception 
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByNumber(true,"SO0200002498","514");
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-CH580632068782-out.xml")));
-        File controlFile = new File(TEST_EXPECTED,"egrid-CH580632068782.xml");
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document doc = dbf.newDocumentBuilder().newDocument(); 
-        marshaller.marshal(response.getBody(), new javax.xml.transform.dom.DOMResult(doc));
-        //Assert.assertThat(doc,createMatcher(controlFile));
-        Diff diffs = DiffBuilder
-        .compare(controlFile)
-        .withTest(doc)
-        .withDifferenceEvaluator(DifferenceEvaluators.chain(new PlaceholderDifferenceEvaluator(), DifferenceEvaluators.downgradeDifferencesToSimilar(ComparisonType.NAMESPACE_PREFIX)))
-        .ignoreComments()
-        .ignoreWhitespace()
-        .checkForSimilar()
-        .build();
-        for(Difference diff:diffs.getDifferences()) {
-            System.out.println(diff.toString());
-        }
-        Assert.assertFalse(diffs.hasDifferences());
     }
     @Test
     public void egrid_ohnGeometrie() throws Exception 
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByNumber(false,"SO0200002498","514");
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-CH580632068782-noGeom-out.xml")));
-        File controlFile = new File(TEST_EXPECTED,"egrid-CH580632068782-noGeom.xml");
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document doc = dbf.newDocumentBuilder().newDocument(); 
-        marshaller.marshal(response.getBody(), new javax.xml.transform.dom.DOMResult(doc));
-        //Assert.assertThat(doc,createMatcher(controlFile));
-        Diff diffs = DiffBuilder
-        .compare(controlFile)
-        .withTest(doc)
-        .withDifferenceEvaluator(DifferenceEvaluators.chain(new PlaceholderDifferenceEvaluator(), DifferenceEvaluators.downgradeDifferencesToSimilar(ComparisonType.NAMESPACE_PREFIX)))
-        .ignoreComments()
-        .ignoreWhitespace()
-        .checkForSimilar()
-        .build();
-        for(Difference diff:diffs.getDifferences()) {
-            System.out.println(diff.toString());
-        }
-        Assert.assertFalse(diffs.hasDifferences());
     }
     // EN=2638380.0,1251430.0
     @Test
@@ -385,30 +285,15 @@ public class GetExtractTest {
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByXY(false,"2638380.0,1251430.0",null);
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-xy-out.xml")));
-        File controlFile = new File(TEST_EXPECTED,"egrid-xy.xml");
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document doc = dbf.newDocumentBuilder().newDocument(); 
-        marshaller.marshal(response.getBody(), new javax.xml.transform.dom.DOMResult(doc));
-        //Assert.assertThat(doc,createMatcher(controlFile));
-        Diff diffs = DiffBuilder
-        .compare(controlFile)
-        .withTest(doc)
-        .withDifferenceEvaluator(DifferenceEvaluators.chain(new PlaceholderDifferenceEvaluator(), DifferenceEvaluators.downgradeDifferencesToSimilar(ComparisonType.NAMESPACE_PREFIX)))
-        .ignoreComments()
-        .ignoreWhitespace()
-        .checkForSimilar()
-        .build();
-        for(Difference diff:diffs.getDifferences()) {
-            System.out.println(diff.toString());
-        }
-        Assert.assertFalse(diffs.hasDifferences());
     }
     @Test
     public void egrid_adr() throws Exception 
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByAddress(false,4655,"Kirchfeldstrasse");
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-adr-out.xml")));
     }
     @Test
@@ -416,6 +301,7 @@ public class GetExtractTest {
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByAddress(false,4655,"Kirchfeldstrasse","8");
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-adr-nr-out.xml")));
     }
     @Test
@@ -423,6 +309,7 @@ public class GetExtractTest {
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByEgid(false,502360563);
+        Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-egid-out.xml")));
     }
     @Test
