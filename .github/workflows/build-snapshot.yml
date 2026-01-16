@@ -41,7 +41,7 @@ jobs:
           
     steps:
     - name: create db
-      run: psql -c 'create database ceis;' -U postgres
+      run: psql -c 'create database ceis;' -U postgres -h localhost
       
     - name: show postgresql version
       run: psql -c 'select version();' -d ceis -U postgres
