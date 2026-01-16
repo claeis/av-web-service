@@ -20,29 +20,41 @@ jobs:
     permissions:
       contents: read
 
+    # Service containers to run with `runner-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+          
     steps:
-    - uses: actions/checkout@v4
+    - name: create db
+      run: psql -c 'create database ceis;' -U postgres
+      
+    - name: show postgresql version
+      run: psql -c 'select version();' -d ceis -U postgres
+    
+    - name: get source
+      uses: actions/checkout@v4
+    
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
         java-version: '21'
         distribution: 'temurin'
-
-    - name: install-postgresql
-      uses: Harmon758/postgresql-action@v1.0.0
-      with:
-        # Version of PostgreSQL to use
-        # postgresql version: # optional, default is latest
-        # POSTGRES_DB - name for the default database that is created
-        postgresql db: ceis # optional, default is 
-        # POSTGRES_USER - create the specified user with superuser power
-        postgresql user: postgres # optional, default is 
-        # POSTGRES_PASSWORD - superuser password
-        postgresql password: ola2011 # optional, default is 
-
-    - name: show postgresql version
-      run: psql -c 'select version();' -d ceis -U postgres
-    
+        
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
