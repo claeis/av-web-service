@@ -39,6 +39,9 @@ jobs:
         postgresql user: postgres # optional, default is 
         # POSTGRES_PASSWORD - superuser password
         postgresql password: ola2011 # optional, default is 
+
+    - name: show postgresql version
+      run: psql -c 'select version();' -d ceis -U postgres
     
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
