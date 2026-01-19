@@ -47,7 +47,7 @@ jobs:
       run: psql -c 'create database ceis;' -U postgres -h localhost
       
     - name: show postgresql version
-      run: psql -c 'select version();' -d ceis -U postgres
+      run: psql -c 'select version();' -d ceis -U postgres -h localhost
     
     - name: get source
       uses: actions/checkout@v4
