@@ -64,8 +64,8 @@ jobs:
       
     - name: Publish SNAPSHOT artifact with Gradle Wrapper
       if: ${{ github.ref == 'refs/heads/main' }}
-      run: ./gradlew -Drepos_url=${{vars.repos_url}} -Drepos_pwd=${{secrets.GITHUB_TOKEN}} -Drepos_usr=${{vars.repos_usr}} publish
+      run: ./gradlew -Drepos_url=${{vars.repos_url}} -Drepos_pwd=${{secrets.repos_pwd}} -Drepos_usr=${{vars.repos_usr}} publish
     - name: Publish release artifact with Gradle Wrapper
       if: ${{ github.ref == 'refs/heads/stable' }}
-      run: ./gradlew -Drepos_url=${{vars.repos_url}} -Drepos_pwd=${{secrets.GITHUB_TOKEN}} -Drepos_usr=${{vars.repos_usr}} '-Drelease=' publish
+      run: ./gradlew -Drepos_url=${{vars.repos_url}} -Drepos_pwd=${{secrets.repos_pwd}} -Drepos_usr=${{vars.repos_usr}} '-Drelease=' publish
 
