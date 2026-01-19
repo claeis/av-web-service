@@ -45,10 +45,8 @@ jobs:
     steps:
     - name: create db
       run: psql -c 'create database ceis;' -U postgres -h localhost
-      
     - name: show postgresql version
       run: psql -c 'select version();' -d ceis -U postgres -h localhost
-      
     - name: create postgis extension
       run: psql -c 'create extension if not exists postgis;' -d ceis -U postgres -h localhost
     - name: create uuid extension
@@ -72,4 +70,6 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+    - name: Publish artifact with Gradle Wrapper
+      run: ./gradlew -Drepos_url=${repos_url} -Drepos_pwd=${{GITHUB_TOKEN}} -Drepos_usr=${repos_usr} publish
 

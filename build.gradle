@@ -33,6 +33,9 @@ if(propFile.exists()){
 	properties.load(propFile.newDataInputStream())
 }
 def git = System.getProperty('git',properties.get('git','git'))
+def repos_url = System.getProperty('repos_url',properties.get('repos_url','repos_url'))
+def repos_pwd = System.getProperty('repos_pwd',properties.get('repos_pwd','repos_pwd'))
+def repos_usr = System.getProperty('repos_usr',properties.get('repos_usr','repos_usr'))
 
 def generatedResources = "$buildDir/generated-resources/main"
 def generatedXjcSources = "$buildDir/xjc/java"
@@ -158,3 +161,20 @@ task jaxb {
     }
 }
 compileJava.dependsOn jaxb
+
+publishing {
+	publications {
+        maven(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url = repos_url
+            credentials {
+            	username = repos_usr
+            	password = repos_pwd
+            }            
+        }
+    }
+}
