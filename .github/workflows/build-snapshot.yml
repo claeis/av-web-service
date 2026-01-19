@@ -13,6 +13,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  PGPASSWORD: ola2011
+  
 jobs:
   build:
 
@@ -28,7 +31,7 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: ${{env.PGPASSWORD}}
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -41,7 +44,7 @@ jobs:
           
     steps:
     - name: create db
-      run: export PGPASSWORD='postgres'; psql -c 'create database ceis;' -U postgres -h localhost
+      run: psql -c 'create database ceis;' -U postgres -h localhost
       
     - name: show postgresql version
       run: psql -c 'select version();' -d ceis -U postgres
