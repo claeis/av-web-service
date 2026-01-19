@@ -70,9 +70,6 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
       
-  deploy:
-    needs: build
-    runs-on: ubuntu-24.04
     - name: Publish SNAPSHOT artifact with Gradle Wrapper
       if: ${{ github.ref == 'refs/heads/main' }}
       run: ./gradlew -Drepos_url=${repos_url} -Drepos_pwd=${{secrets.GITHUB_TOKEN}} -Drepos_usr=${repos_usr} publish
