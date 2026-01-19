@@ -18,7 +18,6 @@ env:
   
 jobs:
   build:
-
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -70,6 +69,14 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
-    - name: Publish artifact with Gradle Wrapper
-      run: ./gradlew -Drepos_url=${repos_url} -Drepos_pwd=${{GITHUB_TOKEN}} -Drepos_usr=${repos_usr} publish
+      
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    - name: Publish SNAPSHOT artifact with Gradle Wrapper
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: ./gradlew -Drepos_url=${repos_url} -Drepos_pwd=${{secrets.GITHUB_TOKEN}} -Drepos_usr=${repos_usr} publish
+    - name: Publish release artifact with Gradle Wrapper
+      if: ${{ github.ref == 'refs/heads/stable' }}
+      run: ./gradlew -Drepos_url=${repos_url} -Drepos_pwd=${{secrets.GITHUB_TOKEN}} -Drepos_usr=${repos_usr} '-Drelease=' publish
 
