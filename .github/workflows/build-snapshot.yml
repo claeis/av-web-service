@@ -48,6 +48,13 @@ jobs:
       
     - name: show postgresql version
       run: psql -c 'select version();' -d ceis -U postgres -h localhost
+      
+    - name: create postgis extension
+      run: psql -c 'create extension if not exists postgis;' -d ceis -U postgres -h localhost
+    - name: create uuid extension
+      run: psql -c 'create extension if not exists "uuid-ossp";'  -d ceis -U postgres -h localhost
+    - name: show postgis version
+      run: psql -c 'select postgis_full_version();'  -d ceis -U postgres -h localhost
     
     - name: get source
       uses: actions/checkout@v4
