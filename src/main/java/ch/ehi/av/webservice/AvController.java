@@ -107,6 +107,7 @@ public class AvController {
 	private static final String DMAV_LIEGENSCHAFT = "dmav_grck_v1_0grundstuecke_liegenschaft";
 	private static final String DMAV_GRUNDSTUECK = "dmav_grck_v1_0grundstuecke_grundstueck";
 	private static final String DMAV_GEMEINDE = "dmav_hhnv_v1_0hoheitsgrenzenav_gemeinde";
+	private static final String DMAV_FLURNAME = "dmav_nmtr_v1_0nomenklatur_flurname";
 	private static final String WMS_PARAM_WIDTH = "WIDTH";
     private static final String WMS_PARAM_HEIGHT = "HEIGHT";
     private static final String WMS_PARAM_DPI = "DPI";
@@ -1234,7 +1235,7 @@ public class AvController {
     }
     private void setParcel(ExtractType extract, String egrid, Grundstueck parcel,Envelope bbox, boolean withGeometry,boolean withImages,int dpi) {
         WKBWriter geomEncoder=new WKBWriter(2,ByteOrderValues.BIG_ENDIAN);
-        geomEncoder.write(parcel.getGeometrie());
+        byte[] wkbGeometry=geomEncoder.write(parcel.getGeometrie());
         
         RealEstateDPR gs = new  RealEstateDPR();
         gs.setEGRID(egrid);
@@ -1272,6 +1273,10 @@ public class AvController {
             gs.setLimit(geomGml);
         }
         
+        setToponym(gs,wkbGeometry);
+        gs.getBuilding();
+        gs.getLandCover();
+        gs.getSingleObject();
         
         {
             // Planausschnitt 174 * 99 mm
@@ -1342,7 +1347,19 @@ public class AvController {
         
     }
 
-    private Envelope getMapBBOX(Geometry parcelGeom) {
+    private void setToponym(RealEstateDPR gs,byte[] geometry) {
+    	List<String> flurnamen=jdbcTemplate.query("SELECT aname FROM "+getSchema()+"."+DMAV_FLURNAME+" AS a WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
+    			, new RowMapper<String>() {
+                    @Override
+                    public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        return rs.getString(1);
+                    }
+                },geometry);
+    	for(String flurname:flurnamen) {
+        	gs.getToponym().add(flurname);
+    	}
+	}
+	private Envelope getMapBBOX(Geometry parcelGeom) {
         Envelope bbox = parcelGeom.getEnvelopeInternal();
         double width=bbox.getWidth();
         double height=bbox.getHeight();
