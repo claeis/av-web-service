@@ -230,6 +230,37 @@
           </LocalisationCH_V2:MultilingualText>
         </AV_WebService_V1_0:Titel>
       </AV_WebService_V1_0:GrundstuecksArtTxt>
+      
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="31">
+        <AV_WebService_V1_0:Code>humusiert.Acker_Wiese_Weide</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Acker, Wiese, Weide</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>fr</Localisation_V2:Language>
+                <Localisation_V2:Text>Champ, prairie, pâturage</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>it</Localisation_V2:Language>
+                <Localisation_V2:Text>Campi coltivati, prati, pascoli</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>rm</Localisation_V2:Language>
+                <Localisation_V2:Text>Champ, prat, pastgira</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>en</Localisation_V2:Language>
+                <Localisation_V2:Text>Field, meadow, pasture</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      
           </AV_WebService_V1_0:Konfiguration>
 	</ili:datasection>
 </ili:transfer>

@@ -67,6 +67,9 @@ import ch.ehi.av.webservice.jaxb.extractdata._1_0.CantonCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Disclaimer;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Extract;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.ExtractType;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCover;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverType;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverTypeCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LanguageCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LocalisedBlob;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LocalisedMText;
@@ -98,16 +101,18 @@ public class AvController {
 	private static final String AV_WBSRVC_V1_0KONFIGURATION_AMT = "av_wbsrvc_v1_0konfiguration_amt";
 	private static final String DMAVSP_CH_V1_0UNTERENHTGRNDBUCH_GRUNDBUCHKREIS = "dmavsp_ch_v1_0unterenhtgrndbuch_grundbuchkreis";
 	private static final String AV_WBSRVC_V1_0KONFIGURATION_METADATENAV = "av_wbsrvc_v1_0konfiguration_metadatenav";
+	private static final String DMKONFIG_GRUNDSTUECKSARTTXT = "av_wbsrvc_v1_0konfiguration_grundstuecksarttxt";
+	private static final String DMKONFIG_BODENBEDECKUNGSARTTXT = "av_wbsrvc_v1_0konfiguration_bodenbedeckungsarttxt";
 	private static final String DMADDR_STN = "offclndss_v2_2officlndxfddrsses_stn";
 	private static final String DMADDR_ZIP = "offclndss_v2_2officlndxfddrsses_zip";
 	private static final String DMADDR_ADDRESS = "offclndss_v2_2officlndxfddrsses_address";
-	private static final String DMKONFIG_GRUNDSTUECKSARTTXT = "av_wbsrvc_v1_0konfiguration_grundstuecksarttxt";
 	private static final String DMAV_BERGWERK = "dmav_grck_v1_0grundstuecke_bergwerk";
 	private static final String DMAV_SELBSTRECHT = "dmav_grck_v1_0grundstuecke_selbstaendigesdauerndesrecht";
 	private static final String DMAV_LIEGENSCHAFT = "dmav_grck_v1_0grundstuecke_liegenschaft";
 	private static final String DMAV_GRUNDSTUECK = "dmav_grck_v1_0grundstuecke_grundstueck";
 	private static final String DMAV_GEMEINDE = "dmav_hhnv_v1_0hoheitsgrenzenav_gemeinde";
 	private static final String DMAV_FLURNAME = "dmav_nmtr_v1_0nomenklatur_flurname";
+	private static final String DMAV_BODENBEDECKUNG = "dmav_bdng_v1_0bodenbedeckung_bodenbedeckung";
 	private static final String WMS_PARAM_WIDTH = "WIDTH";
     private static final String WMS_PARAM_HEIGHT = "HEIGHT";
     private static final String WMS_PARAM_DPI = "DPI";
@@ -1197,6 +1202,80 @@ public class AvController {
         map.setMax(jts2xtf.createCoordType(new Coordinate(bbox.getMaxX(),bbox.getMaxY())));
         map.setMin(jts2xtf.createCoordType(new Coordinate(bbox.getMinX(),bbox.getMinY())));
     }
+    private HashMap<String,LandCoverType> landCoverTypes=null;
+    private LandCoverType mapLandCoverType(String bbArt) {
+        if(landCoverTypes==null) {
+            landCoverTypes=new HashMap<String,LandCoverType>();
+            java.util.List<java.util.Map<String,Object>> baseData=jdbcTemplate.queryForList(
+                    "SELECT acode,titel_de,titel_fr,titel_it,titel_rm,titel_en FROM "+getSchema()+"."+DMKONFIG_BODENBEDECKUNGSARTTXT);
+            for(java.util.Map<String,Object> status:baseData) {
+                MultilingualText codeTxt=createMultilingualTextType((String)status.get("titel_de"));
+                LandCoverType gsType=new LandCoverType();
+                gsType.setText(codeTxt);
+                final String code = (String)status.get("acode");
+                if("Gebaeude".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.BUILDINGS);
+                }else if("befestigt.Strasse_Weg".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.HARD_SURFACED_ROADS_TRACKS);
+                }else if("befestigt.Trottoir".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.HARD_SURFACED_PAVEMENT);
+                }else if("befestigt.Verkehrsinsel".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.HARD_SURFACED_TRAFFIC_ISLAND);
+                }else if("befestigt.Bahn".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.HARD_SURFACED_RAILWAYS);
+                }else if("befestigt.Flugplatz".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.HARD_SURFACED_AIRFIELDS);
+                }else if("befestigt.Wasserbecken".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.HARD_SURFACED_BASINS);
+                }else if("befestigt.uebrige_befestigte".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.HARD_SURFACED_OTHER_HARD_SURFACED);
+                }else if("humusiert.Acker_Wiese_Weide".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.VEGETATED_ARABLE_MEADOW_PASTURE);
+                }else if("humusiert.Intensivkultur.Reben".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.VEGETATED_INTENSIVE_CULTIVATION_VINEYARDS);
+                }else if("humusiert.Intensivkultur.uebrige_Intensivkultur".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.VEGETATED_INTENSIVE_CULTIVATION_OTHER_INTENSIVE_CULTIVATION);
+                }else if("humusiert.Gartenanlage".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.VEGETATED_GARDEN);
+                }else if("humusiert.Hoch_Flachmoor".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.VEGETATED_BOG_SWAMP);
+                }else if("humusiert.uebrige_humusierte".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.VEGETATED_OTHER_VEGETATED);
+                }else if("Gewaesser.stehendes_Gewaesser".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.WATER_STANDING_WATER);
+                }else if("Gewaesser.fliessendes_Gewaesser".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.WATER_FLOWING_WATER);
+                }else if("Gewaesser.Schilfguertel".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.WATER_REED_BELTS);
+                }else if("bestockt.geschlossener_Wald".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.WOODED_DENSE_FOREST);
+                }else if("bestockt.Wytweide.Wytweide_dicht".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.WOODED_PASTURE_PASTURE_DENSE);
+                }else if("bestockt.Wytweide.Wytweide_offen".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.WOODED_PASTURE_PASTURE_OPEN);
+                }else if("bestockt.uebrige_bestockte".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.WOODED_OTHER_WOODED);
+                }else if("vegetationslos.Fels".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.UNVEGETATED_ROCK);
+                }else if("vegetationslos.Gletscher_Firn".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.UNVEGETATED_GLACIER_FIRN);
+                }else if("vegetationslos.Geroell_Sand".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.UNVEGETATED_BOULDERS_SCREE_SAND);
+                }else if("vegetationslos.Abbau_Deponie".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.UNVEGETATED_QUARRIES_LANDFILL);
+                }else if("vegetationslos.uebrige_vegetationslose".equals(code)) {
+                	gsType.setCode(LandCoverTypeCode.UNVEGETATED_OTHER_UNVEGETATED);
+                }else {
+                    throw new IllegalStateException("unknown code '"+code+"'");
+                }
+                landCoverTypes.put(code,gsType);
+            }
+        }
+        if(bbArt!=null) {
+            return landCoverTypes.get(bbArt);
+        }
+        return null;
+    }
     private HashMap<String,PropertyType> propertyTypes=null;
     private PropertyType mapPropertyType(String gsArt) {
         if(propertyTypes==null) {
@@ -1275,8 +1354,8 @@ public class AvController {
         
         setToponym(gs,wkbGeometry);
         gs.getBuilding();
-        gs.getLandCover();
-        gs.getSingleObject();
+        setLandCover(gs,parcel.getGeometrie());
+        setSingleObject(gs,wkbGeometry);
         
         {
             // Planausschnitt 174 * 99 mm
@@ -1347,7 +1426,47 @@ public class AvController {
         
     }
 
-    private void setToponym(RealEstateDPR gs,byte[] geometry) {
+    private void setSingleObject(RealEstateDPR gs, byte[] wkbGeometry) {
+		// TODO Auto-generated method stub
+		
+	}
+	private void setLandCover(RealEstateDPR gs, Geometry parcelGeometry) {
+        WKBWriter geomEncoder=new WKBWriter(2,ByteOrderValues.BIG_ENDIAN);
+        byte[] wkbGeometry=geomEncoder.write(parcelGeometry);
+        java.util.List<LandCover> bbs=jdbcTemplate.query(
+        		"SELECT ST_AsBinary(geometrie),bodenbedeckungsart FROM "+getSchema()+"."+DMAV_BODENBEDECKUNG+" AS a "+" WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
+    			, new RowMapper<LandCover>() {
+                    @Override
+                    public LandCover mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        byte flaecheWkb[]=rs.getBytes(1);
+                        Polygon flaeche=null;
+                        Geometry intersection=null;
+                        PrecisionModel precisionModel=new PrecisionModel(1000.0);
+                        GeometryFactory geomFactory=new GeometryFactory(precisionModel);
+                        WKBReader geomDecoder=new WKBReader(geomFactory);
+                        
+                        try {
+                            flaeche = (Polygon) geomDecoder.read(flaecheWkb);
+                        } catch (ParseException e) {
+                            throw new IllegalStateException(e);
+                        }
+                        intersection=parcelGeometry.intersection(flaeche);
+                        if(!intersection.isEmpty() && intersection.getArea()>minIntersection) {
+                            //intersection=geomFactory.createPolygon((Coordinate[])null);
+                            LandCover landCover=new LandCover();
+                            landCover.setType(mapLandCoverType(rs.getString(2)));
+                            landCover.setArea((int)Math.round(intersection.getArea()));
+                        	return landCover;
+                        }
+                        return null;
+                    }
+                },wkbGeometry);
+        for(LandCover bb:bbs) {
+            gs.getLandCover().add(bb);
+        }
+		
+	}
+	private void setToponym(RealEstateDPR gs,byte[] geometry) {
     	List<String> flurnamen=jdbcTemplate.query("SELECT aname FROM "+getSchema()+"."+DMAV_FLURNAME+" AS a WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
     			, new RowMapper<String>() {
                     @Override

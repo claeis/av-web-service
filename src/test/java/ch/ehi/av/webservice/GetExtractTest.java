@@ -25,6 +25,9 @@ import org.xmlunit.placeholder.PlaceholderDifferenceEvaluator;
 
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetEGRIDResponse;
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetExtractByIdResponse;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCover;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverType;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverTypeCode;
 import ch.ehi.basics.logging.EhiLogger;
 import ch.ehi.ili2db.base.Ili2db;
 import ch.ehi.ili2db.gui.Config;
@@ -102,7 +105,7 @@ public class GetExtractTest {
                 config.setLogfile(new File(TEST_ILI2DB_OUT,"ili24-import.log").getPath());
                 config.setFunction(Config.FC_SCHEMAIMPORT);
                 //config.setModels("OeREBKRM_V2_0;OeREBKRMtrsfr_V2_0;OeREBKRMkvs_V2_0");
-                config.setModels("AV_WebService_V1_0;DMAV_Grundstuecke_V1_0;DMAV_HoheitsgrenzenAV_V1_0;DMAV_Nomenklatur_V1_0;DMAVSUP_UntereinheitGrundbuch_V1_0");
+                config.setModels("AV_WebService_V1_0;DMAV_Grundstuecke_V1_0;DMAV_HoheitsgrenzenAV_V1_0;DMAV_Nomenklatur_V1_0;DMAV_Bodenbedeckung_V1_0;DMAVSUP_UntereinheitGrundbuch_V1_0");
                 config.setModeldir(MODEL_DIR); 
                 Ili2db.readSettingsFromDb(config);
                 Ili2db.run(config,null);
@@ -227,9 +230,18 @@ public class GetExtractTest {
         ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithGeometryByEgrid("xml","CH580632068782",null,false,false,false,200);
         Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH580632068782-out.xml")));
-        java.util.List<String> toponyms=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getToponym();
-        Assert.assertEquals(1,toponyms.size());
-    	Assert.assertTrue(toponyms.contains("Rosenfluh"));
+        {
+            java.util.List<String> toponyms=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getToponym();
+            Assert.assertEquals(1,toponyms.size());
+        	Assert.assertTrue(toponyms.contains("Rosenfluh"));
+        }
+        {
+            java.util.List<LandCover> landcovers=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getLandCover();
+            Assert.assertEquals(1,landcovers.size());
+            LandCover landcover=landcovers.get(0);
+        	Assert.assertEquals(LandCoverTypeCode.VEGETATED_ARABLE_MEADOW_PASTURE,landcover.getType().getCode());
+        	Assert.assertEquals(600,landcover.getArea());
+        }
     }
     @Test
     public void SDR_ohneGeometrie() throws Exception 

@@ -3,6 +3,7 @@ INTERLIS 2.4;
 MODEL AV_WebService_V1_0 (de)
   AT "mailto:ceis@localhost" VERSION "2026-01-05" =
   IMPORTS DMAV_Grundstuecke_V1_0;
+  IMPORTS DMAV_Bodenbedeckung_V1_0;
   IMPORTS LocalisationCH_V2;
   
   DOMAIN
@@ -22,6 +23,17 @@ MODEL AV_WebService_V1_0 (de)
        */
       Titel : MANDATORY LocalisationCH_V2.MultilingualText;
     END GrundstuecksArtTxt;
+
+    /** Anzeigetexte für die Aufzählung GrundstuecksArt
+     */
+    CLASS BodenbedeckungsartTxt =
+      /** Code gemäss Aufzählung
+       */
+      Code : MANDATORY DMAV_Bodenbedeckung_V1_0.Bodenbedeckung.Bodenbedeckungsart;
+      /** Anzeigetext
+       */
+      Titel : MANDATORY LocalisationCH_V2.MultilingualText;
+    END BodenbedeckungsartTxt;
     
     CLASS ZustaendigeStelle =
        NBIdent : MANDATORY TEXT*12;
