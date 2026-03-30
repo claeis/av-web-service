@@ -496,7 +496,9 @@
   </xsd:complexType>
   <xsd:complexType name="SingleObject">
     <xsd:sequence>
-      <xsd:element name="Area" type="SingleObjectType"/>
+      <xsd:element name="Type" type="SingleObjectType"/>
+      <xsd:element name="Area" type="Area" minOccurs="0"/>
+      <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Building">

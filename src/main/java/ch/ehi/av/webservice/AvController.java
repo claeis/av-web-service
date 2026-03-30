@@ -83,6 +83,9 @@ import ch.ehi.av.webservice.jaxb.extractdata._1_0.Office;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyTypeCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.RealEstateDPR;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObject;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObjectType;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObjectTypeCode;
 import ch.ehi.av.webservice.jaxb.geometry._1_0.MultiSurfaceType;
 import ch.ehi.av.webservice.jaxb.versioning._1_0.GetVersionsResponse;
 import ch.ehi.av.webservice.jaxb.versioning._1_0.GetVersionsResponseType;
@@ -103,6 +106,7 @@ public class AvController {
 	private static final String AV_WBSRVC_V1_0KONFIGURATION_METADATENAV = "av_wbsrvc_v1_0konfiguration_metadatenav";
 	private static final String DMKONFIG_GRUNDSTUECKSARTTXT = "av_wbsrvc_v1_0konfiguration_grundstuecksarttxt";
 	private static final String DMKONFIG_BODENBEDECKUNGSARTTXT = "av_wbsrvc_v1_0konfiguration_bodenbedeckungsarttxt";
+	private static final String DMKONFIG_EINZELOBJEKTARTTXT = "av_wbsrvc_v1_0konfiguration_einzelobjektarttxt";
 	private static final String DMADDR_STN = "offclndss_v2_2officlndxfddrsses_stn";
 	private static final String DMADDR_ZIP = "offclndss_v2_2officlndxfddrsses_zip";
 	private static final String DMADDR_ADDRESS = "offclndss_v2_2officlndxfddrsses_address";
@@ -113,6 +117,10 @@ public class AvController {
 	private static final String DMAV_GEMEINDE = "dmav_hhnv_v1_0hoheitsgrenzenav_gemeinde";
 	private static final String DMAV_FLURNAME = "dmav_nmtr_v1_0nomenklatur_flurname";
 	private static final String DMAV_BODENBEDECKUNG = "dmav_bdng_v1_0bodenbedeckung_bodenbedeckung";
+	private static final String DMAV_EINZELOBJEKT = "dmav_nzkt_v1_0einzelobjekte_einzelobjekt";
+	private static final String DMAV_EO_FLAECHE = "dmav_nzkt_v1_0einzelobjekte_flaechenelement";
+	private static final String DMAV_EO_LINIE = "dmav_nzkt_v1_0einzelobjekte_linienelement";
+	private static final String DMAV_EO_PUNKT = "dmav_nzkt_v1_0einzelobjekte_punktelement";
 	private static final String WMS_PARAM_WIDTH = "WIDTH";
     private static final String WMS_PARAM_HEIGHT = "HEIGHT";
     private static final String WMS_PARAM_DPI = "DPI";
@@ -147,6 +155,10 @@ public class AvController {
     
     private Logger logger=org.slf4j.LoggerFactory.getLogger(this.getClass());
     private Jts2xtf24 jts2xtf = new Jts2xtf24();
+    private WKBWriter wkbEncoder=new WKBWriter(2,ByteOrderValues.BIG_ENDIAN,true);
+    private PrecisionModel precisionModel=new PrecisionModel(1000.0);
+    private GeometryFactory geomFactory=new GeometryFactory(precisionModel);
+    private WKBReader wkbDecoder=new WKBReader(geomFactory);
     
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -287,10 +299,9 @@ public class AvController {
             srid = 4326;
             scale=100000.0;
         }
-        WKBWriter geomEncoder=new WKBWriter(2,ByteOrderValues.BIG_ENDIAN,true);
         PrecisionModel precisionModel=new PrecisionModel(scale);
         GeometryFactory geomFact=new GeometryFactory(precisionModel,srid);
-        byte geom[]=geomEncoder.write(geomFact.createPoint(coord));
+        byte geom[]=wkbEncoder.write(geomFact.createPoint(coord));
         // SELECT g.egris_egrid,g.nummer,g.nbident FROM oereb.dm01vch24lv95dliegenschaften_grundstueck g LEFT JOIN oereb.dm01vch24lv95dliegenschaften_liegenschaft l ON l.liegenschaft_von=g.t_id WHERE ST_DWithin(ST_GeomFromEWKT('SRID=2056;POINT( 2638242.500 1251450.000)'),l.geometrie,1.0)
         // SELECT g.egris_egrid,g.nummer,g.nbident FROM oereb.dm01vch24lv95dliegenschaften_grundstueck g LEFT JOIN oereb.dm01vch24lv95dliegenschaften_liegenschaft l ON l.liegenschaft_von=g.t_id WHERE ST_DWithin(ST_Transform(ST_GeomFromEWKT('SRID=4326;POINT( 7.94554 47.41277)'),2056),l.geometrie,1.0)
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
@@ -991,15 +1002,12 @@ public class AvController {
         return coord;
     }
     private Grundstueck getParcelByEgrid(String egrid) {
-        PrecisionModel precisionModel=new PrecisionModel(1000.0);
-        GeometryFactory geomFactory=new GeometryFactory(precisionModel);
         List<Grundstueck> gslist=jdbcTemplate.query(
                 "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie,nummer,nbident,grundstuecksart,gesamtflaechenmass,l.flaechenmass as l_flaechenmass,s.flaechenmass as s_flaechenmass,b.flaechenmass as b_flaechenmass FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
                         +" LEFT JOIN "+getSchema()+"."+DMAV_LIEGENSCHAFT+" l ON g.t_id=l.grundstueck "
                         +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
                         +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
                         +" WHERE g.egrid=?", new RowMapper<Grundstueck>() {
-                    WKBReader decoder=new WKBReader(geomFactory);
                     
                     @Override
                     public Grundstueck mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -1009,11 +1017,11 @@ public class AvController {
                         byte b_geometrie[]=rs.getBytes("b_geometrie");
                         try {
                             if(l_geometrie!=null) {
-                                polygon=decoder.read(l_geometrie);
+                                polygon=wkbDecoder.read(l_geometrie);
                             }else if(s_geometrie!=null) {
-                                polygon=decoder.read(s_geometrie);
+                                polygon=wkbDecoder.read(s_geometrie);
                             }else if(b_geometrie!=null) {
-                                polygon=decoder.read(b_geometrie);
+                                polygon=wkbDecoder.read(b_geometrie);
                             }else {
                                 throw new IllegalStateException("no geometrie");
                             }
@@ -1062,8 +1070,6 @@ public class AvController {
         return gs;
     }
     private Grundstueck getParcelByNumber(String nbident,String nr) {
-        PrecisionModel precisionModel=new PrecisionModel(1000.0);
-        GeometryFactory geomFactory=new GeometryFactory(precisionModel);
         List<Grundstueck> gslist=jdbcTemplate.query(
                 "SELECT"
                 + " ST_AsBinary(l.geometrie) as l_geometrie"
@@ -1080,7 +1086,6 @@ public class AvController {
                         +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
                         +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
                         +" WHERE g.nbident=? AND g.nummer=?", new RowMapper<Grundstueck>() {
-                    WKBReader decoder=new WKBReader(geomFactory);
                     
                     @Override
                     public Grundstueck mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -1090,11 +1095,11 @@ public class AvController {
                         byte b_geometrie[]=rs.getBytes("b_geometrie");
                         try {
                             if(l_geometrie!=null) {
-                                polygon=decoder.read(l_geometrie);
+                                polygon=wkbDecoder.read(l_geometrie);
                             }else if(s_geometrie!=null) {
-                                polygon=decoder.read(s_geometrie);
+                                polygon=wkbDecoder.read(s_geometrie);
                             }else if(b_geometrie!=null) {
-                                polygon=decoder.read(b_geometrie);
+                                polygon=wkbDecoder.read(b_geometrie);
                             }else {
                                 throw new IllegalStateException("no geometrie");
                             }
@@ -1151,7 +1156,6 @@ public class AvController {
                             +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
                             +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
                             +" WHERE g.egrid=?", new RowMapper<Geometry>() {
-                        WKBReader decoder=new WKBReader(geomFactory);
                         
                         @Override
                         public Geometry mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -1161,11 +1165,11 @@ public class AvController {
                             byte b_geometrie[]=rs.getBytes("b_geometrie");
                             try {
                                 if(l_geometrie!=null) {
-                                    polygon=decoder.read(l_geometrie);
+                                    polygon=wkbDecoder.read(l_geometrie);
                                 }else if(s_geometrie!=null) {
-                                    polygon=decoder.read(s_geometrie);
+                                    polygon=wkbDecoder.read(s_geometrie);
                                 }else if(b_geometrie!=null) {
-                                    polygon=decoder.read(b_geometrie);
+                                    polygon=wkbDecoder.read(b_geometrie);
                                 }else {
                                     throw new IllegalStateException("no geometrie");
                                 }
@@ -1276,6 +1280,30 @@ public class AvController {
         }
         return null;
     }
+    private HashMap<String,SingleObjectType> singleObjectTypes=null;
+    private SingleObjectType mapSingleObjectType(String bbArt) {
+        if(singleObjectTypes==null) {
+            singleObjectTypes=new HashMap<String,SingleObjectType>();
+            java.util.List<java.util.Map<String,Object>> baseData=jdbcTemplate.queryForList(
+                    "SELECT  acode,titel_de,titel_fr,titel_it,titel_rm,titel_en FROM "+getSchema()+"."+DMKONFIG_EINZELOBJEKTARTTXT);
+            for(java.util.Map<String,Object> status:baseData) {
+                MultilingualText codeTxt=createMultilingualTextType((String)status.get("titel_de"));
+                SingleObjectType gsType=new SingleObjectType();
+                gsType.setText(codeTxt);
+                final String code = (String)status.get("acode");
+                if("Mauer".equals(code)) {
+                	gsType.setCode(SingleObjectTypeCode.WALL);
+                }else {
+                    throw new IllegalStateException("unknown code '"+code+"'");
+                }
+                singleObjectTypes.put(code,gsType);
+            }
+        } 
+        if(bbArt!=null) {
+            return singleObjectTypes.get(bbArt);
+        }
+        return null;
+    }
     private HashMap<String,PropertyType> propertyTypes=null;
     private PropertyType mapPropertyType(String gsArt) {
         if(propertyTypes==null) {
@@ -1313,8 +1341,6 @@ public class AvController {
         return null;
     }
     private void setParcel(ExtractType extract, String egrid, Grundstueck parcel,Envelope bbox, boolean withGeometry,boolean withImages,int dpi) {
-        WKBWriter geomEncoder=new WKBWriter(2,ByteOrderValues.BIG_ENDIAN);
-        byte[] wkbGeometry=geomEncoder.write(parcel.getGeometrie());
         
         RealEstateDPR gs = new  RealEstateDPR();
         gs.setEGRID(egrid);
@@ -1352,10 +1378,10 @@ public class AvController {
             gs.setLimit(geomGml);
         }
         
-        setToponym(gs,wkbGeometry);
+        setToponym(gs,parcel.getGeometrie());
         gs.getBuilding();
         setLandCover(gs,parcel.getGeometrie());
-        setSingleObject(gs,wkbGeometry);
+        setSingleObject(gs,parcel.getGeometrie());
         
         {
             // Planausschnitt 174 * 99 mm
@@ -1426,13 +1452,32 @@ public class AvController {
         
     }
 
-    private void setSingleObject(RealEstateDPR gs, byte[] wkbGeometry) {
-		// TODO Auto-generated method stub
+	private void setSingleObject(RealEstateDPR gs, Geometry parcelGeometry) {
+        byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
+        java.util.List<SingleObject> bbs=jdbcTemplate.query(
+        		"SELECT a.einzelobjektart as eoart, geometrie  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
+        				" JOIN  ("+
+        					" SELECT dmav_nzkt_vkt_nzlbjekt_flaechenelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_FLAECHE+" AS f WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
+        					" UNION ALL "+
+        					" SELECT dmav_nzkt_vkt_nzlbjekt_linienelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_LINIE+" AS l WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
+        					" UNION ALL "+
+        					" SELECT dmav_nzkt_vkt_nzlbjekt_punktelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_PUNKT+" AS p WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
+        				" ) AS b ON a.t_id=b.parent WHERE a.objektstatus='real'"
+    			, new RowMapper<SingleObject>() {
+                    @Override
+                    public SingleObject mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    	SingleObject singleObject=new SingleObject();
+                        singleObject.setType(mapSingleObjectType(rs.getString(1)));
+                    	return singleObject;
+                    }
+                },wkbGeometry,wkbGeometry,wkbGeometry);
+        for(SingleObject bb:bbs) {
+            gs.getSingleObject().add(bb);
+        }
 		
 	}
 	private void setLandCover(RealEstateDPR gs, Geometry parcelGeometry) {
-        WKBWriter geomEncoder=new WKBWriter(2,ByteOrderValues.BIG_ENDIAN);
-        byte[] wkbGeometry=geomEncoder.write(parcelGeometry);
+        byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
         java.util.List<LandCover> bbs=jdbcTemplate.query(
         		"SELECT ST_AsBinary(geometrie),bodenbedeckungsart FROM "+getSchema()+"."+DMAV_BODENBEDECKUNG+" AS a "+" WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
     			, new RowMapper<LandCover>() {
@@ -1441,12 +1486,9 @@ public class AvController {
                         byte flaecheWkb[]=rs.getBytes(1);
                         Polygon flaeche=null;
                         Geometry intersection=null;
-                        PrecisionModel precisionModel=new PrecisionModel(1000.0);
-                        GeometryFactory geomFactory=new GeometryFactory(precisionModel);
-                        WKBReader geomDecoder=new WKBReader(geomFactory);
                         
                         try {
-                            flaeche = (Polygon) geomDecoder.read(flaecheWkb);
+                            flaeche = (Polygon) wkbDecoder.read(flaecheWkb);
                         } catch (ParseException e) {
                             throw new IllegalStateException(e);
                         }
@@ -1466,14 +1508,15 @@ public class AvController {
         }
 		
 	}
-	private void setToponym(RealEstateDPR gs,byte[] geometry) {
+	private void setToponym(RealEstateDPR gs,Geometry parcelGeometry) {
+		byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
     	List<String> flurnamen=jdbcTemplate.query("SELECT aname FROM "+getSchema()+"."+DMAV_FLURNAME+" AS a WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
     			, new RowMapper<String>() {
                     @Override
                     public String mapRow(ResultSet rs, int rowNum) throws SQLException {
                         return rs.getString(1);
                     }
-                },geometry);
+                },wkbGeometry);
     	for(String flurname:flurnamen) {
         	gs.getToponym().add(flurname);
     	}

@@ -28,11 +28,14 @@ import ch.ehi.av.webservice.jaxb.extract._1_0.GetExtractByIdResponse;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCover;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverTypeCode;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObject;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObjectTypeCode;
 import ch.ehi.basics.logging.EhiLogger;
 import ch.ehi.ili2db.base.Ili2db;
 import ch.ehi.ili2db.gui.Config;
 import ch.ehi.ili2pg.PgMain;
 
+// gradlew test --tests GetExtractTest.dbschema
 // -Ddburl=jdbc:postgresql:dbname -Ddbusr=user -Ddbpwd=userpwd
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -105,7 +108,7 @@ public class GetExtractTest {
                 config.setLogfile(new File(TEST_ILI2DB_OUT,"ili24-import.log").getPath());
                 config.setFunction(Config.FC_SCHEMAIMPORT);
                 //config.setModels("OeREBKRM_V2_0;OeREBKRMtrsfr_V2_0;OeREBKRMkvs_V2_0");
-                config.setModels("AV_WebService_V1_0;DMAV_Grundstuecke_V1_0;DMAV_HoheitsgrenzenAV_V1_0;DMAV_Nomenklatur_V1_0;DMAV_Bodenbedeckung_V1_0;DMAVSUP_UntereinheitGrundbuch_V1_0");
+                config.setModels("AV_WebService_V1_0;DMAV_Grundstuecke_V1_0;DMAV_HoheitsgrenzenAV_V1_0;DMAV_Nomenklatur_V1_0;DMAV_Bodenbedeckung_V1_0;DMAV_Einzelobjekte_V1_0;DMAVSUP_UntereinheitGrundbuch_V1_0");
                 config.setModeldir(MODEL_DIR); 
                 Ili2db.readSettingsFromDb(config);
                 Ili2db.run(config,null);
@@ -241,6 +244,12 @@ public class GetExtractTest {
             LandCover landcover=landcovers.get(0);
         	Assert.assertEquals(LandCoverTypeCode.VEGETATED_ARABLE_MEADOW_PASTURE,landcover.getType().getCode());
         	Assert.assertEquals(600,landcover.getArea());
+        }
+        {
+            java.util.List<SingleObject> singleobjects=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getSingleObject();
+            Assert.assertEquals(3,singleobjects.size());
+            SingleObject singleobject=singleobjects.get(0);
+        	Assert.assertEquals(SingleObjectTypeCode.WALL,singleobject.getType().getCode());
         }
     }
     @Test
