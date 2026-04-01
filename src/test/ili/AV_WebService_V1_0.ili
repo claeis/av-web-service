@@ -1,10 +1,10 @@
 INTERLIS 2.4;
 
 MODEL AV_WebService_V1_0 (de)
-  AT "mailto:ceis@localhost" VERSION "2026-01-05" =
-  IMPORTS DMAV_Grundstuecke_V1_0;
-  IMPORTS DMAV_Bodenbedeckung_V1_0;
-  IMPORTS DMAV_Einzelobjekte_V1_0;
+  AT "mailto:ceis@localhost" VERSION "2026-04-01" =
+  IMPORTS DMAV_Grundstuecke_V1_1;
+  IMPORTS DMAV_Bodenbedeckung_V1_1;
+  IMPORTS DMAV_Einzelobjekte_V1_1;
   IMPORTS LocalisationCH_V2;
   
   DOMAIN
@@ -19,7 +19,7 @@ MODEL AV_WebService_V1_0 (de)
     CLASS GrundstuecksArtTxt =
       /** Code gemäss Aufzählung
        */
-      Code : MANDATORY DMAV_Grundstuecke_V1_0.Grundstuecke.Grundstuecksart;
+      Code : MANDATORY DMAV_Grundstuecke_V1_1.Grundstuecke.Grundstuecksart;
       /** Anzeigetext
        */
       Titel : MANDATORY LocalisationCH_V2.MultilingualText;
@@ -30,7 +30,7 @@ MODEL AV_WebService_V1_0 (de)
     CLASS BodenbedeckungsartTxt =
       /** Code gemäss Aufzählung
        */
-      Code : MANDATORY DMAV_Bodenbedeckung_V1_0.Bodenbedeckung.Bodenbedeckungsart;
+      Code : MANDATORY DMAV_Bodenbedeckung_V1_1.Bodenbedeckung.Bodenbedeckungsart;
       /** Anzeigetext
        */
       Titel : MANDATORY LocalisationCH_V2.MultilingualText;
@@ -41,7 +41,7 @@ MODEL AV_WebService_V1_0 (de)
     CLASS EinzelobjektartTxt =
       /** Code gemäss Aufzählung
        */
-      Code : MANDATORY DMAV_Einzelobjekte_V1_0.Einzelobjekte.Einzelobjektart;
+      Code : MANDATORY DMAV_Einzelobjekte_V1_1.Einzelobjekte.Einzelobjektart;
       /** Anzeigetext
        */
       Titel : MANDATORY LocalisationCH_V2.MultilingualText;

@@ -108,7 +108,7 @@ public class GetExtractTest {
                 config.setLogfile(new File(TEST_ILI2DB_OUT,"ili24-import.log").getPath());
                 config.setFunction(Config.FC_SCHEMAIMPORT);
                 //config.setModels("OeREBKRM_V2_0;OeREBKRMtrsfr_V2_0;OeREBKRMkvs_V2_0");
-                config.setModels("AV_WebService_V1_0;DMAV_Grundstuecke_V1_0;DMAV_HoheitsgrenzenAV_V1_0;DMAV_Nomenklatur_V1_0;DMAV_Bodenbedeckung_V1_0;DMAV_Einzelobjekte_V1_0;DMAVSUP_UntereinheitGrundbuch_V1_0");
+                config.setModels("AV_WebService_V1_0;DMAV_Grundstuecke_V1_1;DMAV_HoheitsgrenzenAV_V1_0;DMAV_Nomenklatur_V1_1;DMAV_Bodenbedeckung_V1_1;DMAV_Einzelobjekte_V1_1;DMAVSUP_UntereinheitGrundbuch_V1_1");
                 config.setModeldir(MODEL_DIR); 
                 Ili2db.readSettingsFromDb(config);
                 Ili2db.run(config,null);

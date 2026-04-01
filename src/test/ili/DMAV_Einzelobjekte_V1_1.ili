@@ -10,8 +10,8 @@ INTERLIS 2.4;
 !! CH-3084 Wabern
 !! www.cadastre.ch und www.interlis.ch
 !!
-!! Version: 1 deutsch
-!! Dateiname: DMAV_Einzelobjekte_V1_0_1.ili
+!! Version: 1.1 deutsch
+!! Dateiname: DMAV_Einzelobjekte_V1_1.ili
 !!
 !! Das vorliegende Datenmodell gilt fuer den Bezugsrahmen "Landesvermessung 1903+
 !! (LV95)".
@@ -22,14 +22,15 @@ INTERLIS 2.4;
 !!
 !! Version    | Line  | Typ | Bemerkung
 !!------------|-------|-----|-------------------------------------------------------------
-!! 2025-12-01 |138-146|  L  | Associationen Untergang und Vorgänger_Nachfolger gelöscht
-!! 2025-12-01 |148-153|  L  | View gültige Einzelobjekte gelöscht
+!! 2026-01-31 |143-147|  L  | ASSOCIATION Untergang_Einzelobjekt
+!! 2026-01-31 |148-152|  L  | ASSOCIATION Vorgaenger_Nachfolger_Einzelobjekt
+!! 2026-01-31 |153-158|  L  | VIEW Einzelobjekt_Gueltig
 
 !!@ technicalContact = mailto:dmav@swisstopo.ch
 !!@ furtherInformation = https://www.cadastre-manual.admin.ch/de/modelldokumentation-dmav
 !!@ IDGeoIV = "228.9"
-MODEL DMAV_Einzelobjekte_V1_0 (de)
-  AT "https://models.geo.admin.ch/V_D/" VERSION "2025-12-15" =
+MODEL DMAV_Einzelobjekte_V1_1 (de)
+  AT "https://models.geo.admin.ch/V_D/" VERSION "2026-01-31" =
   IMPORTS GeometryCHLV95_V2;
   IMPORTS DMAVTYM_Geometrie_V1_0;
   IMPORTS DMAVTYM_Modinfo_V1_0;
@@ -141,24 +142,7 @@ MODEL DMAV_Einzelobjekte_V1_0 (de)
       Entstehung -- {1} EONachfuehrung;
       entstehendes_Einzelobjekt -- {0..*} Einzelobjekt;
     END Entstehung_Einzelobjekt;
-    /**
-    ASSOCIATION Untergang_Einzelobjekt =
-      Untergang -- {0..1} EONachfuehrung;
-      untergehendes_Einzelobjekt -- {0..*} Einzelobjekt;
-    END Untergang_Einzelobjekt;
-    
-    ASSOCIATION Vorgaenger_Nachfolger_Einzelobjekt =
-      Vorgaenger -- {0..1} Einzelobjekt;
-      Nachfolger -- {0..*} Einzelobjekt;
-    END Vorgaenger_Nachfolger_Einzelobjekt;
-    
-    VIEW Einzelobjekt_Gueltig
-     	PROJECTION OF Einzelobjekt;
-    	WHERE DEFINED(Einzelobjekt->Entstehung) AND NOT(DEFINED(Einzelobjekt->Untergang));
-    	=
-    	ALL OF Einzelobjekt;
-    END Einzelobjekt_Gueltig;
-    */
+
     CLASS Messpunkt =
       Nummer:  TEXT*12;
       Geometrie: MANDATORY GeometryCHLV95_V2.Coord2;
@@ -168,8 +152,8 @@ MODEL DMAV_Einzelobjekte_V1_0 (de)
       Hoehengenauigkeit: DMAVTYM_Qualitaet_V1_0.Genauigkeit;
       IstHoehenzuverlaessig: DMAVTYM_Qualitaet_V1_0.Zuverlaessigkeit; 
       IstExaktDefiniert: MANDATORY BOOLEAN;
-      MANDATORY CONSTRAINT CH090901: DEFINED(Hoehengeometrie)==DEFINED(Hoehengenauigkeit);
-      MANDATORY CONSTRAINT CH090902: DEFINED(Hoehengeometrie)==DEFINED(IstHoehenzuverlaessig);
+      MANDATORY CONSTRAINT CH091201: DEFINED(Hoehengeometrie)==DEFINED(Hoehengenauigkeit);
+      MANDATORY CONSTRAINT CH091202: DEFINED(Hoehengeometrie)==DEFINED(IstHoehenzuverlaessig);
     END Messpunkt;
     
     ASSOCIATION Entstehung_Messpunkt =
@@ -179,4 +163,4 @@ MODEL DMAV_Einzelobjekte_V1_0 (de)
     
   END Einzelobjekte;
  
-END DMAV_Einzelobjekte_V1_0.
+END DMAV_Einzelobjekte_V1_1.

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ili:transfer xmlns:ili="http://www.interlis.ch/xtf/2.4/INTERLIS" xmlns:geom="http://www.interlis.ch/geometry/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DMAVTYM_Vermarkung_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Vermarkung_V1_0" xmlns:InternationalCodes_V2="http://www.interlis.ch/xtf/2.4/InternationalCodes_V2" xmlns:Localisation_V2="http://www.interlis.ch/xtf/2.4/Localisation_V2" xmlns:LocalisationCH_V2="http://www.interlis.ch/xtf/2.4/LocalisationCH_V2" xmlns:Dictionaries_V2="http://www.interlis.ch/xtf/2.4/Dictionaries_V2" xmlns:DictionariesCH_V2="http://www.interlis.ch/xtf/2.4/DictionariesCH_V2" xmlns:DMAVTYM_Topologie_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Topologie_V1_0" xmlns:Units="http://www.interlis.ch/xtf/2.4/Units" xmlns:DMAVTYM_Geometrie_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Geometrie_V1_0" xmlns:CoordSys="http://www.interlis.ch/xtf/2.4/CoordSys" xmlns:CHAdminCodes_V2="http://www.interlis.ch/xtf/2.4/CHAdminCodes_V2" xmlns:AdministrativeUnits_V2="http://www.interlis.ch/xtf/2.4/AdministrativeUnits_V2" xmlns:AdministrativeUnitsCH_V2="http://www.interlis.ch/xtf/2.4/AdministrativeUnitsCH_V2" xmlns:DMAVTYM_Qualitaet_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Qualitaet_V1_0" xmlns:Geometry_V2="http://www.interlis.ch/xtf/2.4/Geometry_V2" xmlns:GeometryCHLV03_V2="http://www.interlis.ch/xtf/2.4/GeometryCHLV03_V2" xmlns:GeometryCHLV95_V2="http://www.interlis.ch/xtf/2.4/GeometryCHLV95_V2" xmlns:DMAV_HoheitsgrenzenAV_V1_0="http://www.interlis.ch/xtf/2.4/DMAV_HoheitsgrenzenAV_V1_0" xmlns:DMAVTYM_Grafik_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Grafik_V1_0" xmlns:DMAV_Nomenklatur_V1_0="http://www.interlis.ch/xtf/2.4/DMAV_Nomenklatur_V1_0" xmlns:DMAV_Bodenbedeckung_V1_0="http://www.interlis.ch/xtf/2.4/DMAV_Bodenbedeckung_V1_0" xmlns:DMAV_Einzelobjekte_V1_0="http://www.interlis.ch/xtf/2.4/DMAV_Einzelobjekte_V1_0" xmlns:DMAV_Grundstuecke_V1_0="http://www.interlis.ch/xtf/2.4/DMAV_Grundstuecke_V1_0" xmlns:DMAVSUP_UntereinheitGrundbuch_V1_0="http://www.interlis.ch/xtf/2.4/DMAVSUP_UntereinheitGrundbuch_V1_0">
+<ili:transfer xmlns:ili="http://www.interlis.ch/xtf/2.4/INTERLIS" xmlns:geom="http://www.interlis.ch/geometry/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DMAVTYM_Vermarkung_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Vermarkung_V1_0" xmlns:InternationalCodes_V2="http://www.interlis.ch/xtf/2.4/InternationalCodes_V2" xmlns:Localisation_V2="http://www.interlis.ch/xtf/2.4/Localisation_V2" xmlns:LocalisationCH_V2="http://www.interlis.ch/xtf/2.4/LocalisationCH_V2" xmlns:Dictionaries_V2="http://www.interlis.ch/xtf/2.4/Dictionaries_V2" xmlns:DictionariesCH_V2="http://www.interlis.ch/xtf/2.4/DictionariesCH_V2" xmlns:DMAVTYM_Topologie_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Topologie_V1_0" xmlns:Units="http://www.interlis.ch/xtf/2.4/Units" xmlns:DMAVTYM_Geometrie_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Geometrie_V1_0" xmlns:CoordSys="http://www.interlis.ch/xtf/2.4/CoordSys" xmlns:CHAdminCodes_V2="http://www.interlis.ch/xtf/2.4/CHAdminCodes_V2" xmlns:AdministrativeUnits_V2="http://www.interlis.ch/xtf/2.4/AdministrativeUnits_V2" xmlns:AdministrativeUnitsCH_V2="http://www.interlis.ch/xtf/2.4/AdministrativeUnitsCH_V2" xmlns:DMAVTYM_Qualitaet_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Qualitaet_V1_0" xmlns:Geometry_V2="http://www.interlis.ch/xtf/2.4/Geometry_V2" xmlns:GeometryCHLV03_V2="http://www.interlis.ch/xtf/2.4/GeometryCHLV03_V2" xmlns:GeometryCHLV95_V2="http://www.interlis.ch/xtf/2.4/GeometryCHLV95_V2" xmlns:DMAV_HoheitsgrenzenAV_V1_0="http://www.interlis.ch/xtf/2.4/DMAV_HoheitsgrenzenAV_V1_0" xmlns:DMAVTYM_Grafik_V1_0="http://www.interlis.ch/xtf/2.4/DMAVTYM_Grafik_V1_0" xmlns:DMAV_Nomenklatur_V1_1="http://www.interlis.ch/xtf/2.4/DMAV_Nomenklatur_V1_1" xmlns:DMAV_Bodenbedeckung_V1_1="http://www.interlis.ch/xtf/2.4/DMAV_Bodenbedeckung_V1_1" xmlns:DMAV_Einzelobjekte_V1_1="http://www.interlis.ch/xtf/2.4/DMAV_Einzelobjekte_V1_1" xmlns:DMAV_Grundstuecke_V1_1="http://www.interlis.ch/xtf/2.4/DMAV_Grundstuecke_V1_1" xmlns:DMAVSUP_UntereinheitGrundbuch_V1_1="http://www.interlis.ch/xtf/2.4/DMAVSUP_UntereinheitGrundbuch_V1_1">
 	<ili:headersection>
 		<ili:models>
 			<ili:model>DMAVTYM_Vermarkung_V1_0</ili:model>
@@ -21,24 +21,24 @@
 			<ili:model>GeometryCHLV95_V2</ili:model>
 			<ili:model>DMAV_HoheitsgrenzenAV_V1_0</ili:model>
 			<ili:model>DMAVTYM_Grafik_V1_0</ili:model>
-			<ili:model>DMAV_Nomenklatur_V1_0</ili:model>
-			<ili:model>DMAV_Bodenbedeckung_V1_0</ili:model>
-			<ili:model>DMAV_Einzelobjekte_V1_0</ili:model>
-			<ili:model>DMAV_Grundstuecke_V1_0</ili:model>
-			<ili:model>DMAVSUP_UntereinheitGrundbuch_V1_0</ili:model>
+			<ili:model>DMAV_Nomenklatur_V1_1</ili:model>
+			<ili:model>DMAV_Bodenbedeckung_V1_1</ili:model>
+			<ili:model>DMAV_Einzelobjekte_V1_1</ili:model>
+			<ili:model>DMAV_Grundstuecke_V1_1</ili:model>
+			<ili:model>DMAVSUP_UntereinheitGrundbuch_V1_1</ili:model>
 		</ili:models>
 		<ili:sender>ili2fme-8.0.0-SNAPSHOT-e54e6b737059e65116cd9569b27925ea4e38b914</ili:sender>
 	</ili:headersection>
 	<ili:datasection>
-		<DMAV_Bodenbedeckung_V1_0:Bodenbedeckung ili:bid="5c7780a1-b2df-44a5-9588-8b6b78d2cc6c">
-			<DMAV_Bodenbedeckung_V1_0:BBNachfuehrung ili:tid="c92a53c4-2b77-4649-82e8-2b2ab64bdb75">
-				<DMAV_Bodenbedeckung_V1_0:NBIdent>SO0200002498</DMAV_Bodenbedeckung_V1_0:NBIdent>
-				<DMAV_Bodenbedeckung_V1_0:Identifikator>LSKE</DMAV_Bodenbedeckung_V1_0:Identifikator>
-				<DMAV_Bodenbedeckung_V1_0:Beschreibung>leer</DMAV_Bodenbedeckung_V1_0:Beschreibung>
-				<DMAV_Bodenbedeckung_V1_0:GueltigerEintrag>2002-12-31T00:00:00</DMAV_Bodenbedeckung_V1_0:GueltigerEintrag>
-			</DMAV_Bodenbedeckung_V1_0:BBNachfuehrung>
-			<DMAV_Bodenbedeckung_V1_0:Bodenbedeckung.Bodenbedeckung ili:tid="6450517e-37a4-4b2c-bc74-4f52b5c06501">
-				<DMAV_Bodenbedeckung_V1_0:Geometrie>
+		<DMAV_Bodenbedeckung_V1_1:Bodenbedeckung ili:bid="5c7780a1-b2df-44a5-9588-8b6b78d2cc6c">
+			<DMAV_Bodenbedeckung_V1_1:BBNachfuehrung ili:tid="c92a53c4-2b77-4649-82e8-2b2ab64bdb75">
+				<DMAV_Bodenbedeckung_V1_1:NBIdent>SO0200002498</DMAV_Bodenbedeckung_V1_1:NBIdent>
+				<DMAV_Bodenbedeckung_V1_1:Identifikator>LSKE</DMAV_Bodenbedeckung_V1_1:Identifikator>
+				<DMAV_Bodenbedeckung_V1_1:Beschreibung>leer</DMAV_Bodenbedeckung_V1_1:Beschreibung>
+				<DMAV_Bodenbedeckung_V1_1:GueltigerEintrag>2002-12-31T00:00:00</DMAV_Bodenbedeckung_V1_1:GueltigerEintrag>
+			</DMAV_Bodenbedeckung_V1_1:BBNachfuehrung>
+			<DMAV_Bodenbedeckung_V1_1:Bodenbedeckung.Bodenbedeckung ili:tid="6450517e-37a4-4b2c-bc74-4f52b5c06501">
+				<DMAV_Bodenbedeckung_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -65,27 +65,27 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Bodenbedeckung_V1_0:Geometrie>
-				<DMAV_Bodenbedeckung_V1_0:Qualitaetsstandard>AV93</DMAV_Bodenbedeckung_V1_0:Qualitaetsstandard>
-				<DMAV_Bodenbedeckung_V1_0:Bodenbedeckungsart>humusiert.Acker_Wiese_Weide</DMAV_Bodenbedeckung_V1_0:Bodenbedeckungsart>
-				<DMAV_Bodenbedeckung_V1_0:Fiktiv>false</DMAV_Bodenbedeckung_V1_0:Fiktiv>
-				<DMAV_Bodenbedeckung_V1_0:Objektstatus>real</DMAV_Bodenbedeckung_V1_0:Objektstatus>
-				<DMAV_Bodenbedeckung_V1_0:Entstehung ili:ref="c92a53c4-2b77-4649-82e8-2b2ab64bdb75"/>
-			</DMAV_Bodenbedeckung_V1_0:Bodenbedeckung.Bodenbedeckung>
-		</DMAV_Bodenbedeckung_V1_0:Bodenbedeckung>
-		<DMAV_Einzelobjekte_V1_0:Einzelobjekte ili:bid="b992d6ee-9f19-435a-818a-54aed58c1bff">
-			<DMAV_Einzelobjekte_V1_0:EONachfuehrung ili:tid="6b884117-312a-412b-8f15-2fcedb9dcab3">
-				<DMAV_Einzelobjekte_V1_0:NBIdent>SO0200002498</DMAV_Einzelobjekte_V1_0:NBIdent>
-				<DMAV_Einzelobjekte_V1_0:Identifikator>LSKE</DMAV_Einzelobjekte_V1_0:Identifikator>
-				<DMAV_Einzelobjekte_V1_0:Beschreibung>leer</DMAV_Einzelobjekte_V1_0:Beschreibung>
-				<DMAV_Einzelobjekte_V1_0:GueltigerEintrag>2002-12-31T00:00:00</DMAV_Einzelobjekte_V1_0:GueltigerEintrag>
-			</DMAV_Einzelobjekte_V1_0:EONachfuehrung>
-			<DMAV_Einzelobjekte_V1_0:Einzelobjekt ili:tid="b36b5afa-6a4d-40a6-91ba-b1e67acd1042">
-				<DMAV_Einzelobjekte_V1_0:Qualitaetsstandard>AV93</DMAV_Einzelobjekte_V1_0:Qualitaetsstandard>
-				<DMAV_Einzelobjekte_V1_0:Einzelobjektart>Mauer</DMAV_Einzelobjekte_V1_0:Einzelobjektart>
-				<DMAV_Einzelobjekte_V1_0:Flaechenelement>
-				<DMAV_Einzelobjekte_V1_0:Flaechenelement>
-				<DMAV_Einzelobjekte_V1_0:Geometrie>
+				</DMAV_Bodenbedeckung_V1_1:Geometrie>
+				<DMAV_Bodenbedeckung_V1_1:Qualitaetsstandard>AV93</DMAV_Bodenbedeckung_V1_1:Qualitaetsstandard>
+				<DMAV_Bodenbedeckung_V1_1:Bodenbedeckungsart>humusiert.Acker_Wiese_Weide</DMAV_Bodenbedeckung_V1_1:Bodenbedeckungsart>
+				<DMAV_Bodenbedeckung_V1_1:Fiktiv>false</DMAV_Bodenbedeckung_V1_1:Fiktiv>
+				<DMAV_Bodenbedeckung_V1_1:Objektstatus>real</DMAV_Bodenbedeckung_V1_1:Objektstatus>
+				<DMAV_Bodenbedeckung_V1_1:Entstehung ili:ref="c92a53c4-2b77-4649-82e8-2b2ab64bdb75"/>
+			</DMAV_Bodenbedeckung_V1_1:Bodenbedeckung.Bodenbedeckung>
+		</DMAV_Bodenbedeckung_V1_1:Bodenbedeckung>
+		<DMAV_Einzelobjekte_V1_1:Einzelobjekte ili:bid="b992d6ee-9f19-435a-818a-54aed58c1bff">
+			<DMAV_Einzelobjekte_V1_1:EONachfuehrung ili:tid="6b884117-312a-412b-8f15-2fcedb9dcab3">
+				<DMAV_Einzelobjekte_V1_1:NBIdent>SO0200002498</DMAV_Einzelobjekte_V1_1:NBIdent>
+				<DMAV_Einzelobjekte_V1_1:Identifikator>LSKE</DMAV_Einzelobjekte_V1_1:Identifikator>
+				<DMAV_Einzelobjekte_V1_1:Beschreibung>leer</DMAV_Einzelobjekte_V1_1:Beschreibung>
+				<DMAV_Einzelobjekte_V1_1:GueltigerEintrag>2002-12-31T00:00:00</DMAV_Einzelobjekte_V1_1:GueltigerEintrag>
+			</DMAV_Einzelobjekte_V1_1:EONachfuehrung>
+			<DMAV_Einzelobjekte_V1_1:Einzelobjekt ili:tid="b36b5afa-6a4d-40a6-91ba-b1e67acd1042">
+				<DMAV_Einzelobjekte_V1_1:Qualitaetsstandard>AV93</DMAV_Einzelobjekte_V1_1:Qualitaetsstandard>
+				<DMAV_Einzelobjekte_V1_1:Einzelobjektart>Mauer</DMAV_Einzelobjekte_V1_1:Einzelobjektart>
+				<DMAV_Einzelobjekte_V1_1:Flaechenelement>
+				<DMAV_Einzelobjekte_V1_1:Flaechenelement>
+				<DMAV_Einzelobjekte_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -112,12 +112,12 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Einzelobjekte_V1_0:Geometrie>
-				</DMAV_Einzelobjekte_V1_0:Flaechenelement>
-				</DMAV_Einzelobjekte_V1_0:Flaechenelement>
-				<DMAV_Einzelobjekte_V1_0:Linienelement>
-				<DMAV_Einzelobjekte_V1_0:Linienelement>
-					<DMAV_Einzelobjekte_V1_0:Geometrie>
+				</DMAV_Einzelobjekte_V1_1:Geometrie>
+				</DMAV_Einzelobjekte_V1_1:Flaechenelement>
+				</DMAV_Einzelobjekte_V1_1:Flaechenelement>
+				<DMAV_Einzelobjekte_V1_1:Linienelement>
+				<DMAV_Einzelobjekte_V1_1:Linienelement>
+					<DMAV_Einzelobjekte_V1_1:Geometrie>
 							<geom:polyline>
 								<geom:coord>
 									<geom:c1>2638370.0</geom:c1>
@@ -140,33 +140,33 @@
 									<geom:c2>1251420.0</geom:c2>
 								</geom:coord>
 							</geom:polyline>
-					</DMAV_Einzelobjekte_V1_0:Geometrie>
-				</DMAV_Einzelobjekte_V1_0:Linienelement>
-				</DMAV_Einzelobjekte_V1_0:Linienelement>
-				<DMAV_Einzelobjekte_V1_0:Punktelement>
-				<DMAV_Einzelobjekte_V1_0:Punktelement>
-					<DMAV_Einzelobjekte_V1_0:Geometrie>
+					</DMAV_Einzelobjekte_V1_1:Geometrie>
+				</DMAV_Einzelobjekte_V1_1:Linienelement>
+				</DMAV_Einzelobjekte_V1_1:Linienelement>
+				<DMAV_Einzelobjekte_V1_1:Punktelement>
+				<DMAV_Einzelobjekte_V1_1:Punktelement>
+					<DMAV_Einzelobjekte_V1_1:Geometrie>
 								<geom:coord>
 									<geom:c1>2638370.0</geom:c1>
 									<geom:c2>1251420.0</geom:c2>
 								</geom:coord>
-					</DMAV_Einzelobjekte_V1_0:Geometrie>
-				</DMAV_Einzelobjekte_V1_0:Punktelement>
-				</DMAV_Einzelobjekte_V1_0:Punktelement>
-				<DMAV_Einzelobjekte_V1_0:Objektstatus>real</DMAV_Einzelobjekte_V1_0:Objektstatus>
-				<DMAV_Einzelobjekte_V1_0:Entstehung ili:ref="6b884117-312a-412b-8f15-2fcedb9dcab3"/>
-			</DMAV_Einzelobjekte_V1_0:Einzelobjekt>
-		</DMAV_Einzelobjekte_V1_0:Einzelobjekte>
-		<DMAV_Nomenklatur_V1_0:Nomenklatur ili:bid="597b35e4-56af-4ddc-9374-13018c2dc273">
-			<DMAV_Nomenklatur_V1_0:NKNachfuehrung ili:tid="5419ac23-5cdb-4e11-b299-160f1482aa05">
-				<DMAV_Nomenklatur_V1_0:NBIdent>SO0200002498</DMAV_Nomenklatur_V1_0:NBIdent>
-				<DMAV_Nomenklatur_V1_0:Identifikator>LSKE</DMAV_Nomenklatur_V1_0:Identifikator>
-				<DMAV_Nomenklatur_V1_0:Beschreibung>leer</DMAV_Nomenklatur_V1_0:Beschreibung>
-				<DMAV_Nomenklatur_V1_0:GueltigerEintrag>2002-12-31T00:00:00</DMAV_Nomenklatur_V1_0:GueltigerEintrag>
-			</DMAV_Nomenklatur_V1_0:NKNachfuehrung>
-			<DMAV_Nomenklatur_V1_0:Flurname ili:tid="310d2239-660e-4d1b-bbfa-93be9a521622">
-				<DMAV_Nomenklatur_V1_0:Name>Rosenfluh</DMAV_Nomenklatur_V1_0:Name>
-				<DMAV_Nomenklatur_V1_0:Geometrie>
+					</DMAV_Einzelobjekte_V1_1:Geometrie>
+				</DMAV_Einzelobjekte_V1_1:Punktelement>
+				</DMAV_Einzelobjekte_V1_1:Punktelement>
+				<DMAV_Einzelobjekte_V1_1:Objektstatus>real</DMAV_Einzelobjekte_V1_1:Objektstatus>
+				<DMAV_Einzelobjekte_V1_1:Entstehung ili:ref="6b884117-312a-412b-8f15-2fcedb9dcab3"/>
+			</DMAV_Einzelobjekte_V1_1:Einzelobjekt>
+		</DMAV_Einzelobjekte_V1_1:Einzelobjekte>
+		<DMAV_Nomenklatur_V1_1:Nomenklatur ili:bid="597b35e4-56af-4ddc-9374-13018c2dc273">
+			<DMAV_Nomenklatur_V1_1:NKNachfuehrung ili:tid="5419ac23-5cdb-4e11-b299-160f1482aa05">
+				<DMAV_Nomenklatur_V1_1:NBIdent>SO0200002498</DMAV_Nomenklatur_V1_1:NBIdent>
+				<DMAV_Nomenklatur_V1_1:Identifikator>LSKE</DMAV_Nomenklatur_V1_1:Identifikator>
+				<DMAV_Nomenklatur_V1_1:Beschreibung>leer</DMAV_Nomenklatur_V1_1:Beschreibung>
+				<DMAV_Nomenklatur_V1_1:GueltigerEintrag>2002-12-31T00:00:00</DMAV_Nomenklatur_V1_1:GueltigerEintrag>
+			</DMAV_Nomenklatur_V1_1:NKNachfuehrung>
+			<DMAV_Nomenklatur_V1_1:Flurname ili:tid="310d2239-660e-4d1b-bbfa-93be9a521622">
+				<DMAV_Nomenklatur_V1_1:Name>Rosenfluh</DMAV_Nomenklatur_V1_1:Name>
+				<DMAV_Nomenklatur_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -193,87 +193,81 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Nomenklatur_V1_0:Geometrie>
-				<DMAV_Nomenklatur_V1_0:Fiktiv>false</DMAV_Nomenklatur_V1_0:Fiktiv>
-				<DMAV_Nomenklatur_V1_0:Entstehung ili:ref="5419ac23-5cdb-4e11-b299-160f1482aa05"/>
-			</DMAV_Nomenklatur_V1_0:Flurname>
-		</DMAV_Nomenklatur_V1_0:Nomenklatur>
-		<DMAV_Grundstuecke_V1_0:Grundstuecke ili:bid="a296b41a-65e7-4649-82be-11145789e165">
-			<DMAV_Grundstuecke_V1_0:Grundstueck ili:tid="154b5199-7ef0-4a39-92ed-0f8552ce2df5">
-				<DMAV_Grundstuecke_V1_0:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_0:NBIdent>
-				<DMAV_Grundstuecke_V1_0:Nummer>405</DMAV_Grundstuecke_V1_0:Nummer>
-				<DMAV_Grundstuecke_V1_0:EGRID>CH133289063542</DMAV_Grundstuecke_V1_0:EGRID>
-				<DMAV_Grundstuecke_V1_0:IstStreitig>false</DMAV_Grundstuecke_V1_0:IstStreitig>
-				<DMAV_Grundstuecke_V1_0:IstVollstaendig>false</DMAV_Grundstuecke_V1_0:IstVollstaendig>
-				<DMAV_Grundstuecke_V1_0:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_0:Grundstuecksart>
-				<DMAV_Grundstuecke_V1_0:IstBaurecht>false</DMAV_Grundstuecke_V1_0:IstBaurecht>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
-			</DMAV_Grundstuecke_V1_0:Grundstueck>
-			<DMAV_Grundstuecke_V1_0:Grundstueck ili:tid="ef73f3b0-4e25-4556-9048-fe202fa63561">
-				<DMAV_Grundstuecke_V1_0:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_0:NBIdent>
-				<DMAV_Grundstuecke_V1_0:Nummer>401</DMAV_Grundstuecke_V1_0:Nummer>
-				<DMAV_Grundstuecke_V1_0:EGRID>CH710605328767</DMAV_Grundstuecke_V1_0:EGRID>
-				<DMAV_Grundstuecke_V1_0:IstStreitig>false</DMAV_Grundstuecke_V1_0:IstStreitig>
-				<DMAV_Grundstuecke_V1_0:IstVollstaendig>false</DMAV_Grundstuecke_V1_0:IstVollstaendig>
-				<DMAV_Grundstuecke_V1_0:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_0:Grundstuecksart>
-				<DMAV_Grundstuecke_V1_0:IstBaurecht>false</DMAV_Grundstuecke_V1_0:IstBaurecht>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
-			</DMAV_Grundstuecke_V1_0:Grundstueck>
-			<DMAV_Grundstuecke_V1_0:Grundstueck ili:tid="e24ce569-8dfe-4392-8e0d-27e7b4f92d9c">
-				<DMAV_Grundstuecke_V1_0:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_0:NBIdent>
-				<DMAV_Grundstuecke_V1_0:Nummer>514</DMAV_Grundstuecke_V1_0:Nummer>
-				<DMAV_Grundstuecke_V1_0:EGRID>CH580632068782</DMAV_Grundstuecke_V1_0:EGRID>
-				<DMAV_Grundstuecke_V1_0:IstStreitig>false</DMAV_Grundstuecke_V1_0:IstStreitig>
-				<DMAV_Grundstuecke_V1_0:IstVollstaendig>false</DMAV_Grundstuecke_V1_0:IstVollstaendig>
-				<DMAV_Grundstuecke_V1_0:Grundstuecksart>SelbstaendigesDauerndesRecht</DMAV_Grundstuecke_V1_0:Grundstuecksart>
-				<DMAV_Grundstuecke_V1_0:IstBaurecht>false</DMAV_Grundstuecke_V1_0:IstBaurecht>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
-			</DMAV_Grundstuecke_V1_0:Grundstueck>
-			<DMAV_Grundstuecke_V1_0:Grundstueck ili:tid="9f8eafb3-c67b-4f1b-9c62-d082969c7d4b">
-				<DMAV_Grundstuecke_V1_0:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_0:NBIdent>
-				<DMAV_Grundstuecke_V1_0:Nummer>402</DMAV_Grundstuecke_V1_0:Nummer>
-				<DMAV_Grundstuecke_V1_0:EGRID>CH186032068919</DMAV_Grundstuecke_V1_0:EGRID>
-				<DMAV_Grundstuecke_V1_0:IstStreitig>false</DMAV_Grundstuecke_V1_0:IstStreitig>
-				<DMAV_Grundstuecke_V1_0:IstVollstaendig>false</DMAV_Grundstuecke_V1_0:IstVollstaendig>
-				<DMAV_Grundstuecke_V1_0:Grundstuecksart>Bergwerk</DMAV_Grundstuecke_V1_0:Grundstuecksart>
-				<DMAV_Grundstuecke_V1_0:IstBaurecht>false</DMAV_Grundstuecke_V1_0:IstBaurecht>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
-			</DMAV_Grundstuecke_V1_0:Grundstueck>
-			<DMAV_Grundstuecke_V1_0:Grundstueck ili:tid="754de6c4-0bc0-480b-807a-323f00a896e1">
-				<DMAV_Grundstuecke_V1_0:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_0:NBIdent>
-				<DMAV_Grundstuecke_V1_0:Nummer>403</DMAV_Grundstuecke_V1_0:Nummer>
-				<DMAV_Grundstuecke_V1_0:EGRID>CH793281100623</DMAV_Grundstuecke_V1_0:EGRID>
-				<DMAV_Grundstuecke_V1_0:IstStreitig>false</DMAV_Grundstuecke_V1_0:IstStreitig>
-				<DMAV_Grundstuecke_V1_0:IstVollstaendig>false</DMAV_Grundstuecke_V1_0:IstVollstaendig>
-				<DMAV_Grundstuecke_V1_0:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_0:Grundstuecksart>
-				<DMAV_Grundstuecke_V1_0:IstBaurecht>false</DMAV_Grundstuecke_V1_0:IstBaurecht>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
-			</DMAV_Grundstuecke_V1_0:Grundstueck>
-			<DMAV_Grundstuecke_V1_0:Grundstueck ili:tid="9af6631c-3d20-418c-8d2c-1e15bf71ab97">
-				<DMAV_Grundstuecke_V1_0:NBIdent>SO0200002500</DMAV_Grundstuecke_V1_0:NBIdent>
-				<DMAV_Grundstuecke_V1_0:Nummer>1134</DMAV_Grundstuecke_V1_0:Nummer>
-				<DMAV_Grundstuecke_V1_0:EGRID>CH740632871570</DMAV_Grundstuecke_V1_0:EGRID>
-				<DMAV_Grundstuecke_V1_0:IstStreitig>false</DMAV_Grundstuecke_V1_0:IstStreitig>
-				<DMAV_Grundstuecke_V1_0:IstVollstaendig>false</DMAV_Grundstuecke_V1_0:IstVollstaendig>
-				<DMAV_Grundstuecke_V1_0:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_0:Grundstuecksart>
-				<DMAV_Grundstuecke_V1_0:IstBaurecht>false</DMAV_Grundstuecke_V1_0:IstBaurecht>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
-			</DMAV_Grundstuecke_V1_0:Grundstueck>
-			<DMAV_Grundstuecke_V1_0:GSNachfuehrung ili:tid="1881db74-fc8b-4d88-8535-c6ce6be33435">
-				<DMAV_Grundstuecke_V1_0:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_0:NBIdent>
-				<DMAV_Grundstuecke_V1_0:Identifikator>LSKE</DMAV_Grundstuecke_V1_0:Identifikator>
-				<DMAV_Grundstuecke_V1_0:Beschreibung>leer</DMAV_Grundstuecke_V1_0:Beschreibung>
-				<DMAV_Grundstuecke_V1_0:Mutationsart>Normal</DMAV_Grundstuecke_V1_0:Mutationsart>
-				<DMAV_Grundstuecke_V1_0:GueltigerEintrag>2002-12-31T00:00:00</DMAV_Grundstuecke_V1_0:GueltigerEintrag>
-			</DMAV_Grundstuecke_V1_0:GSNachfuehrung>
-			<DMAV_Grundstuecke_V1_0:SelbstaendigesDauerndesRecht ili:tid="d10b09e3-af9f-4fdc-b7e2-8c911ff68549">
-				<DMAV_Grundstuecke_V1_0:Geometrie>
+				</DMAV_Nomenklatur_V1_1:Geometrie>
+				<DMAV_Nomenklatur_V1_1:Fiktiv>false</DMAV_Nomenklatur_V1_1:Fiktiv>
+				<DMAV_Nomenklatur_V1_1:Entstehung ili:ref="5419ac23-5cdb-4e11-b299-160f1482aa05"/>
+			</DMAV_Nomenklatur_V1_1:Flurname>
+		</DMAV_Nomenklatur_V1_1:Nomenklatur>
+		<DMAV_Grundstuecke_V1_1:Grundstuecke ili:bid="a296b41a-65e7-4649-82be-11145789e165">
+			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="154b5199-7ef0-4a39-92ed-0f8552ce2df5">
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Nummer>405</DMAV_Grundstuecke_V1_1:Nummer>
+				<DMAV_Grundstuecke_V1_1:EGRID>CH133289063542</DMAV_Grundstuecke_V1_1:EGRID>
+				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
+			</DMAV_Grundstuecke_V1_1:Grundstueck>
+			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="ef73f3b0-4e25-4556-9048-fe202fa63561">
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Nummer>401</DMAV_Grundstuecke_V1_1:Nummer>
+				<DMAV_Grundstuecke_V1_1:EGRID>CH710605328767</DMAV_Grundstuecke_V1_1:EGRID>
+				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
+			</DMAV_Grundstuecke_V1_1:Grundstueck>
+			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="e24ce569-8dfe-4392-8e0d-27e7b4f92d9c">
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Nummer>514</DMAV_Grundstuecke_V1_1:Nummer>
+				<DMAV_Grundstuecke_V1_1:EGRID>CH580632068782</DMAV_Grundstuecke_V1_1:EGRID>
+				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:Grundstuecksart>SelbstaendigesDauerndesRecht</DMAV_Grundstuecke_V1_1:Grundstuecksart>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
+			</DMAV_Grundstuecke_V1_1:Grundstueck>
+			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="9f8eafb3-c67b-4f1b-9c62-d082969c7d4b">
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Nummer>402</DMAV_Grundstuecke_V1_1:Nummer>
+				<DMAV_Grundstuecke_V1_1:EGRID>CH186032068919</DMAV_Grundstuecke_V1_1:EGRID>
+				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Bergwerk</DMAV_Grundstuecke_V1_1:Grundstuecksart>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
+			</DMAV_Grundstuecke_V1_1:Grundstueck>
+			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="754de6c4-0bc0-480b-807a-323f00a896e1">
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Nummer>403</DMAV_Grundstuecke_V1_1:Nummer>
+				<DMAV_Grundstuecke_V1_1:EGRID>CH793281100623</DMAV_Grundstuecke_V1_1:EGRID>
+				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
+			</DMAV_Grundstuecke_V1_1:Grundstueck>
+			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="9af6631c-3d20-418c-8d2c-1e15bf71ab97">
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002500</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Nummer>1134</DMAV_Grundstuecke_V1_1:Nummer>
+				<DMAV_Grundstuecke_V1_1:EGRID>CH740632871570</DMAV_Grundstuecke_V1_1:EGRID>
+				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
+			</DMAV_Grundstuecke_V1_1:Grundstueck>
+			<DMAV_Grundstuecke_V1_1:GSNachfuehrung ili:tid="1881db74-fc8b-4d88-8535-c6ce6be33435">
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Identifikator>LSKE</DMAV_Grundstuecke_V1_1:Identifikator>
+				<DMAV_Grundstuecke_V1_1:Beschreibung>leer</DMAV_Grundstuecke_V1_1:Beschreibung>
+				<DMAV_Grundstuecke_V1_1:Mutationsart>Normal</DMAV_Grundstuecke_V1_1:Mutationsart>
+				<DMAV_Grundstuecke_V1_1:GueltigerEintrag>2002-12-31T00:00:00</DMAV_Grundstuecke_V1_1:GueltigerEintrag>
+			</DMAV_Grundstuecke_V1_1:GSNachfuehrung>
+			<DMAV_Grundstuecke_V1_1:SelbstaendigesDauerndesRecht ili:tid="d10b09e3-af9f-4fdc-b7e2-8c911ff68549">
+				<DMAV_Grundstuecke_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -300,12 +294,13 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Grundstuecke_V1_0:Geometrie>
-				<DMAV_Grundstuecke_V1_0:Flaechenmass>185</DMAV_Grundstuecke_V1_0:Flaechenmass>
-				<DMAV_Grundstuecke_V1_0:Grundstueck ili:ref="e24ce569-8dfe-4392-8e0d-27e7b4f92d9c"/>
-			</DMAV_Grundstuecke_V1_0:SelbstaendigesDauerndesRecht>
-			<DMAV_Grundstuecke_V1_0:Bergwerk ili:tid="0927e3aa-13ed-4a3f-b38d-569c42c405c2">
-				<DMAV_Grundstuecke_V1_0:Geometrie>
+				</DMAV_Grundstuecke_V1_1:Geometrie>
+				<DMAV_Grundstuecke_V1_1:Flaechenmass>185</DMAV_Grundstuecke_V1_1:Flaechenmass>
+				<DMAV_Grundstuecke_V1_1:IstBaurecht>false</DMAV_Grundstuecke_V1_1:IstBaurecht>
+				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="e24ce569-8dfe-4392-8e0d-27e7b4f92d9c"/>
+			</DMAV_Grundstuecke_V1_1:SelbstaendigesDauerndesRecht>
+			<DMAV_Grundstuecke_V1_1:Bergwerk ili:tid="0927e3aa-13ed-4a3f-b38d-569c42c405c2">
+				<DMAV_Grundstuecke_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -332,12 +327,12 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Grundstuecke_V1_0:Geometrie>
-				<DMAV_Grundstuecke_V1_0:Flaechenmass>185</DMAV_Grundstuecke_V1_0:Flaechenmass>
-				<DMAV_Grundstuecke_V1_0:Grundstueck ili:ref="9f8eafb3-c67b-4f1b-9c62-d082969c7d4b"/>
-			</DMAV_Grundstuecke_V1_0:Bergwerk>
-			<DMAV_Grundstuecke_V1_0:Liegenschaft ili:tid="faf6f3a5-f4a7-40c5-836d-b0862fb6ed6d">
-				<DMAV_Grundstuecke_V1_0:Geometrie>
+				</DMAV_Grundstuecke_V1_1:Geometrie>
+				<DMAV_Grundstuecke_V1_1:Flaechenmass>185</DMAV_Grundstuecke_V1_1:Flaechenmass>
+				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="9f8eafb3-c67b-4f1b-9c62-d082969c7d4b"/>
+			</DMAV_Grundstuecke_V1_1:Bergwerk>
+			<DMAV_Grundstuecke_V1_1:Liegenschaft ili:tid="faf6f3a5-f4a7-40c5-836d-b0862fb6ed6d">
+				<DMAV_Grundstuecke_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -364,14 +359,14 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Grundstuecke_V1_0:Geometrie>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Flaechenmass>27370</DMAV_Grundstuecke_V1_0:Flaechenmass>
-				<DMAV_Grundstuecke_V1_0:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_0:Qualitaetsstandard>
-				<DMAV_Grundstuecke_V1_0:Grundstueck ili:ref="ef73f3b0-4e25-4556-9048-fe202fa63561"/>
-			</DMAV_Grundstuecke_V1_0:Liegenschaft>
-			<DMAV_Grundstuecke_V1_0:Liegenschaft ili:tid="1f651707-b686-4aee-8f39-3d1747faa114">
-				<DMAV_Grundstuecke_V1_0:Geometrie>
+				</DMAV_Grundstuecke_V1_1:Geometrie>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Flaechenmass>27370</DMAV_Grundstuecke_V1_1:Flaechenmass>
+				<DMAV_Grundstuecke_V1_1:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_1:Qualitaetsstandard>
+				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="ef73f3b0-4e25-4556-9048-fe202fa63561"/>
+			</DMAV_Grundstuecke_V1_1:Liegenschaft>
+			<DMAV_Grundstuecke_V1_1:Liegenschaft ili:tid="1f651707-b686-4aee-8f39-3d1747faa114">
+				<DMAV_Grundstuecke_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -406,14 +401,14 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Grundstuecke_V1_0:Geometrie>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Flaechenmass>7855</DMAV_Grundstuecke_V1_0:Flaechenmass>
-				<DMAV_Grundstuecke_V1_0:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_0:Qualitaetsstandard>
-				<DMAV_Grundstuecke_V1_0:Grundstueck ili:ref="754de6c4-0bc0-480b-807a-323f00a896e1"/>
-			</DMAV_Grundstuecke_V1_0:Liegenschaft>
-			<DMAV_Grundstuecke_V1_0:Liegenschaft ili:tid="f4483fa1-4557-459d-85cd-6224f00ff1ef">
-				<DMAV_Grundstuecke_V1_0:Geometrie>
+				</DMAV_Grundstuecke_V1_1:Geometrie>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Flaechenmass>7855</DMAV_Grundstuecke_V1_1:Flaechenmass>
+				<DMAV_Grundstuecke_V1_1:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_1:Qualitaetsstandard>
+				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="754de6c4-0bc0-480b-807a-323f00a896e1"/>
+			</DMAV_Grundstuecke_V1_1:Liegenschaft>
+			<DMAV_Grundstuecke_V1_1:Liegenschaft ili:tid="f4483fa1-4557-459d-85cd-6224f00ff1ef">
+				<DMAV_Grundstuecke_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -440,14 +435,14 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Grundstuecke_V1_0:Geometrie>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Flaechenmass>21631</DMAV_Grundstuecke_V1_0:Flaechenmass>
-				<DMAV_Grundstuecke_V1_0:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_0:Qualitaetsstandard>
-				<DMAV_Grundstuecke_V1_0:Grundstueck ili:ref="154b5199-7ef0-4a39-92ed-0f8552ce2df5"/>
-			</DMAV_Grundstuecke_V1_0:Liegenschaft>
-			<DMAV_Grundstuecke_V1_0:Liegenschaft ili:tid="7e640f1d-c438-415c-9d13-ca57246fd83b">
-				<DMAV_Grundstuecke_V1_0:Geometrie>
+				</DMAV_Grundstuecke_V1_1:Geometrie>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Flaechenmass>21631</DMAV_Grundstuecke_V1_1:Flaechenmass>
+				<DMAV_Grundstuecke_V1_1:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_1:Qualitaetsstandard>
+				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="154b5199-7ef0-4a39-92ed-0f8552ce2df5"/>
+			</DMAV_Grundstuecke_V1_1:Liegenschaft>
+			<DMAV_Grundstuecke_V1_1:Liegenschaft ili:tid="7e640f1d-c438-415c-9d13-ca57246fd83b">
+				<DMAV_Grundstuecke_V1_1:Geometrie>
 					<geom:surface>
 						<geom:exterior>
 							<geom:polyline>
@@ -474,29 +469,29 @@
 							</geom:polyline>
 						</geom:exterior>
 					</geom:surface>
-				</DMAV_Grundstuecke_V1_0:Geometrie>
-				<DMAV_Grundstuecke_V1_0:Fiktiv>false</DMAV_Grundstuecke_V1_0:Fiktiv>
-				<DMAV_Grundstuecke_V1_0:Flaechenmass>471</DMAV_Grundstuecke_V1_0:Flaechenmass>
-				<DMAV_Grundstuecke_V1_0:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_0:Qualitaetsstandard>
-				<DMAV_Grundstuecke_V1_0:Grundstueck ili:ref="9af6631c-3d20-418c-8d2c-1e15bf71ab97"/>
-			</DMAV_Grundstuecke_V1_0:Liegenschaft>
-		</DMAV_Grundstuecke_V1_0:Grundstuecke>
-		<DMAVSUP_UntereinheitGrundbuch_V1_0:UntereinheitGrundbuch ili:bid="85f4318f-7c65-4171-bce5-ac32b58ba12c">
-				<DMAVSUP_UntereinheitGrundbuch_V1_0:GrundbuchKreis ili:tid="55db60d9-19da-4168-bc13-3e4f34bde906">
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:Kanton>SO</DMAVSUP_UntereinheitGrundbuch_V1_0:Kanton>
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:Gemeinde>2498</DMAVSUP_UntereinheitGrundbuch_V1_0:Gemeinde>
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:NBIdent>SO0200002498</DMAVSUP_UntereinheitGrundbuch_V1_0:NBIdent>
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:Name>Rohr (SO)</DMAVSUP_UntereinheitGrundbuch_V1_0:Name>
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:eGRIS_SubKreis>2498</DMAVSUP_UntereinheitGrundbuch_V1_0:eGRIS_SubKreis>
-				</DMAVSUP_UntereinheitGrundbuch_V1_0:GrundbuchKreis>
-				<DMAVSUP_UntereinheitGrundbuch_V1_0:GrundbuchKreis ili:tid="a5d5d9f1-b062-4090-abd6-b0ec6ba0fabb">
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:Kanton>SO</DMAVSUP_UntereinheitGrundbuch_V1_0:Kanton>
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:Gemeinde>2500</DMAVSUP_UntereinheitGrundbuch_V1_0:Gemeinde>
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:NBIdent>SO0200002500</DMAVSUP_UntereinheitGrundbuch_V1_0:NBIdent>
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:Name>Trimbach</DMAVSUP_UntereinheitGrundbuch_V1_0:Name>
-				  <DMAVSUP_UntereinheitGrundbuch_V1_0:eGRIS_SubKreis>2500</DMAVSUP_UntereinheitGrundbuch_V1_0:eGRIS_SubKreis>
-				</DMAVSUP_UntereinheitGrundbuch_V1_0:GrundbuchKreis>
-		</DMAVSUP_UntereinheitGrundbuch_V1_0:UntereinheitGrundbuch>
+				</DMAV_Grundstuecke_V1_1:Geometrie>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Flaechenmass>471</DMAV_Grundstuecke_V1_1:Flaechenmass>
+				<DMAV_Grundstuecke_V1_1:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_1:Qualitaetsstandard>
+				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="9af6631c-3d20-418c-8d2c-1e15bf71ab97"/>
+			</DMAV_Grundstuecke_V1_1:Liegenschaft>
+		</DMAV_Grundstuecke_V1_1:Grundstuecke>
+		<DMAVSUP_UntereinheitGrundbuch_V1_1:UntereinheitGrundbuch ili:bid="85f4318f-7c65-4171-bce5-ac32b58ba12c">
+				<DMAVSUP_UntereinheitGrundbuch_V1_1:GrundbuchKreis ili:tid="55db60d9-19da-4168-bc13-3e4f34bde906">
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:Kanton>SO</DMAVSUP_UntereinheitGrundbuch_V1_1:Kanton>
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:Gemeinde>2498</DMAVSUP_UntereinheitGrundbuch_V1_1:Gemeinde>
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:NBIdent>SO0200002498</DMAVSUP_UntereinheitGrundbuch_V1_1:NBIdent>
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:Name>Rohr (SO)</DMAVSUP_UntereinheitGrundbuch_V1_1:Name>
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:eGRIS_SubKreis>2498</DMAVSUP_UntereinheitGrundbuch_V1_1:eGRIS_SubKreis>
+				</DMAVSUP_UntereinheitGrundbuch_V1_1:GrundbuchKreis>
+				<DMAVSUP_UntereinheitGrundbuch_V1_1:GrundbuchKreis ili:tid="a5d5d9f1-b062-4090-abd6-b0ec6ba0fabb">
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:Kanton>SO</DMAVSUP_UntereinheitGrundbuch_V1_1:Kanton>
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:Gemeinde>2500</DMAVSUP_UntereinheitGrundbuch_V1_1:Gemeinde>
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:NBIdent>SO0200002500</DMAVSUP_UntereinheitGrundbuch_V1_1:NBIdent>
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:Name>Trimbach</DMAVSUP_UntereinheitGrundbuch_V1_1:Name>
+				  <DMAVSUP_UntereinheitGrundbuch_V1_1:eGRIS_SubKreis>2500</DMAVSUP_UntereinheitGrundbuch_V1_1:eGRIS_SubKreis>
+				</DMAVSUP_UntereinheitGrundbuch_V1_1:GrundbuchKreis>
+		</DMAVSUP_UntereinheitGrundbuch_V1_1:UntereinheitGrundbuch>
 		<DMAV_HoheitsgrenzenAV_V1_0:HoheitsgrenzenAV ili:bid="7dc8edd1-af34-476e-b837-9638a81d4b37">
 			<DMAV_HoheitsgrenzenAV_V1_0:HHGNachfuehrung ili:tid="8d498f97-9e33-43fc-822a-b447211ee97c">
 				<DMAV_HoheitsgrenzenAV_V1_0:NBIdent>SO0200002498</DMAV_HoheitsgrenzenAV_V1_0:NBIdent>

@@ -22,7 +22,7 @@ INTERLIS 2.4;
 !!@ furtherInformation = https://www.cadastre-manual.admin.ch/de/modelldokumentation-dmav
 !!@ IDGeoIV = "228.3"
 MODEL DMAV_HoheitsgrenzenAV_V1_0 (de)
-  AT "https://models.geo.admin.ch/V_D/" VERSION "2024-05-15" =
+  AT "https://models.geo.admin.ch/V_D/" VERSION "2024-09-20" =
   IMPORTS GeometryCHLV95_V2;
   IMPORTS CHAdminCodes_V2;
   IMPORTS DMAVTYM_Topologie_V1_0;
