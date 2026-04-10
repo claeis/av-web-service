@@ -17,6 +17,8 @@ import java.util.TimeZone;
 import java.util.UUID;
 
 import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -1295,6 +1297,88 @@ public class AvController {
                 final String code = (String)status.get("acode");
                 if("Mauer".equals(code)) {
                 	gsType.setCode(SingleObjectTypeCode.WALL);
+                }else if("unterirdisches_Gebaeude".equals(code)) {
+                	gsType.setCode(SingleObjectTypeCode.UNDERGROUND_STRUCTURE);
+                }else if("uebriger_Gebaeudeteil".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.OTHER_PORTION_OF_BUILDING);
+                }else if("eingedoltes_oeffentliches_Gewaesser".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.PUBLIC_SUBSURFACE_DRAINAGE_CHANNEL);
+                }else if("wichtige_Treppe".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.IMPORTANT_STEPS);
+                }else if("Tunnel_Unterfuehrung_Galerie".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.TUNNEL_UNDERPASS_GALLERY);
+                }else if("Bruecke_Passerelle".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.BRIDGE_FOOTBRIDGE);
+                }else if("Bahnsteig".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.STATION_PLATFORM);
+                }else if("Brunnen".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.FOUNTAIN_WELL);
+                }else if("Reservoir".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.RESERVOIR);
+                }else if("Pfeiler".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.PILLAR);
+                }else if("Unterstand".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.SHELTER);
+                }else if("Silo_Turm_Gasometer".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.SILO_TOWER_GASOMETER);
+                }else if("Hochkamin".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.CHIMNEY);
+                }else if("Denkmal".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.MONUMENT);
+                }else if("Mast_Antenne".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.MAST_ANTENNA);
+                }else if("Aussichtsturm".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.OBSERVATION_TOWER);
+                }else if("Uferverbauung".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.BANK_PROTECTION_WORKS);
+                }else if("Schwelle".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.RAMP_SILL);
+                }else if("Lawinenverbauung".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.CONSTRUCTIONS_TO_AVOID_AVALANCHES);
+                }else if("massiver_Sockel".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.PLINTH);
+                }else if("Ruine_archaeologisches_Objekt".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.ARCHAEOLOGICAL_OBJECT_RUIN);
+                }else if("Landungssteg".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.LANDING_STAGE);
+                }else if("einzelner_Fels".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.ISOLATED_ROCK);
+                }else if("schmale_bestockte_Flaeche".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.SMALL_STAND_OF_TREES);
+                }else if("Rinnsal".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.RUNLET);
+                }else if("schmaler_Weg".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.TRACK_PATH);
+                }else if("Hochspannungsfreileitung".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.OVERHEAD_POWER_LINE);
+                }else if("Druckleitung".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.HYDRO_POWER_PIPE);
+                }else if("Bahngeleise".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.RAILWAY);
+                }else if("Luftseilbahn".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.AERIAL_ROPEWAY);
+                }else if("Gondelbahn_Sesselbahn".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.CABLE_CAR_CHAIRLIFT);
+                }else if("Materialseilbahn".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.INDUSTRIAL_CABLEWAY);
+                }else if("Skilift".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.SKI_LIFT);
+                }else if("Faehre".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.FERRY);
+                }else if("Grotte_Hoehleneingang".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.CAVE_POTHOLE_ENTRANCE);
+                }else if("Achse".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.MAIN_ROAD);
+                }else if("wichtiger_Einzelbaum".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.IMPORTANT_TREE);
+                }else if("Bildstock_Kruzifix".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.SHRINE_CRUCIFIX);
+                }else if("Quelle".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.SPRING);
+                }else if("Bezugspunkt".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.REFERENCE_POINT);
+                }else if("Jauchengrube_Mistlege".equals(code)) {
+                    gsType.setCode(SingleObjectTypeCode.CESSPIT_DUNGHEAP);
                 }else {
                     throw new IllegalStateException("unknown code '"+code+"'");
                 }

@@ -230,9 +230,113 @@
           </LocalisationCH_V2:MultilingualText>
         </AV_WebService_V1_0:Titel>
       </AV_WebService_V1_0:GrundstuecksArtTxt>
-      
-      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="31">
-        <AV_WebService_V1_0:Code>humusiert.Acker_Wiese_Weide</AV_WebService_V1_0:Code>
+            
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="101">
+        <AV_WebService_V1_0:Code>Gebaeude</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Gebaeude</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="102">
+          <AV_WebService_V1_0:Code>befestigt.Strasse_Weg</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Strasse, Weg</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="103">
+          <AV_WebService_V1_0:Code>befestigt.Trottoir</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Trottoir</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="104">
+          <AV_WebService_V1_0:Code>befestigt.Verkehrsinsel</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Verkehrsinsel</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="105">
+          <AV_WebService_V1_0:Code>befestigt.Bahn</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Bahn</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="106">
+          <AV_WebService_V1_0:Code>befestigt.Flugplatz</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Flugplatz</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="107">
+          <AV_WebService_V1_0:Code>befestigt.Wasserbecken</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Wasserbecken</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="108">
+          <AV_WebService_V1_0:Code>befestigt.uebrige_befestigte</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>übrige befestigte</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="109">
+          <AV_WebService_V1_0:Code>humusiert.Acker_Wiese_Weide</AV_WebService_V1_0:Code>
         <AV_WebService_V1_0:Titel>
           <LocalisationCH_V2:MultilingualText>
             <Localisation_V2:LocalisedText>
@@ -240,28 +344,234 @@
                 <Localisation_V2:Language>de</Localisation_V2:Language>
                 <Localisation_V2:Text>Acker, Wiese, Weide</Localisation_V2:Text>
               </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="110">
+            <AV_WebService_V1_0:Code>humusiert.Intensivkultur.Reben</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
               <LocalisationCH_V2:LocalisedText>
-                <Localisation_V2:Language>fr</Localisation_V2:Language>
-                <Localisation_V2:Text>Champ, prairie, pâturage</Localisation_V2:Text>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Reben</Localisation_V2:Text>
               </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="111">
+            <AV_WebService_V1_0:Code>humusiert.Intensivkultur.uebrige_Intensivkultur</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
               <LocalisationCH_V2:LocalisedText>
-                <Localisation_V2:Language>it</Localisation_V2:Language>
-                <Localisation_V2:Text>Campi coltivati, prati, pascoli</Localisation_V2:Text>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>übrige Intensivkultur</Localisation_V2:Text>
               </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="112">
+          <AV_WebService_V1_0:Code>humusiert.Gartenanlage</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
               <LocalisationCH_V2:LocalisedText>
-                <Localisation_V2:Language>rm</Localisation_V2:Language>
-                <Localisation_V2:Text>Champ, prat, pastgira</Localisation_V2:Text>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Gartenanlage</Localisation_V2:Text>
               </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="113">
+          <AV_WebService_V1_0:Code>humusiert.Hoch_Flachmoor</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
               <LocalisationCH_V2:LocalisedText>
-                <Localisation_V2:Language>en</Localisation_V2:Language>
-                <Localisation_V2:Text>Field, meadow, pasture</Localisation_V2:Text>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Hoch-/Flachmoor</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="114">
+          <AV_WebService_V1_0:Code>humusiert.uebrige_humusierte</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>übrige humusierte</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="115">
+          <AV_WebService_V1_0:Code>Gewaesser.stehendes_Gewaesser</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>stehendes Gewässer</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="116">
+          <AV_WebService_V1_0:Code>Gewaesser.fliessendes_Gewaesser</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>fliessendes Gewässer</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="117">
+          <AV_WebService_V1_0:Code>Gewaesser.Schilfguertel</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Schilfgürtel</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="118">
+          <AV_WebService_V1_0:Code>bestockt.geschlossener_Wald</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>geschlossener Wald</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="119">
+            <AV_WebService_V1_0:Code>bestockt.Wytweide.Wytweide_dicht</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Wytweide dicht</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="120">
+            <AV_WebService_V1_0:Code>bestockt.Wytweide.Wytweide_offen</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Wytweide offen</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="121">
+          <AV_WebService_V1_0:Code>bestockt.uebrige_bestockte</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>übrige bestockte</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="122">
+          <AV_WebService_V1_0:Code>vegetationslos.Fels</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Fels</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="123">
+          <AV_WebService_V1_0:Code>vegetationslos.Gletscher_Firn</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Gletscher, Firn</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="124">
+          <AV_WebService_V1_0:Code>vegetationslos.Geroell_Sand</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Geröll, Sand</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="125">
+          <AV_WebService_V1_0:Code>vegetationslos.Abbau_Deponie</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Abbau, Deponie</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:BodenbedeckungsartTxt>
+      <AV_WebService_V1_0:BodenbedeckungsartTxt ili:tid="126">
+          <AV_WebService_V1_0:Code>vegetationslos.uebrige_vegetationslose</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>übrige vegetationslose</Localisation_V2:Text>
               </LocalisationCH_V2:LocalisedText>
             </Localisation_V2:LocalisedText>
           </LocalisationCH_V2:MultilingualText>
         </AV_WebService_V1_0:Titel>
       </AV_WebService_V1_0:BodenbedeckungsartTxt>
 
-      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="41">
+            
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="201">
         <AV_WebService_V1_0:Code>Mauer</AV_WebService_V1_0:Code>
         <AV_WebService_V1_0:Titel>
           <LocalisationCH_V2:MultilingualText>
@@ -270,26 +580,544 @@
                 <Localisation_V2:Language>de</Localisation_V2:Language>
                 <Localisation_V2:Text>Mauer</Localisation_V2:Text>
               </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="202">
+        <AV_WebService_V1_0:Code>unterirdisches_Gebaeude</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
               <LocalisationCH_V2:LocalisedText>
-                <Localisation_V2:Language>fr</Localisation_V2:Language>
-                <Localisation_V2:Text>mur</Localisation_V2:Text>
-              </LocalisationCH_V2:LocalisedText>
-              <LocalisationCH_V2:LocalisedText>
-                <Localisation_V2:Language>it</Localisation_V2:Language>
-                <Localisation_V2:Text>Muro</Localisation_V2:Text>
-              </LocalisationCH_V2:LocalisedText>
-              <LocalisationCH_V2:LocalisedText>
-                <Localisation_V2:Language>rm</Localisation_V2:Language>
-                <Localisation_V2:Text>paraid</Localisation_V2:Text>
-              </LocalisationCH_V2:LocalisedText>
-              <LocalisationCH_V2:LocalisedText>
-                <Localisation_V2:Language>en</Localisation_V2:Language>
-                <Localisation_V2:Text>wall</Localisation_V2:Text>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>unterirdisches Gebäude</Localisation_V2:Text>
               </LocalisationCH_V2:LocalisedText>
             </Localisation_V2:LocalisedText>
           </LocalisationCH_V2:MultilingualText>
         </AV_WebService_V1_0:Titel>
       </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="203">
+        <AV_WebService_V1_0:Code>uebriger_Gebaeudeteil</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>übriger Gebäudeteil</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="204">
+        <AV_WebService_V1_0:Code>eingedoltes_oeffentliches_Gewaesser</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>ingedoltes öffentliches Gewässer</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="205">
+        <AV_WebService_V1_0:Code>wichtige_Treppe</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>wichtige Treppe</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="206">
+        <AV_WebService_V1_0:Code>Tunnel_Unterfuehrung_Galerie</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Tunnel, Unterführung, Galerie</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="207">
+        <AV_WebService_V1_0:Code>Bruecke_Passerelle</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Brücke, Passerelle</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="208">
+        <AV_WebService_V1_0:Code>Bahnsteig</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Bahnsteig</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="209">
+        <AV_WebService_V1_0:Code>Brunnen</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Brunnen</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="210">
+        <AV_WebService_V1_0:Code>Reservoir</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Reservoir</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="211">
+        <AV_WebService_V1_0:Code>Pfeiler</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Pfeiler</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="212">
+        <AV_WebService_V1_0:Code>Unterstand</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Unterstand</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="213">
+        <AV_WebService_V1_0:Code>Silo_Turm_Gasometer</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Silo, Turm, Gasometer</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="214">
+        <AV_WebService_V1_0:Code>Hochkamin</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Hochkamin</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="215">
+        <AV_WebService_V1_0:Code>Denkmal</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Denkmal</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="216">
+        <AV_WebService_V1_0:Code>Mast_Antenne</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Mast, Antenne</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="217">
+        <AV_WebService_V1_0:Code>Aussichtsturm</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Aussichtsturm</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="218">
+        <AV_WebService_V1_0:Code>Uferverbauung</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Uferverbauung</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="219">
+        <AV_WebService_V1_0:Code>Schwelle</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Schwelle</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="220">
+        <AV_WebService_V1_0:Code>Lawinenverbauung</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Lawinenverbauung</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="221">
+        <AV_WebService_V1_0:Code>massiver_Sockel</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>massiver Sockel</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="222">
+        <AV_WebService_V1_0:Code>Ruine_archaeologisches_Objekt</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Ruine, archaeologisches Objekt</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="223">
+        <AV_WebService_V1_0:Code>Landungssteg</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Landungssteg</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="224">
+        <AV_WebService_V1_0:Code>einzelner_Fels</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>einzelner Fels</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="225">
+        <AV_WebService_V1_0:Code>schmale_bestockte_Flaeche</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>schmale bestockte Flaeche</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="226">
+        <AV_WebService_V1_0:Code>Rinnsal</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Rinnsal</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="227">
+        <AV_WebService_V1_0:Code>schmaler_Weg</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>schmaler Weg</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="228">
+        <AV_WebService_V1_0:Code>Hochspannungsfreileitung</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Hochspannungsfreileitung</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="229">
+        <AV_WebService_V1_0:Code>Druckleitung</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Druckleitung</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="230">
+        <AV_WebService_V1_0:Code>Bahngeleise</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Bahngeleise</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="231">
+        <AV_WebService_V1_0:Code>Luftseilbahn</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Luftseilbahn</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="232">
+        <AV_WebService_V1_0:Code>Gondelbahn_Sesselbahn</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Gondelbahn, Sesselbahn</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="233">
+        <AV_WebService_V1_0:Code>Materialseilbahn</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Materialseilbahn</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="234">
+        <AV_WebService_V1_0:Code>Skilift</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Skilift</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="235">
+        <AV_WebService_V1_0:Code>Faehre</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Fähre</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="236">
+        <AV_WebService_V1_0:Code>Grotte_Hoehleneingang</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Grotte, Höhleneingang</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="237">
+        <AV_WebService_V1_0:Code>Achse</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Achse</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="238">
+        <AV_WebService_V1_0:Code>wichtiger_Einzelbaum</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>wichtiger Einzelbaum</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="239">
+        <AV_WebService_V1_0:Code>Bildstock_Kruzifix</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Bildstock, Kruzifix</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="240">
+        <AV_WebService_V1_0:Code>Quelle</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Quelle</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="241">
+        <AV_WebService_V1_0:Code>Bezugspunkt</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Bezugspunkt</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+      <AV_WebService_V1_0:EinzelobjektartTxt ili:tid="242">
+        <AV_WebService_V1_0:Code>Jauchengrube_Mistlege</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Jauchengrube, Mistlege</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:EinzelobjektartTxt>
+
       
           </AV_WebService_V1_0:Konfiguration>
 	</ili:datasection>
