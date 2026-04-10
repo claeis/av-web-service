@@ -162,6 +162,11 @@ task jaxb {
 }
 compileJava.dependsOn jaxb
 
+test {
+    inputs.dir("src/test/data")
+    inputs.dir("src/test/ili")
+}
+
 publishing {
 	publications {
         maven(MavenPublication) {

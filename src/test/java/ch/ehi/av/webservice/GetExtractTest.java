@@ -25,6 +25,8 @@ import org.xmlunit.placeholder.PlaceholderDifferenceEvaluator;
 
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetEGRIDResponse;
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetExtractByIdResponse;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.Building;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.BuildingEntrance;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCover;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverTypeCode;
@@ -244,12 +246,22 @@ public class GetExtractTest {
             LandCover landcover=landcovers.get(0);
         	Assert.assertEquals(LandCoverTypeCode.VEGETATED_ARABLE_MEADOW_PASTURE,landcover.getType().getCode());
         	Assert.assertEquals(600,landcover.getArea());
+        	Assert.assertEquals(Integer.valueOf(1701805),landcover.getEGID());
         }
         {
             java.util.List<SingleObject> singleobjects=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getSingleObject();
             Assert.assertEquals(3,singleobjects.size());
             SingleObject singleobject=singleobjects.get(0);
         	Assert.assertEquals(SingleObjectTypeCode.WALL,singleobject.getType().getCode());
+        	Assert.assertEquals(Integer.valueOf(502360563),singleobject.getEGID());
+        }
+        {
+            java.util.List<Building> buildings=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getBuilding();
+            Assert.assertEquals(2,buildings.size());
+            Building building=buildings.get(0);
+        	Assert.assertEquals(1701805,building.getEGID());
+        	java.util.List<BuildingEntrance> entrances=building.getBuildingEntrance();
+            Assert.assertEquals(1,entrances.size());
         }
     }
     @Test

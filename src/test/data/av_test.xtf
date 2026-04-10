@@ -70,6 +70,7 @@
 				<DMAV_Bodenbedeckung_V1_1:Bodenbedeckungsart>humusiert.Acker_Wiese_Weide</DMAV_Bodenbedeckung_V1_1:Bodenbedeckungsart>
 				<DMAV_Bodenbedeckung_V1_1:Fiktiv>false</DMAV_Bodenbedeckung_V1_1:Fiktiv>
 				<DMAV_Bodenbedeckung_V1_1:Objektstatus>real</DMAV_Bodenbedeckung_V1_1:Objektstatus>
+				<DMAV_Bodenbedeckung_V1_1:EGID>1701805</DMAV_Bodenbedeckung_V1_1:EGID>
 				<DMAV_Bodenbedeckung_V1_1:Entstehung ili:ref="c92a53c4-2b77-4649-82e8-2b2ab64bdb75"/>
 			</DMAV_Bodenbedeckung_V1_1:Bodenbedeckung.Bodenbedeckung>
 		</DMAV_Bodenbedeckung_V1_1:Bodenbedeckung>
@@ -153,6 +154,7 @@
 					</DMAV_Einzelobjekte_V1_1:Geometrie>
 				</DMAV_Einzelobjekte_V1_1:Punktelement>
 				</DMAV_Einzelobjekte_V1_1:Punktelement>
+				<DMAV_Einzelobjekte_V1_1:EGID>502360563</DMAV_Einzelobjekte_V1_1:EGID>
 				<DMAV_Einzelobjekte_V1_1:Objektstatus>real</DMAV_Einzelobjekte_V1_1:Objektstatus>
 				<DMAV_Einzelobjekte_V1_1:Entstehung ili:ref="6b884117-312a-412b-8f15-2fcedb9dcab3"/>
 			</DMAV_Einzelobjekte_V1_1:Einzelobjekt>

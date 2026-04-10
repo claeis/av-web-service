@@ -63,6 +63,8 @@ import ch.ehi.av.webservice.jaxb.extract._1_0.GetEGRIDResponse;
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetEGRIDResponseType;
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetExtractByIdResponse;
 import ch.ehi.av.webservice.jaxb.extract._1_0.GetExtractByIdResponseType;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.Building;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.BuildingEntrance;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.CantonCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Disclaimer;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Extract;
@@ -1379,9 +1381,9 @@ public class AvController {
         }
         
         setToponym(gs,parcel.getGeometrie());
-        gs.getBuilding();
         setLandCover(gs,parcel.getGeometrie());
         setSingleObject(gs,parcel.getGeometrie());
+        setBuildingEntrance(gs);
         
         {
             // Planausschnitt 174 * 99 mm
@@ -1452,10 +1454,46 @@ public class AvController {
         
     }
 
+	private void setBuildingEntrance(RealEstateDPR gs) {
+		StringBuffer egidsCrit=new StringBuffer();
+		String sep="";
+		HashMap<Integer,Building> egids=new HashMap<Integer,Building>();
+		for(Building bb:gs.getBuilding()) {
+			egidsCrit.append(sep);
+			egidsCrit.append(bb.getEGID());
+			egids.put(bb.getEGID(), bb);
+			sep=",";
+		}
+		if(egids.isEmpty()) {
+			return;
+		}
+        jdbcTemplate.query(
+        		"SELECT BDG_EGID,ADR_EDID,zip_name,zip_zip4,stn_text,adr_number  FROM "+getSchema()+"."+"offclndss_v2_2officlndxfddrsses_address"+" AS a "+
+        				" LEFT JOIN "+getSchema()+"."+"offclndss_v2_2officlndxfddrsses_zip"+" ON a.t_id=offclndss_vrsss_ddress_zip_zip6"+
+        				" LEFT JOIN "+getSchema()+"."+"offclndss_v2_2officlndxfddrsses_stn"+" ON a.t_id=offclndss_vrsss_ddress_stn_name"+
+        				" WHERE BDG_EGID in ("+egidsCrit.toString()+") ORDER BY BDG_EGID,ADR_EDID"
+    			,null,null, new org.springframework.jdbc.core.RowCallbackHandler() {
+					@Override
+					public void processRow(ResultSet rs) throws SQLException {
+						Building bb=egids.get(rs.getInt(1));
+						BuildingEntrance entry=new BuildingEntrance();
+						entry.setEDID(rs.getInt(2));
+						entry.setCity(rs.getString(3));
+						entry.setPostalCode(rs.getInt(4));
+						entry.setStreet(rs.getString(5));
+						entry.setNumber(rs.getString(6));
+						bb.getBuildingEntrance().add(entry);
+					}
+                });
+	}
 	private void setSingleObject(RealEstateDPR gs, Geometry parcelGeometry) {
+		HashMap<Integer,Building> egids=new HashMap<Integer,Building>();
+		for(Building bb:gs.getBuilding()) {
+			egids.put(bb.getEGID(), bb);
+		}
         byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
         java.util.List<SingleObject> bbs=jdbcTemplate.query(
-        		"SELECT a.einzelobjektart as eoart, geometrie  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
+        		"SELECT a.einzelobjektart as eoart, geometrie, egid  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
         				" JOIN  ("+
         					" SELECT dmav_nzkt_vkt_nzlbjekt_flaechenelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_FLAECHE+" AS f WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
         					" UNION ALL "+
@@ -1468,6 +1506,16 @@ public class AvController {
                     public SingleObject mapRow(ResultSet rs, int rowNum) throws SQLException {
                     	SingleObject singleObject=new SingleObject();
                         singleObject.setType(mapSingleObjectType(rs.getString(1)));
+                        int egid=rs.getInt(3);
+                        if(!rs.wasNull()) {
+                        	singleObject.setEGID(egid);
+                        	if(!egids.containsKey(egid)) {
+                        		Building building=new Building();
+                            	building.setEGID(egid);
+                        		egids.put(egid, building);
+                        		gs.getBuilding().add(building);
+                        	}
+                        }
                     	return singleObject;
                     }
                 },wkbGeometry,wkbGeometry,wkbGeometry);
@@ -1477,9 +1525,13 @@ public class AvController {
 		
 	}
 	private void setLandCover(RealEstateDPR gs, Geometry parcelGeometry) {
+		HashMap<Integer,Building> egids=new HashMap<Integer,Building>();
+		for(Building bb:gs.getBuilding()) {
+			egids.put(bb.getEGID(), bb);
+		}
         byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
         java.util.List<LandCover> bbs=jdbcTemplate.query(
-        		"SELECT ST_AsBinary(geometrie),bodenbedeckungsart FROM "+getSchema()+"."+DMAV_BODENBEDECKUNG+" AS a "+" WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
+        		"SELECT ST_AsBinary(geometrie),bodenbedeckungsart,egid FROM "+getSchema()+"."+DMAV_BODENBEDECKUNG+" AS a "+" WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
     			, new RowMapper<LandCover>() {
                     @Override
                     public LandCover mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -1498,6 +1550,18 @@ public class AvController {
                             LandCover landCover=new LandCover();
                             landCover.setType(mapLandCoverType(rs.getString(2)));
                             landCover.setArea((int)Math.round(intersection.getArea()));
+                            int egid=rs.getInt(3);
+                            if(!rs.wasNull()) {
+                            	landCover.setEGID(egid);
+                            	if(!egids.containsKey(egid)) {
+                            		Building building=new Building();
+                            		egids.put(egid, building);
+                                	building.setEGID(egid);
+                            		building.setAreaShare(landCover.getArea());
+                            		building.setArea((int)Math.round(flaeche.getArea()));
+                            		gs.getBuilding().add(building);
+                            	}
+                            }
                         	return landCover;
                         }
                         return null;

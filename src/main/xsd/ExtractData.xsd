@@ -351,6 +351,7 @@
     <xsd:sequence>
       <xsd:element name="Type" type="LandCoverType"/>
       <xsd:element name="Area" type="Area"/>
+      <xsd:element name="EGID" type="EGID" minOccurs="0"/>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -498,14 +499,15 @@
     <xsd:sequence>
       <xsd:element name="Type" type="SingleObjectType"/>
       <xsd:element name="Area" type="Area" minOccurs="0"/>
+      <xsd:element name="EGID" type="EGID" minOccurs="0"/>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="Building">
     <xsd:sequence>
       <xsd:element name="EGID" type="EGID"/>
-      <xsd:element name="Area" type="Area"/>
-      <xsd:element name="AreaShare" type="Area"/>
+      <xsd:element name="Area" type="Area" minOccurs="0"/>
+      <xsd:element name="AreaShare" type="Area" minOccurs="0"/>
       <xsd:element name="BuildingEntrance" type="BuildingEntrance" minOccurs="0"
         maxOccurs="unbounded"/>
       <xsd:element ref="extensions" minOccurs="0"/>
