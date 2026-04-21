@@ -206,7 +206,7 @@
 				<DMAV_Grundstuecke_V1_1:Nummer>405</DMAV_Grundstuecke_V1_1:Nummer>
 				<DMAV_Grundstuecke_V1_1:EGRID>CH133289063542</DMAV_Grundstuecke_V1_1:EGRID>
 				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
-				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>true</DMAV_Grundstuecke_V1_1:IstVollstaendig>
 				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
 				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
 				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
@@ -216,7 +216,7 @@
 				<DMAV_Grundstuecke_V1_1:Nummer>401</DMAV_Grundstuecke_V1_1:Nummer>
 				<DMAV_Grundstuecke_V1_1:EGRID>CH710605328767</DMAV_Grundstuecke_V1_1:EGRID>
 				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
-				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>true</DMAV_Grundstuecke_V1_1:IstVollstaendig>
 				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
 				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
 				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
@@ -226,7 +226,7 @@
 				<DMAV_Grundstuecke_V1_1:Nummer>514</DMAV_Grundstuecke_V1_1:Nummer>
 				<DMAV_Grundstuecke_V1_1:EGRID>CH580632068782</DMAV_Grundstuecke_V1_1:EGRID>
 				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
-				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>true</DMAV_Grundstuecke_V1_1:IstVollstaendig>
 				<DMAV_Grundstuecke_V1_1:Grundstuecksart>SelbstaendigesDauerndesRecht</DMAV_Grundstuecke_V1_1:Grundstuecksart>
 				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
 				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
@@ -236,7 +236,7 @@
 				<DMAV_Grundstuecke_V1_1:Nummer>402</DMAV_Grundstuecke_V1_1:Nummer>
 				<DMAV_Grundstuecke_V1_1:EGRID>CH186032068919</DMAV_Grundstuecke_V1_1:EGRID>
 				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
-				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>true</DMAV_Grundstuecke_V1_1:IstVollstaendig>
 				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Bergwerk</DMAV_Grundstuecke_V1_1:Grundstuecksart>
 				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
 				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
@@ -246,7 +246,7 @@
 				<DMAV_Grundstuecke_V1_1:Nummer>403</DMAV_Grundstuecke_V1_1:Nummer>
 				<DMAV_Grundstuecke_V1_1:EGRID>CH793281100623</DMAV_Grundstuecke_V1_1:EGRID>
 				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
-				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>true</DMAV_Grundstuecke_V1_1:IstVollstaendig>
 				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
 				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
 				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
@@ -256,7 +256,7 @@
 				<DMAV_Grundstuecke_V1_1:Nummer>1134</DMAV_Grundstuecke_V1_1:Nummer>
 				<DMAV_Grundstuecke_V1_1:EGRID>CH740632871570</DMAV_Grundstuecke_V1_1:EGRID>
 				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
-				<DMAV_Grundstuecke_V1_1:IstVollstaendig>false</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>true</DMAV_Grundstuecke_V1_1:IstVollstaendig>
 				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
 				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
 				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>

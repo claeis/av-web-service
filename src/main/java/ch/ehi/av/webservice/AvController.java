@@ -255,7 +255,9 @@ public class AvController {
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
-                "SELECT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" WHERE nummer=? AND nbident=?", new RowMapper<JAXBElement<String>[]>() {
+                "SELECT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" WHERE nummer=? AND nbident=?"
+                        +" ORDER BY nbident,nummer"
+                , new RowMapper<JAXBElement<String>[]>() {
                     @Override
                     public JAXBElement[] mapRow(ResultSet rs, int rowNum) throws SQLException {
                         JAXBElement ret[]=new JAXBElement[5];
@@ -315,6 +317,7 @@ public class AvController {
                         +" LEFT JOIN (SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
                              +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
                              +" UNION ALL SELECT grundstueck as von,     geometrie FROM "+getSchema()+"."+DMAV_BERGWERK+") b ON b.von=g.t_id WHERE ST_DWithin(ST_Transform(?,2056),b.geometrie,1.0)"
+                             +" ORDER BY nbident,nummer"
                 , new RowMapper<JAXBElement<String>[]>() {
                     @Override
                     public JAXBElement<String>[] mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -360,7 +363,8 @@ public class AvController {
                             + " JOIN "+getSchema()+"."+DMADDR_STN+" AS stn ON adr.t_id=stn.offclndss_vrsss_ddress_stn_name  " 
                             + " where zip.zip_zip4=? and stn.stn_text=? and adr.adr_number=? " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
-            + ") as b ON b.von=g.t_id";
+            + ") as b ON b.von=g.t_id"
+            +" ORDER BY nbident,nummer";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
                 stmt
                 , new RowMapper<JAXBElement<String>[]>() {
@@ -406,7 +410,8 @@ public class AvController {
                             + " JOIN "+getSchema()+"."+DMADDR_STN+" AS stn ON adr.t_id=stn.offclndss_vrsss_ddress_stn_name  " 
                             + " where zip.zip_zip4=? and stn.stn_text=? and adr.adr_number is null " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
-            + ") as b ON b.von=g.t_id";
+            + ") as b ON b.von=g.t_id"
+            +" ORDER BY nbident,nummer";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
                 stmt
                 , new RowMapper<JAXBElement<String>[]>() {
@@ -449,7 +454,8 @@ public class AvController {
                             + " JOIN (select adr.pnt_shape as lage from  "+getSchema()+"."+DMADDR_ADDRESS+" as adr " 
                             + " where adr.bdg_egid=? " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
-            + ") as b ON b.von=g.t_id";
+            + ") as b ON b.von=g.t_id"
+            +" ORDER BY nbident,nummer";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
                 stmt
                 , new RowMapper<JAXBElement<String>[]>() {

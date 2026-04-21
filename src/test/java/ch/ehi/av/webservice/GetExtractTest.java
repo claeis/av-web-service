@@ -2,7 +2,11 @@ package ch.ehi.av.webservice;
 
 import java.io.File;
 import java.sql.Connection;
+import java.util.List;
+
 import jakarta.annotation.PostConstruct;
+import jakarta.xml.bind.JAXBElement;
+
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.junit.Assert;
@@ -30,8 +34,11 @@ import ch.ehi.av.webservice.jaxb.extractdata._1_0.BuildingEntrance;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCover;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverTypeCode;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyType;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyTypeCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObject;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObjectTypeCode;
+import ch.ehi.av.webservice.jaxb.geometry._1_0.MultiSurfaceType;
 import ch.ehi.basics.logging.EhiLogger;
 import ch.ehi.ili2db.base.Ili2db;
 import ch.ehi.ili2db.gui.Config;
@@ -221,13 +228,6 @@ public class GetExtractTest {
             .build();
              */
     }
-    //@Test
-    // CH740632871570 Liegenschaft in Gemeinde (2500) ohne OEREB Themen
-    //@Ignore("requires sql fixing")
-    public void Liegenschaft_in_Gemeinde_ohne_OEREB_Themen() throws Exception 
-    {
-    }
-    // CH580632068782 SDR mit OEREBs (P,L,F) plus eine angeschnitten
     @Test
     public void SDR_mitGeometrie() throws Exception 
     {
@@ -265,47 +265,19 @@ public class GetExtractTest {
         }
     }
     @Test
-    public void SDR_ohneGeometrie() throws Exception 
-    {
-        Assert.assertNotNull(service);
-        ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithoutGeometryByEgrid("xml","CH580632068782",null,false,false,false,200);
-        Assert.assertEquals(200, response.getStatusCode().value());
-        marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH580632068782-noGeom-out.xml")));
-    }
-    @Test
-    public void SDR_ohneGeometrie_mitBild() throws Exception 
-    {
-        Assert.assertNotNull(service);
-        ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithoutGeometryByEgrid("xml","CH580632068782",null,false,false,true,200);
-        Assert.assertEquals(200, response.getStatusCode().value());
-        marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH580632068782-noGeom-mitBild-out.xml")));
-    }
-
-    // CH133289063542 Liegenschaft ohne OEREBs, keine anderen OEREBs im sichtbaren Bereich
-    @Test
-    public void Liegenschaft_ohneOEREBs() throws Exception 
-    {
-        Assert.assertNotNull(service);
-        ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithGeometryByEgrid("xml","CH133289063542",null,false,false,false,200);
-        Assert.assertEquals(200, response.getStatusCode().value());
-        marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH133289063542-out.xml")));
-    }
-    // CH793281100623 Liegenschaft ohne OEREBs, aber alle OEREBs von im sichtbaren Bereich (otherLegends)
-    @Test
-    public void Liegenschaft_otherLegends() throws Exception 
-    {
-        Assert.assertNotNull(service);
-        ResponseEntity<GetExtractByIdResponse> response = (ResponseEntity<GetExtractByIdResponse>) service.getExtractWithGeometryByEgrid("xml","CH793281100623",null,false,false,false,200);
-        Assert.assertEquals(200, response.getStatusCode().value());
-        marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"CH793281100623-out.xml")));
-    }
-    @Test
     public void egrid_mitGeometrie() throws Exception 
     {
         Assert.assertNotNull(service);
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByNumber(true,"SO0200002498","514");
         Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-CH580632068782-out.xml")));
+        List<JAXBElement<?>> values = response.getBody().getValue().getEgridAndNumberAndIdentDN();
+		Assert.assertEquals(5,values.size());
+		Assert.assertEquals("CH580632068782",((JAXBElement<String>)values.get(0)).getValue());
+		Assert.assertEquals("514",((JAXBElement<String>)values.get(1)).getValue());
+		Assert.assertEquals("SO0200002498",((JAXBElement<String>)values.get(2)).getValue());
+		Assert.assertEquals(PropertyTypeCode.DISTINCT_PERMANENT_RIGHT,((JAXBElement<PropertyType>)values.get(3)).getValue().getCode());
+		Assert.assertEquals(1,((JAXBElement<MultiSurfaceType>)values.get(4)).getValue().getSurface().size());
     }
     @Test
     public void egrid_ohnGeometrie() throws Exception 
@@ -314,6 +286,13 @@ public class GetExtractTest {
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByNumber(false,"SO0200002498","514");
         Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-CH580632068782-noGeom-out.xml")));
+        List<JAXBElement<?>> values = response.getBody().getValue().getEgridAndNumberAndIdentDN();
+		Assert.assertEquals(4,values.size());
+		Assert.assertEquals("CH580632068782",((JAXBElement<String>)values.get(0)).getValue());
+		Assert.assertEquals("514",((JAXBElement<String>)values.get(1)).getValue());
+		Assert.assertEquals("SO0200002498",((JAXBElement<String>)values.get(2)).getValue());
+		Assert.assertEquals(PropertyTypeCode.DISTINCT_PERMANENT_RIGHT,((JAXBElement<PropertyType>)values.get(3)).getValue().getCode());
+        
     }
     // EN=2638380.0,1251430.0
     @Test
@@ -323,6 +302,11 @@ public class GetExtractTest {
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByXY(false,"2638380.0,1251430.0",null);
         Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-xy-out.xml")));
+        List<JAXBElement<?>> values = response.getBody().getValue().getEgridAndNumberAndIdentDN();
+		Assert.assertEquals(12,values.size());
+		Assert.assertEquals("CH710605328767",((JAXBElement<String>)values.get(0)).getValue());
+		Assert.assertEquals("CH186032068919",((JAXBElement<String>)values.get(4)).getValue());
+		Assert.assertEquals("CH580632068782",((JAXBElement<String>)values.get(8)).getValue());
     }
     @Test
     public void egrid_adr() throws Exception 
@@ -331,6 +315,11 @@ public class GetExtractTest {
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByAddress(false,4655,"Kirchfeldstrasse");
         Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-adr-out.xml")));
+        List<JAXBElement<?>> values = response.getBody().getValue().getEgridAndNumberAndIdentDN();
+		Assert.assertEquals(12,values.size());
+		Assert.assertEquals("CH710605328767",((JAXBElement<String>)values.get(0)).getValue());
+		Assert.assertEquals("CH186032068919",((JAXBElement<String>)values.get(4)).getValue());
+		Assert.assertEquals("CH580632068782",((JAXBElement<String>)values.get(8)).getValue());
     }
     @Test
     public void egrid_adr_nr() throws Exception 
@@ -339,6 +328,9 @@ public class GetExtractTest {
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByAddress(false,4655,"Kirchfeldstrasse","8");
         Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-adr-nr-out.xml")));
+        List<JAXBElement<?>> values = response.getBody().getValue().getEgridAndNumberAndIdentDN();
+		Assert.assertEquals(4,values.size());
+		Assert.assertEquals("CH740632871570",((JAXBElement<String>)values.get(0)).getValue());
     }
     @Test
     public void egrid_egid() throws Exception 
@@ -347,6 +339,9 @@ public class GetExtractTest {
         ResponseEntity<GetEGRIDResponse> response = (ResponseEntity<GetEGRIDResponse>) service.getEgridByEgid(false,502360563);
         Assert.assertEquals(200, response.getStatusCode().value());
         marshaller.marshal(response.getBody(),new javax.xml.transform.stream.StreamResult(new File(TEST_WS_OUT,"egrid-egid-out.xml")));
+        List<JAXBElement<?>> values = response.getBody().getValue().getEgridAndNumberAndIdentDN();
+		Assert.assertEquals(4,values.size());
+		Assert.assertEquals("CH740632871570",((JAXBElement<String>)values.get(0)).getValue());
     }
     @Test
     public void dbschema() throws Exception 
