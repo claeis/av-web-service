@@ -118,6 +118,7 @@ public class AvController {
 	private static final String DMAV_SELBSTRECHT = "dmav_grck_v1_1grundstuecke_selbstaendigesdauerndesrecht";
 	private static final String DMAV_LIEGENSCHAFT = "dmav_grck_v1_1grundstuecke_liegenschaft";
 	private static final String DMAV_GRUNDSTUECK = "dmav_grck_v1_1grundstuecke_grundstueck";
+	private static final String DMAV_GS_NACHFUEHRUNG = "dmav_grck_v1_1grundstuecke_gsnachfuehrung";
 	private static final String DMAV_GEMEINDE = "dmav_hhnv_v1_0hoheitsgrenzenav_gemeinde";
 	private static final String DMAV_FLURNAME = "dmav_nmtr_v1_1nomenklatur_flurname";
 	private static final String DMAV_BODENBEDECKUNG = "dmav_bdng_v1_1bodenbedeckung_bodenbedeckung";
@@ -255,8 +256,13 @@ public class AvController {
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
-                "SELECT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" WHERE nummer=? AND nbident=?"
-                        +" ORDER BY nbident,nummer"
+                "SELECT egrid,nummer,g.nbident as nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" AS g"
+                		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+                		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
+                		+" WHERE nummer=? AND g.nbident=?"
+                        +" AND von.grundbucheintrag IS NOT NULL"
+                        +" AND bis.grundbucheintrag IS NULL"
+                        +" ORDER BY g.nbident,nummer"
                 , new RowMapper<JAXBElement<String>[]>() {
                     @Override
                     public JAXBElement[] mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -313,11 +319,16 @@ public class AvController {
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
-                "SELECT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
-                        +" LEFT JOIN (SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
-                             +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
-                             +" UNION ALL SELECT grundstueck as von,     geometrie FROM "+getSchema()+"."+DMAV_BERGWERK+") b ON b.von=g.t_id WHERE ST_DWithin(ST_Transform(?,2056),b.geometrie,1.0)"
-                             +" ORDER BY nbident,nummer"
+                "SELECT egrid,g.nummer as nummer,g.nbident as nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" AS g"
+                		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+                		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
+                        +" LEFT JOIN (SELECT grundstueck as gs, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
+                             +" UNION ALL SELECT grundstueck as gs,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
+                             +" UNION ALL SELECT grundstueck as gs,     geometrie FROM "+getSchema()+"."+DMAV_BERGWERK+") b ON b.gs=g.t_id"
+                             +" WHERE ST_DWithin(ST_Transform(?,2056),b.geometrie,1.0)"
+                                +" AND von.grundbucheintrag IS NOT NULL"
+                                +" AND bis.grundbucheintrag IS NULL"
+                             +" ORDER BY g.nbident,g.nummer"
                 , new RowMapper<JAXBElement<String>[]>() {
                     @Override
                     public JAXBElement<String>[] mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -353,7 +364,9 @@ public class AvController {
         logger.debug("number {}",number);
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
-        String stmt="SELECT DISTINCT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
+        String stmt="SELECT DISTINCT egrid,nummer,g.nbident as nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
+        		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+        		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
                 +" JOIN ("
                 + "(SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
                     +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
@@ -364,7 +377,9 @@ public class AvController {
                             + " where zip.zip_zip4=? and stn.stn_text=? and adr.adr_number=? " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
             + ") as b ON b.von=g.t_id"
-            +" ORDER BY nbident,nummer";
+            +" WHERE von.grundbucheintrag IS NOT NULL"
+            +" AND bis.grundbucheintrag IS NULL"
+            +" ORDER BY g.nbident,nummer";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
                 stmt
                 , new RowMapper<JAXBElement<String>[]>() {
@@ -400,7 +415,9 @@ public class AvController {
         logger.debug("localisation {}",localisation);
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
-        String stmt="SELECT DISTINCT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
+        String stmt="SELECT DISTINCT egrid,nummer,g.nbident as nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
+        		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+        		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
                 +" JOIN ("
                 + "(SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
                     +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
@@ -411,7 +428,9 @@ public class AvController {
                             + " where zip.zip_zip4=? and stn.stn_text=? and adr.adr_number is null " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
             + ") as b ON b.von=g.t_id"
-            +" ORDER BY nbident,nummer";
+            +" WHERE von.grundbucheintrag IS NOT NULL"
+            +" AND bis.grundbucheintrag IS NULL"
+            +" ORDER BY g.nbident,nummer";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
                 stmt
                 , new RowMapper<JAXBElement<String>[]>() {
@@ -446,7 +465,9 @@ public class AvController {
         logger.debug("egid {}",egid);
         GetEGRIDResponseType ret= new GetEGRIDResponseType();
         ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory of=new ch.ehi.av.webservice.jaxb.extract._1_0.ObjectFactory();
-        String stmt="SELECT DISTINCT egrid,nummer,nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
+        String stmt="SELECT DISTINCT egrid,nummer,g.nbident as nbident,grundstuecksart as type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" as g"
+        		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+        		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
                 +" JOIN ("
                 + "(SELECT grundstueck as von, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
                     +" UNION ALL SELECT grundstueck as von,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
@@ -455,7 +476,9 @@ public class AvController {
                             + " where adr.bdg_egid=? " 
                             + ") as ladr ON ST_Intersects(ladr.lage,a.geometrie)"
             + ") as b ON b.von=g.t_id"
-            +" ORDER BY nbident,nummer";
+            +" WHERE von.grundbucheintrag IS NOT NULL"
+            +" AND bis.grundbucheintrag IS NULL"
+            +" ORDER BY g.nbident,nummer";
         List<JAXBElement<String>[]> gsList=jdbcTemplate.query(
                 stmt
                 , new RowMapper<JAXBElement<String>[]>() {
@@ -1013,11 +1036,16 @@ public class AvController {
     }
     private Grundstueck getParcelByEgrid(String egrid) {
         List<Grundstueck> gslist=jdbcTemplate.query(
-                "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie,nummer,nbident,grundstuecksart,gesamtflaechenmass,l.flaechenmass as l_flaechenmass,s.flaechenmass as s_flaechenmass,b.flaechenmass as b_flaechenmass FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie,nummer,g.nbident as nbident,grundstuecksart,gesamtflaechenmass,l.flaechenmass as l_flaechenmass,s.flaechenmass as s_flaechenmass,b.flaechenmass as b_flaechenmass FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+                		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
                         +" LEFT JOIN "+getSchema()+"."+DMAV_LIEGENSCHAFT+" l ON g.t_id=l.grundstueck "
                         +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
                         +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
-                        +" WHERE g.egrid=?", new RowMapper<Grundstueck>() {
+                        +" WHERE g.egrid=?"
+                        +" AND von.grundbucheintrag IS NOT NULL"
+                        +" AND bis.grundbucheintrag IS NULL"
+                , new RowMapper<Grundstueck>() {
                     
                     @Override
                     public Grundstueck mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -1092,10 +1120,15 @@ public class AvController {
                 + ",s.flaechenmass as s_flaechenmass"
                 + ",b.flaechenmass as b_flaechenmass"
                 + " FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+                		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
                         +" LEFT JOIN "+getSchema()+"."+DMAV_LIEGENSCHAFT+" l ON g.t_id=l.grundstueck "
                         +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
                         +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
-                        +" WHERE g.nbident=? AND g.nummer=?", new RowMapper<Grundstueck>() {
+                        +" WHERE g.nbident=? AND g.nummer=?"
+                        +" AND von.grundbucheintrag IS NOT NULL"
+                        +" AND bis.grundbucheintrag IS NULL"
+               , new RowMapper<Grundstueck>() {
                     
                     @Override
                     public Grundstueck mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -1162,10 +1195,15 @@ public class AvController {
             GeometryFactory geomFactory=new GeometryFactory(precisionModel);
             List<Geometry> gslist=jdbcTemplate.query(
                     "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                    		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+                    		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
                             +" LEFT JOIN "+getSchema()+"."+DMAV_LIEGENSCHAFT+" l ON g.t_id=l.grundstueck"
                             +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
                             +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
-                            +" WHERE g.egrid=?", new RowMapper<Geometry>() {
+                            +" WHERE g.egrid=?"
+                            +" AND von.grundbucheintrag IS NOT NULL"
+                            +" AND bis.grundbucheintrag IS NULL"
+                            , new RowMapper<Geometry>() {
                         
                         @Override
                         public Geometry mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -1787,7 +1825,13 @@ public class AvController {
     private String  verifyEgrid(String egrid,String identdn,String number) {
         try {
             String ret=jdbcTemplate.queryForObject(
-                    "SELECT egrid AS type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" WHERE egrid=? OR (nummer=? AND nbident=?)", String.class,egrid,number,identdn);
+                    "SELECT egrid AS type FROM "+getSchema()+"."+DMAV_GRUNDSTUECK
+            		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+            		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
+                    +" WHERE egrid=? OR (nummer=? AND g.nbident=?)"
+                    +" AND von.grundbucheintrag IS NOT NULL"
+                    +" AND bis.grundbucheintrag IS NULL"
+            	, String.class,egrid,number,identdn);
             return ret;
         }catch(EmptyResultDataAccessException ex) {
         }
