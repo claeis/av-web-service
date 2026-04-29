@@ -34,6 +34,7 @@ import ch.ehi.av.webservice.jaxb.extractdata._1_0.BuildingEntrance;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCover;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverTypeCode;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.Mutation;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyTypeCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObject;
@@ -262,6 +263,27 @@ public class GetExtractTest {
         	Assert.assertEquals(1701805,building.getEGID());
         	java.util.List<BuildingEntrance> entrances=building.getBuildingEntrance();
             Assert.assertEquals(1,entrances.size());
+        }
+        {
+            java.util.List<Mutation> mutations=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getMutation();
+            Assert.assertEquals(2,mutations.size());
+            {
+                Mutation mut=mutations.get(0);
+            	Assert.assertEquals("3",mut.getNummer());
+            	Assert.assertEquals("SO0200002498",mut.getNBIdent());
+            	Assert.assertEquals(0,mut.getDeletedParcel().size());
+            	Assert.assertEquals(2,mut.getProjectedProperty().size());
+            	Assert.assertEquals("CH710605328767",mut.getProjectedProperty().get(0).getEGRID());
+            	Assert.assertEquals("CH287822167756",mut.getProjectedProperty().get(1).getEGRID());
+            }
+            {
+                Mutation mut=mutations.get(1);
+            	Assert.assertEquals("4",mut.getNummer());
+            	Assert.assertEquals("SO0200002498",mut.getNBIdent());
+            	Assert.assertEquals(1,mut.getDeletedParcel().size());
+            	Assert.assertEquals("CH580632068782",mut.getDeletedParcel().get(0));
+            	Assert.assertEquals(0,mut.getProjectedProperty().size());
+            }
         }
     }
     @Test

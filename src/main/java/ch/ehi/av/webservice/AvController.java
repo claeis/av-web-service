@@ -13,6 +13,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TimeZone;
 import java.util.UUID;
 
@@ -33,6 +34,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -83,7 +85,9 @@ import ch.ehi.av.webservice.jaxb.extractdata._1_0.MultilingualBlob;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.MultilingualMText;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.MultilingualText;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.MultilingualUri;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.Mutation;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Office;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.ProjectedProperty;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyTypeCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.RealEstateDPR;
@@ -743,7 +747,7 @@ public class AvController {
         // Grundstueck
         final Geometry parcelGeom = parcel.getGeometrie();
         Envelope bbox = getMapBBOX(parcelGeom);
-        setParcel(extract,egrid,parcel,bbox,withGeometry,withImages,dpi);
+        setRealEstateDPR(extract,egrid,parcel,bbox,withGeometry,withImages,dpi);
 
         // Logos
         if(withImages) {
@@ -1093,6 +1097,75 @@ public class AvController {
 
                     
                 },egrid);
+        if(gslist==null || gslist.isEmpty()) {
+            return null;
+        }
+        Polygon polygons[]=new Polygon[gslist.size()];
+        int i=0;
+        for(Grundstueck gs:gslist) {
+            polygons[i++]=(Polygon)gs.getGeometrie();
+        }
+        Geometry multiPolygon=geomFactory.createMultiPolygon(polygons);
+        Grundstueck gs=gslist.get(0);
+        gs.setGeometrie(multiPolygon);
+                
+        return gs;
+    }
+    private Grundstueck getParcelByT_Id(long t_id) {
+        List<Grundstueck> gslist=jdbcTemplate.query(
+                "SELECT ST_AsBinary(l.geometrie) as l_geometrie,ST_AsBinary(s.geometrie) as s_geometrie,ST_AsBinary(b.geometrie) as b_geometrie,egrid,nummer,g.nbident as nbident,grundstuecksart,gesamtflaechenmass,l.flaechenmass as l_flaechenmass,s.flaechenmass as s_flaechenmass,b.flaechenmass as b_flaechenmass FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" g"
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_LIEGENSCHAFT+" l ON g.t_id=l.grundstueck "
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_SELBSTRECHT+" s ON g.t_id=s.grundstueck"
+                        +" LEFT JOIN "+getSchema()+"."+DMAV_BERGWERK+" b ON g.t_id=b.grundstueck"
+                        +" WHERE g.t_id=?"
+                , new RowMapper<Grundstueck>() {
+                    
+                    @Override
+                    public Grundstueck mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Geometry polygon=null;
+                        byte l_geometrie[]=rs.getBytes("l_geometrie");
+                        byte s_geometrie[]=rs.getBytes("s_geometrie");
+                        byte b_geometrie[]=rs.getBytes("b_geometrie");
+                        try {
+                            if(l_geometrie!=null) {
+                                polygon=wkbDecoder.read(l_geometrie);
+                            }else if(s_geometrie!=null) {
+                                polygon=wkbDecoder.read(s_geometrie);
+                            }else if(b_geometrie!=null) {
+                                polygon=wkbDecoder.read(b_geometrie);
+                            }else {
+                                throw new IllegalStateException("no geometrie");
+                            }
+                            if(polygon==null || polygon.isEmpty()) {
+                                return null;
+                            }
+                        } catch (ParseException e) {
+                            throw new IllegalStateException(e);
+                        }
+                        Grundstueck ret=new Grundstueck();
+                        ret.setGeometrie(polygon);
+                        ret.setEgrid(rs.getString("egrid"));
+                        ret.setNummer(rs.getString("nummer"));
+                        ret.setNbident(rs.getString("nbident"));
+                        ret.setArt(rs.getString("grundstuecksart"));
+                        int f=rs.getInt("gesamtflaechenmass");
+                        if(rs.wasNull()) {
+                            if(l_geometrie!=null) {
+                                f=rs.getInt("l_flaechenmass");
+                            }else if(s_geometrie!=null) {
+                                f=rs.getInt("s_flaechenmass");
+                            }else if(b_geometrie!=null) {
+                                f=rs.getInt("b_flaechenmass");
+                            }else {
+                                throw new IllegalStateException("no geometrie");
+                            }
+                        }
+                        ret.setFlaechenmas(f);
+                        return ret;
+                    }
+
+                    
+                },t_id);
         if(gslist==null || gslist.isEmpty()) {
             return null;
         }
@@ -1470,7 +1543,7 @@ public class AvController {
         }
         return null;
     }
-    private void setParcel(ExtractType extract, String egrid, Grundstueck parcel,Envelope bbox, boolean withGeometry,boolean withImages,int dpi) {
+    private void setRealEstateDPR(ExtractType extract, String egrid, Grundstueck parcel,Envelope bbox, boolean withGeometry,boolean withImages,int dpi) {
         
         RealEstateDPR gs = new  RealEstateDPR();
         gs.setEGRID(egrid);
@@ -1508,10 +1581,11 @@ public class AvController {
             gs.setLimit(geomGml);
         }
         
-        setToponym(gs,parcel.getGeometrie());
-        setLandCover(gs,parcel.getGeometrie());
-        setSingleObject(gs,parcel.getGeometrie());
-        setBuildingEntrance(gs);
+        getToponym(gs.getToponym(),parcel.getGeometrie());
+        getLandCover(gs.getLandCover(),gs.getBuilding(),parcel.getGeometrie());
+        getSingleObject(gs.getSingleObject(),gs.getBuilding(),parcel.getGeometrie());
+        getBuildingEntrance(gs.getBuilding());
+        setMutation(gs,parcel.getGeometrie(),withGeometry);
         
         {
             // Planausschnitt 174 * 99 mm
@@ -1581,12 +1655,35 @@ public class AvController {
         extract.setRealEstateDPR(gs);
         
     }
+    private ProjectedProperty getProjectedProperty(Grundstueck parcel,boolean withGeometry) {
+        
+    	ProjectedProperty gs = new  ProjectedProperty();
+        gs.setEGRID(parcel.getEgrid());
+        //final String nbident = parcel.getNbident();
+        //String canton=nbident.substring(0, 2);
+        //gs.setCanton(CantonCode.fromValue(canton));
+        //gs.setIdentDN(nbident);
+        gs.setNumber(parcel.getNummer());
+        gs.setNewParcelArea((int)parcel.getFlaechenmas());
+        String gsArt=parcel.getArt();
+        gs.setType(mapPropertyType(gsArt));
+        //gs.setMetadataOfGeographicalBaseData(value);
+        if(withGeometry) {
+            MultiSurfaceType geomGml=jts2xtf.createMultiSurfaceType(parcel.getGeometrie());
+            gs.setLimit(geomGml);
+        }
+        getLandCover(gs.getLandCover(),gs.getBuilding(),parcel.getGeometrie());
+        getSingleObject(gs.getSingleObject(),gs.getBuilding(),parcel.getGeometrie());
+        getBuildingEntrance(gs.getBuilding());
+        
+        return gs;
+    }
 
-	private void setBuildingEntrance(RealEstateDPR gs) {
+	private void getBuildingEntrance(List<Building> buildings) {
 		StringBuffer egidsCrit=new StringBuffer();
 		String sep="";
 		HashMap<Integer,Building> egids=new HashMap<Integer,Building>();
-		for(Building bb:gs.getBuilding()) {
+		for(Building bb:buildings) {
 			egidsCrit.append(sep);
 			egidsCrit.append(bb.getEGID());
 			egids.put(bb.getEGID(), bb);
@@ -1614,13 +1711,13 @@ public class AvController {
 					}
                 });
 	}
-	private void setSingleObject(RealEstateDPR gs, Geometry parcelGeometry) {
+	private void getSingleObject(List<SingleObject> bbs, List<Building> buildings,Geometry parcelGeometry) {
 		HashMap<Integer,Building> egids=new HashMap<Integer,Building>();
-		for(Building bb:gs.getBuilding()) {
+		for(Building bb:buildings) {
 			egids.put(bb.getEGID(), bb);
 		}
         byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
-        java.util.List<SingleObject> bbs=jdbcTemplate.query(
+        jdbcTemplate.query(
         		"SELECT a.einzelobjektart as eoart, geometrie, egid  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
         				" JOIN  ("+
         					" SELECT dmav_nzkt_vkt_nzlbjekt_flaechenelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_FLAECHE+" AS f WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
@@ -1629,9 +1726,9 @@ public class AvController {
         					" UNION ALL "+
         					" SELECT dmav_nzkt_vkt_nzlbjekt_punktelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_PUNKT+" AS p WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
         				" ) AS b ON a.t_id=b.parent WHERE a.objektstatus='real'"
-    			, new RowMapper<SingleObject>() {
+    			, new RowCallbackHandler() {
                     @Override
-                    public SingleObject mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    public void processRow(ResultSet rs) throws SQLException {
                     	SingleObject singleObject=new SingleObject();
                         singleObject.setType(mapSingleObjectType(rs.getString(1)));
                         int egid=rs.getInt(3);
@@ -1641,28 +1738,24 @@ public class AvController {
                         		Building building=new Building();
                             	building.setEGID(egid);
                         		egids.put(egid, building);
-                        		gs.getBuilding().add(building);
+                        		buildings.add(building);
                         	}
                         }
-                    	return singleObject;
+                    	bbs.add(singleObject);
                     }
                 },wkbGeometry,wkbGeometry,wkbGeometry);
-        for(SingleObject bb:bbs) {
-            gs.getSingleObject().add(bb);
-        }
-		
 	}
-	private void setLandCover(RealEstateDPR gs, Geometry parcelGeometry) {
+	private void getLandCover(java.util.List<LandCover> bbs, List<Building> buildings,Geometry parcelGeometry) {
 		HashMap<Integer,Building> egids=new HashMap<Integer,Building>();
-		for(Building bb:gs.getBuilding()) {
+		for(Building bb:buildings) {
 			egids.put(bb.getEGID(), bb);
 		}
         byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
-        java.util.List<LandCover> bbs=jdbcTemplate.query(
+        jdbcTemplate.query(
         		"SELECT ST_AsBinary(geometrie),bodenbedeckungsart,egid FROM "+getSchema()+"."+DMAV_BODENBEDECKUNG+" AS a "+" WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
-    			, new RowMapper<LandCover>() {
-                    @Override
-                    public LandCover mapRow(ResultSet rs, int rowNum) throws SQLException {
+    			, new RowCallbackHandler() {
+					@Override
+					public void processRow(ResultSet rs) throws SQLException {
                         byte flaecheWkb[]=rs.getBytes(1);
                         Polygon flaeche=null;
                         Geometry intersection=null;
@@ -1687,20 +1780,18 @@ public class AvController {
                                 	building.setEGID(egid);
                             		building.setAreaShare(landCover.getArea());
                             		building.setArea((int)Math.round(flaeche.getArea()));
-                            		gs.getBuilding().add(building);
+                            		buildings.add(building);
                             	}
                             }
-                        	return landCover;
+                            bbs.add(landCover);
+                        	return;
                         }
-                        return null;
-                    }
-                },wkbGeometry);
-        for(LandCover bb:bbs) {
-            gs.getLandCover().add(bb);
-        }
-		
+                        return;
+					}
+        		}
+                ,wkbGeometry);
 	}
-	private void setToponym(RealEstateDPR gs,Geometry parcelGeometry) {
+	private void getToponym(List<String> toponyms,Geometry parcelGeometry) {
 		byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
     	List<String> flurnamen=jdbcTemplate.query("SELECT aname FROM "+getSchema()+"."+DMAV_FLURNAME+" AS a WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
     			, new RowMapper<String>() {
@@ -1710,8 +1801,124 @@ public class AvController {
                     }
                 },wkbGeometry);
     	for(String flurname:flurnamen) {
-        	gs.getToponym().add(flurname);
+        	toponyms.add(flurname);
     	}
+	}
+	static private class MutationId {
+		@Override
+		public String toString() {
+			return "MutationId [nbident=" + nbident + ", identifikator=" + identifikator + "]";
+		}
+		@Override
+		public int hashCode() {
+			return Objects.hash(identifikator, nbident);
+		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			MutationId other = (MutationId) obj;
+			return Objects.equals(identifikator, other.identifikator) && Objects.equals(nbident, other.nbident);
+		}
+		public String getNbident() {
+			return nbident;
+		}
+		public String getIdentifikator() {
+			return identifikator;
+		}
+		public MutationId(String nbident, String identifikator) {
+			super();
+			this.nbident = nbident;
+			this.identifikator = identifikator;
+		}
+		private String nbident;
+		private String identifikator;
+	};
+	private void setMutation(RealEstateDPR realEstateDPR, Geometry parcelGeometry,boolean withGeometry) {
+        byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
+		
+        java.util.Map<MutationId,Mutation> mutationen=new java.util.HashMap<MutationId,Mutation>();
+        java.util.Map<MutationId,List<Long>> neueGs=new java.util.HashMap<MutationId,List<Long>>();
+        jdbcTemplate.query(
+                "SELECT g.t_id as t_id,egrid,g.nummer as nummer,g.nbident as nbident,grundstuecksart as type, " 
+                	+ "(SELECT 1 FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" AS subgs WHERE subgs.egrid=g.egrid AND subgs.entstehung=bis.t_id) as geaendert," // geaendert: 1=geaendert, null=geloescht 
+                + " von.nbident as von_nbident,von.identifikator as von_identifikator, bis.nbident as bis_nbident,bis.identifikator as bis_identifikator FROM "+getSchema()+"."+DMAV_GRUNDSTUECK+" AS g"
+                		+" JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS von ON g.entstehung=von.t_id"
+                		+" LEFT JOIN "+getSchema()+"."+DMAV_GS_NACHFUEHRUNG+" AS bis ON g.untergang=bis.t_id"
+                        +" LEFT JOIN (SELECT grundstueck as gs, geometrie FROM "+getSchema()+"."+DMAV_LIEGENSCHAFT
+                             +" UNION ALL SELECT grundstueck as gs,  geometrie FROM "+getSchema()+"."+DMAV_SELBSTRECHT
+                             +" UNION ALL SELECT grundstueck as gs,     geometrie FROM "+getSchema()+"."+DMAV_BERGWERK+") b ON b.gs=g.t_id"
+                             +" WHERE ST_DWithin(ST_GeomFromWKB(?,2056),b.geometrie,1.0)"
+                             +" AND ("
+	                             	// geloeschte (oder geaendert)
+	                                +" (von.grundbucheintrag IS NOT NULL"
+	                                +" AND bis.gueltigereintrag IS NOT NULL"
+	                                +" AND bis.grundbucheintrag IS NULL)"
+	                                // neue (oder geaendert)
+	                                +" OR (von.gueltigereintrag IS NOT NULL"
+	                                +" AND von.grundbucheintrag IS NULL"
+	                                +" AND bis.grundbucheintrag IS NULL)"
+                                +" )"
+                                
+                             +" ORDER BY COALESCE(bis.gueltigereintrag,von.gueltigereintrag),g.nbident,g.nummer"
+    			,new Object[] {wkbGeometry},new int[] {java.sql.Types.VARBINARY}, new org.springframework.jdbc.core.RowCallbackHandler() {
+					@Override
+					public void processRow(ResultSet rs) throws SQLException {
+						logger.debug(rs.getString("von_nbident")+", "+rs.getString("von_identifikator")+", "+rs.getString("bis_nbident")+", "+rs.getString("bis_identifikator")+", "+rs.getString("nbident")+", "+rs.getString("nummer")+", "+rs.getString("geaendert"));					
+						String bis_nbident=rs.getString("bis_nbident");
+						if(!rs.wasNull()) {
+							// wenn bis!=null ist es geloescht, ausser das gleiche grundstueck kommt nochmal, dann ist es  geaendert (das zweitemal ist der neue zustand)
+							String bis_identifikator=rs.getString("bis_identifikator");
+							String egrid=rs.getString("egrid");
+							long newRecordT_id=rs.getLong("geaendert");
+							if(rs.wasNull()) {
+								MutationId mutId=new MutationId(bis_nbident,bis_identifikator);
+								Mutation mut=mutationen.get(mutId);
+								if(mut==null) {
+									mut=new Mutation();
+									mut.setNBIdent(mutId.getNbident());
+									mut.setNummer(mutId.getIdentifikator());
+									mutationen.put(mutId, mut);
+									realEstateDPR.getMutation().add(mut);
+								}
+								mut.getDeletedParcel().add(egrid);
+							}
+						}else {
+							// wenn bis==null ist es neu oder der neue zustand eines vorher geloeschten records
+							String von_nbident=rs.getString("von_nbident");
+							String von_identifikator=rs.getString("von_identifikator");
+							long t_id=rs.getLong("t_id");
+							MutationId mutId=new MutationId(von_nbident,von_identifikator);
+							if(!mutationen.containsKey(mutId)) {
+								Mutation mut=new Mutation();
+								mut.setNBIdent(mutId.getNbident());
+								mut.setNummer(mutId.getIdentifikator());
+								mutationen.put(mutId, mut);
+								realEstateDPR.getMutation().add(mut);
+							}
+							List<Long> t_ids=neueGs.get(mutId);
+							if(t_ids==null) {
+								t_ids=new java.util.ArrayList<Long>();
+								neueGs.put(mutId,t_ids);
+							}
+							t_ids.add(t_id);
+						}
+					}
+                });
+        for(Mutation mut:realEstateDPR.getMutation()) {
+        	MutationId mutId=new MutationId(mut.getNBIdent(),mut.getNummer());
+        	if(neueGs.containsKey(mutId)) {
+        		for(long t_id:neueGs.get(mutId)) {
+        			Grundstueck gs=getParcelByT_Id(t_id);
+        			ProjectedProperty pp=getProjectedProperty(gs,withGeometry);
+        			mut.getProjectedProperty().add(pp);
+        		}
+        	}
+        }
 	}
 	private Envelope getMapBBOX(Geometry parcelGeom) {
         Envelope bbox = parcelGeom.getEnvelopeInternal();

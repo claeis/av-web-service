@@ -220,6 +220,27 @@
 				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
 				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
 				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
+				<DMAV_Grundstuecke_V1_1:Untergang ili:ref="1fc82de1-fa5e-4e4f-b2d2-e28be561d3f3"/>
+			</DMAV_Grundstuecke_V1_1:Grundstueck>
+			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="279fa0ca-e13b-4a79-9583-14a574e59614"> <!-- geaendert pendent -->
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Nummer>401</DMAV_Grundstuecke_V1_1:Nummer>
+				<DMAV_Grundstuecke_V1_1:EGRID>CH710605328767</DMAV_Grundstuecke_V1_1:EGRID>
+				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>true</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1fc82de1-fa5e-4e4f-b2d2-e28be561d3f3"/>
+			</DMAV_Grundstuecke_V1_1:Grundstueck>
+			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="6a0af0c2-701c-4f93-9094-93ea3bee9835"> <!-- neu pendent -->
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Nummer>404</DMAV_Grundstuecke_V1_1:Nummer>
+				<DMAV_Grundstuecke_V1_1:EGRID>CH287822167756</DMAV_Grundstuecke_V1_1:EGRID>
+				<DMAV_Grundstuecke_V1_1:IstStreitig>false</DMAV_Grundstuecke_V1_1:IstStreitig>
+				<DMAV_Grundstuecke_V1_1:IstVollstaendig>true</DMAV_Grundstuecke_V1_1:IstVollstaendig>
+				<DMAV_Grundstuecke_V1_1:Grundstuecksart>Liegenschaft</DMAV_Grundstuecke_V1_1:Grundstuecksart>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1fc82de1-fa5e-4e4f-b2d2-e28be561d3f3"/>
 			</DMAV_Grundstuecke_V1_1:Grundstueck>
 			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="e24ce569-8dfe-4392-8e0d-27e7b4f92d9c">
 				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
@@ -230,6 +251,7 @@
 				<DMAV_Grundstuecke_V1_1:Grundstuecksart>SelbstaendigesDauerndesRecht</DMAV_Grundstuecke_V1_1:Grundstuecksart>
 				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
 				<DMAV_Grundstuecke_V1_1:Entstehung ili:ref="1881db74-fc8b-4d88-8535-c6ce6be33435"/>
+				<DMAV_Grundstuecke_V1_1:Untergang ili:ref="8d27b1fc-a56c-4375-8f84-d3013970977a"/> <!-- loeschung pendent -->
 			</DMAV_Grundstuecke_V1_1:Grundstueck>
 			<DMAV_Grundstuecke_V1_1:Grundstueck ili:tid="9f8eafb3-c67b-4f1b-9c62-d082969c7d4b">
 				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
@@ -291,6 +313,13 @@
 			<DMAV_Grundstuecke_V1_1:GSNachfuehrung ili:tid="1fc82de1-fa5e-4e4f-b2d2-e28be561d3f3">
 				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
 				<DMAV_Grundstuecke_V1_1:Identifikator>3</DMAV_Grundstuecke_V1_1:Identifikator>
+				<DMAV_Grundstuecke_V1_1:Beschreibung>gb eintrag pendent</DMAV_Grundstuecke_V1_1:Beschreibung>
+				<DMAV_Grundstuecke_V1_1:Mutationsart>Normal</DMAV_Grundstuecke_V1_1:Mutationsart>
+				<DMAV_Grundstuecke_V1_1:GueltigerEintrag>2003-01-31T00:00:00</DMAV_Grundstuecke_V1_1:GueltigerEintrag>
+			</DMAV_Grundstuecke_V1_1:GSNachfuehrung>
+			<DMAV_Grundstuecke_V1_1:GSNachfuehrung ili:tid="8d27b1fc-a56c-4375-8f84-d3013970977a">
+				<DMAV_Grundstuecke_V1_1:NBIdent>SO0200002498</DMAV_Grundstuecke_V1_1:NBIdent>
+				<DMAV_Grundstuecke_V1_1:Identifikator>4</DMAV_Grundstuecke_V1_1:Identifikator>
 				<DMAV_Grundstuecke_V1_1:Beschreibung>gb eintrag pendent</DMAV_Grundstuecke_V1_1:Beschreibung>
 				<DMAV_Grundstuecke_V1_1:Mutationsart>Normal</DMAV_Grundstuecke_V1_1:Mutationsart>
 				<DMAV_Grundstuecke_V1_1:GueltigerEintrag>2003-01-31T00:00:00</DMAV_Grundstuecke_V1_1:GueltigerEintrag>
@@ -393,6 +422,74 @@
 				<DMAV_Grundstuecke_V1_1:Flaechenmass>27370</DMAV_Grundstuecke_V1_1:Flaechenmass>
 				<DMAV_Grundstuecke_V1_1:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_1:Qualitaetsstandard>
 				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="ef73f3b0-4e25-4556-9048-fe202fa63561"/>
+			</DMAV_Grundstuecke_V1_1:Liegenschaft>
+			<DMAV_Grundstuecke_V1_1:Liegenschaft ili:tid="e291c021-3798-45b1-9106-f4c8dd0a3822"> <!-- geaendert pendent -->
+				<DMAV_Grundstuecke_V1_1:Geometrie>
+					<geom:surface>
+						<geom:exterior>
+							<geom:polyline>
+								<geom:coord>
+									<geom:c1>2638370.0</geom:c1>
+									<geom:c2>1251420.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638370.0</geom:c1>
+									<geom:c2>1251440.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638390.0</geom:c1>
+									<geom:c2>1251440.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638390.0</geom:c1>
+									<geom:c2>1251420.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638370.0</geom:c1>
+									<geom:c2>1251420.0</geom:c2>
+								</geom:coord>
+							</geom:polyline>
+						</geom:exterior>
+					</geom:surface>
+				</DMAV_Grundstuecke_V1_1:Geometrie>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Flaechenmass>27370</DMAV_Grundstuecke_V1_1:Flaechenmass>
+				<DMAV_Grundstuecke_V1_1:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_1:Qualitaetsstandard>
+				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="279fa0ca-e13b-4a79-9583-14a574e59614"/>
+			</DMAV_Grundstuecke_V1_1:Liegenschaft>
+			<DMAV_Grundstuecke_V1_1:Liegenschaft ili:tid="842d33ea-8e5f-4ee8-a680-ee5276144657"> <!-- neu pendent -->
+				<DMAV_Grundstuecke_V1_1:Geometrie>
+					<geom:surface>
+						<geom:exterior>
+							<geom:polyline>
+								<geom:coord>
+									<geom:c1>2638390.0</geom:c1>
+									<geom:c2>1251440.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638400.0</geom:c1>
+									<geom:c2>1251440.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638400.0</geom:c1>
+									<geom:c2>1251420.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638390.0</geom:c1>
+									<geom:c2>1251420.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638390.0</geom:c1>
+									<geom:c2>1251440.0</geom:c2>
+								</geom:coord>
+							</geom:polyline>
+						</geom:exterior>
+					</geom:surface>
+				</DMAV_Grundstuecke_V1_1:Geometrie>
+				<DMAV_Grundstuecke_V1_1:Fiktiv>false</DMAV_Grundstuecke_V1_1:Fiktiv>
+				<DMAV_Grundstuecke_V1_1:Flaechenmass>27370</DMAV_Grundstuecke_V1_1:Flaechenmass>
+				<DMAV_Grundstuecke_V1_1:Qualitaetsstandard>AV93</DMAV_Grundstuecke_V1_1:Qualitaetsstandard>
+				<DMAV_Grundstuecke_V1_1:Grundstueck ili:ref="6a0af0c2-701c-4f93-9094-93ea3bee9835"/>
 			</DMAV_Grundstuecke_V1_1:Liegenschaft>
 			<DMAV_Grundstuecke_V1_1:Liegenschaft ili:tid="1f651707-b686-4aee-8f39-3d1747faa114">
 				<DMAV_Grundstuecke_V1_1:Geometrie>
