@@ -1,5 +1,4 @@
 plugins {
-    //id 'org.springframework.boot' version '2.7.1'
     id 'org.springframework.boot' version '3.5.9'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'java-library'
@@ -95,6 +94,13 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'US-ASCII'
 }
 
+tasks.named("bootJar") {
+	archiveClassifier = 'boot'
+}
+
+tasks.named("jar") {
+	archiveClassifier = ''
+}
 sourceSets {
     main {
     	output.dir(generatedResources, builtBy: 'generateMyResources')
@@ -169,8 +175,11 @@ test {
 
 publishing {
 	publications {
-        maven(MavenPublication) {
-            artifact jar
+        jar(MavenPublication) {
+            from components.java // Erzeugt POM mit Dependencies
+        }
+        bootJar(MavenPublication) {
+            artifact tasks.named("bootJar")
         }
     }
     repositories {
