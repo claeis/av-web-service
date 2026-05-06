@@ -608,9 +608,9 @@
       <xsd:element name="LandCover" type="LandCover" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="Mutation" type="Mutation" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="Ownership" type="Ownership" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="PlanForLandRegister" type="Map"/>
-      <xsd:element name="PlanForLandRegisterMainPage" type="Map"/>
-      <xsd:element name="PlanForSituation" type="Map"/>
+      <xsd:element name="PlanForMainPage" type="Map"/>
+      <xsd:element name="PlanForLandDescription" type="Map"/>
+      <xsd:element name="PlanForProjectedObjects" type="Map"/>
       <xsd:element name="ResponsibleOffice" type="Office"/>
       <xsd:element name="SingleObject" type="SingleObject" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="covers" type="BaseRealEstate" minOccurs="0" maxOccurs="unbounded"/>

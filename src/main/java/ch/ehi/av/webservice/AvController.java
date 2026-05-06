@@ -197,12 +197,12 @@ public class AvController {
     @Value("${avws.dpi:300}")
     private int defaultMapDpi;
     
-    @Value("${avws.planForLandregisterMainPage}")
-    private String avPlanForLandregisterMainPage;
-    @Value("${avws.planForLandregister}")
-    private String avPlanForLandregister;
-    @Value("${avws.planForSituation}")
-    private String avPlanForSituation;
+    @Value("${avws.planForMainPage}")
+    private String avPlanForMainPage;
+    @Value("${avws.planForProjectedObjects}")
+    private String avPlanForProjectedObjects;
+    @Value("${avws.planForLandDescription}")
+    private String avPlanForLandDescription;
     
     @Value("${avws.subUnitOfLandRegisterDesignation}")
     private String subUnitOfLandRegisterDesignation;
@@ -1589,51 +1589,51 @@ public class AvController {
         
         {
             // Planausschnitt 174 * 99 mm
-        	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForLandregister=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
-            String fixedWmsUrl = getWmsUrl(bbox, avPlanForLandregister,dpi);
-            planForLandregister.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
-            gs.setPlanForLandRegister(planForLandregister);
+        	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForMainPage=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
+            String fixedWmsUrl = getWmsUrl(bbox, avPlanForMainPage,dpi);
+            planForMainPage.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
+            gs.setPlanForMainPage(planForMainPage);
             if(withImages) {
                 try {
-                    planForLandregister.setImage(createMultilingualBlob(getWmsImage(fixedWmsUrl)));
+                    planForMainPage.setImage(createMultilingualBlob(getWmsImage(fixedWmsUrl)));
                 } catch (IOException | URISyntaxException e) {
                     logger.error("failed to get wms image",e);
-                    planForLandregister.setImage(createMultilingualBlob(minimalImage));
+                    planForMainPage.setImage(createMultilingualBlob(minimalImage));
                 }
             }
-            setMapBBOX(planForLandregister,bbox);
+            setMapBBOX(planForMainPage,bbox);
         }
         {
             // Planausschnitt 174 * 99 mm
-        	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForLandregisterMainPage=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
-            String fixedWmsUrl = getWmsUrl(bbox, avPlanForLandregisterMainPage,dpi);
-            planForLandregisterMainPage.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
-            gs.setPlanForLandRegisterMainPage(planForLandregisterMainPage);
+        	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForLandDescription=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
+            String fixedWmsUrl = getWmsUrl(bbox, avPlanForLandDescription,dpi);
+            planForLandDescription.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
+            gs.setPlanForLandDescription(planForLandDescription);
             if(withImages) {
                 try {
-                    planForLandregisterMainPage.setImage(createMultilingualBlob(getWmsImage(fixedWmsUrl)));
+                    planForLandDescription.setImage(createMultilingualBlob(getWmsImage(fixedWmsUrl)));
                 } catch (IOException | URISyntaxException e) {
                     logger.error("failed to get wms image",e);
-                    planForLandregisterMainPage.setImage(createMultilingualBlob(minimalImage));
+                    planForLandDescription.setImage(createMultilingualBlob(minimalImage));
                 }
             }
-            setMapBBOX(planForLandregisterMainPage,bbox);
+            setMapBBOX(planForLandDescription,bbox);
         }
         {
             // Planausschnitt 174 * 99 mm
-        	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForSituation=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
-            String fixedWmsUrl = getWmsUrl(bbox, avPlanForSituation,dpi);
-            planForSituation.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
-            gs.setPlanForSituation(planForSituation);
+        	ch.ehi.av.webservice.jaxb.extractdata._1_0.Map planForProjectedObjects=new ch.ehi.av.webservice.jaxb.extractdata._1_0.Map();
+            String fixedWmsUrl = getWmsUrl(bbox, avPlanForProjectedObjects,dpi);
+            planForProjectedObjects.setReferenceWMS(createMultilingualUri(fixedWmsUrl));
+            gs.setPlanForProjectedObjects(planForProjectedObjects);
             if(withImages) {
                 try {
-                    planForSituation.setImage(createMultilingualBlob(getWmsImage(fixedWmsUrl)));
+                    planForProjectedObjects.setImage(createMultilingualBlob(getWmsImage(fixedWmsUrl)));
                 } catch (IOException | URISyntaxException e) {
                     logger.error("failed to get wms image",e);
-                    planForSituation.setImage(createMultilingualBlob(minimalImage));
+                    planForProjectedObjects.setImage(createMultilingualBlob(minimalImage));
                 }
             }
-            setMapBBOX(planForSituation,bbox);
+            setMapBBOX(planForProjectedObjects,bbox);
         } 
         {
             // Geometer
