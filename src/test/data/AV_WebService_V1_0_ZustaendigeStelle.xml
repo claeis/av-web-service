@@ -30,10 +30,12 @@
 			<AV_WebService_V1_0:ZustaendigeStelle ili:tid="o2498">
 				<AV_WebService_V1_0:NBIdent>SO0200002498</AV_WebService_V1_0:NBIdent>
 				<AV_WebService_V1_0:AV>https://www.agi.so.ch</AV_WebService_V1_0:AV>
+				<AV_WebService_V1_0:GB>http://geo.so.ch/standortkarte/index.html?egid=376404</AV_WebService_V1_0:GB>
 			</AV_WebService_V1_0:ZustaendigeStelle>
 			<AV_WebService_V1_0:ZustaendigeStelle ili:tid="o2500">
 				<AV_WebService_V1_0:NBIdent>SO0200002500</AV_WebService_V1_0:NBIdent>
 				<AV_WebService_V1_0:AV>https://www.agi.so.ch</AV_WebService_V1_0:AV>
+				<AV_WebService_V1_0:GB>http://geo.so.ch/standortkarte/index.html?egid=376404</AV_WebService_V1_0:GB>
 			</AV_WebService_V1_0:ZustaendigeStelle>
 		
           </AV_WebService_V1_0:Konfiguration>

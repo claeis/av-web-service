@@ -53,6 +53,34 @@
 				<AV_WebService_V1_0:Ort>Solothurn</AV_WebService_V1_0:Ort>
 			</AV_WebService_V1_0:Amt>
 		
+			
+
+			<AV_WebService_V1_0:Amt ili:tid="ch.so.gb.376404">
+				<AV_WebService_V1_0:Name>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>Amtschreiberei Olten-Gösgen</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+              </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+				</AV_WebService_V1_0:Name>
+				<AV_WebService_V1_0:AmtImWeb>
+          <LocalisationCH_V2:MultilingualUri>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedUri>
+                <Localisation_V2:Text>http://geo.so.ch/standortkarte/index.html?egid=376404</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedUri>
+              </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualUri>
+				</AV_WebService_V1_0:AmtImWeb>
+				<AV_WebService_V1_0:Strasse>Amthausquai</AV_WebService_V1_0:Strasse>
+				<AV_WebService_V1_0:Hausnr>23</AV_WebService_V1_0:Hausnr>
+				<AV_WebService_V1_0:PLZ>4601</AV_WebService_V1_0:PLZ>
+				<AV_WebService_V1_0:Ort>Olten</AV_WebService_V1_0:Ort>
+			</AV_WebService_V1_0:Amt>
+
           </AV_WebService_V1_0:Konfiguration>
 	</ili:datasection>
 </ili:transfer>

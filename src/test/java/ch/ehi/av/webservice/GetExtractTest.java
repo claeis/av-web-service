@@ -35,6 +35,7 @@ import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCover;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverTypeCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Mutation;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.Office;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyTypeCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.SingleObject;
@@ -284,6 +285,12 @@ public class GetExtractTest {
             	Assert.assertEquals("CH580632068782",mut.getDeletedParcel().get(0));
             	Assert.assertEquals(0,mut.getProjectedProperty().size());
             }
+        }
+        { //LandRegisterOffice
+            Office lrOffice=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getLandRegisterOffice();
+        	Assert.assertEquals("Amthausquai",lrOffice.getStreet());
+        	Assert.assertEquals("4601",lrOffice.getPostalCode());
+        	
         }
     }
     @Test

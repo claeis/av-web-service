@@ -1636,20 +1636,30 @@ public class AvController {
             setMapBBOX(planForProjectedObjects,bbox);
         } 
         {
-            // Geometer
-        	String geometerUri=null;
-        	Office office = new Office();
-            office.setName(createMultilingualTextType("Geometer"));
+            // Geometer, GB
+        	Map<String,Object> uris=null;
             try {
-                geometerUri=jdbcTemplate.queryForObject(
-                        "SELECT av FROM "+getSchema()+"."+AV_WBSRVC_V1_0KONFIGURATION_ZUSTAENDIGESTELLE+" WHERE nbident=?",String.class,nbident);
+                uris=jdbcTemplate.queryForMap(
+                        "SELECT av,gb FROM "+getSchema()+"."+AV_WBSRVC_V1_0KONFIGURATION_ZUSTAENDIGESTELLE+" WHERE nbident=?",nbident);
             }catch(EmptyResultDataAccessException ex) {
                 logger.error("failed to get geometer of nbident {}",nbident);
             }
-            office.setOfficeAtWeb(createMultilingualUri(geometerUri));
+            {
+            	Office geometerOffice = new Office();
+                geometerOffice.setName(createMultilingualTextType("Geometer"));
+                geometerOffice.setOfficeAtWeb(createMultilingualUri((String)uris.get("av")));
 
-            setOffice(office);
-            gs.setResponsibleOffice(office);
+                setOffice(geometerOffice);
+                gs.setResponsibleOffice(geometerOffice);
+            }
+            {
+            	Office gbOffice = new Office();
+                gbOffice.setName(createMultilingualTextType("Grundbuch"));
+                gbOffice.setOfficeAtWeb(createMultilingualUri((String)uris.get("gb")));
+
+                setOffice(gbOffice);
+                gs.setLandRegisterOffice(gbOffice);
+            }
         }
         
         extract.setRealEstateDPR(gs);

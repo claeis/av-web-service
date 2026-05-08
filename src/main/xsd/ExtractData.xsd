@@ -485,7 +485,7 @@
           </xsd:restriction>
         </xsd:simpleType>
       </xsd:element>
-      <xsd:element name="SubUnitOfLandregister" minOccurs="0">
+      <xsd:element name="SubUnitOfLandRegister" minOccurs="0">
         <xsd:simpleType>
           <xsd:restriction base="xsd:normalizedString">
             <xsd:maxLength value="80"/>
@@ -537,8 +537,6 @@
           </xsd:choice>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="Disclaimer" type="Disclaimer"/>
-      <xsd:element name="ResponsibleOffice" type="Office"/>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -612,6 +610,8 @@
       <xsd:element name="PlanForLandDescription" type="Map"/>
       <xsd:element name="PlanForProjectedObjects" type="Map"/>
       <xsd:element name="ResponsibleOffice" type="Office"/>
+      <xsd:element name="OwnershipDisclaimer" type="Disclaimer" minOccurs="0"/>
+      <xsd:element name="LandRegisterOffice" type="Office"/>
       <xsd:element name="SingleObject" type="SingleObject" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="covers" type="BaseRealEstate" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element ref="extensions" minOccurs="0"/>
