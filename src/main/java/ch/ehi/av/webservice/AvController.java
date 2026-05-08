@@ -1778,7 +1778,8 @@ public class AvController {
                             //intersection=geomFactory.createPolygon((Coordinate[])null);
                             LandCover landCover=new LandCover();
                             landCover.setType(mapLandCoverType(rs.getString(2)));
-                            landCover.setArea((int)Math.round(intersection.getArea()));
+                    		landCover.setArea((int)Math.round(flaeche.getArea()));
+                            landCover.setAreaShare((int)Math.round(intersection.getArea()));
                             int egid=rs.getInt(3);
                             if(!rs.wasNull()) {
                             	landCover.setEGID(egid);
@@ -1786,8 +1787,6 @@ public class AvController {
                             		Building building=new Building();
                             		egids.put(egid, building);
                                 	building.setEGID(egid);
-                            		building.setAreaShare(landCover.getArea());
-                            		building.setArea((int)Math.round(flaeche.getArea()));
                             		buildings.add(building);
                             	}
                             }

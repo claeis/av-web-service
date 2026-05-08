@@ -248,6 +248,7 @@ public class GetExtractTest {
             LandCover landcover=landcovers.get(0);
         	Assert.assertEquals(LandCoverTypeCode.VEGETATED_ARABLE_MEADOW_PASTURE,landcover.getType().getCode());
         	Assert.assertEquals(600,landcover.getArea());
+        	Assert.assertEquals(600,landcover.getAreaShare());
         	Assert.assertEquals(Integer.valueOf(1701805),landcover.getEGID());
         }
         {
