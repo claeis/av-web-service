@@ -188,8 +188,6 @@ public class AvController {
     private String cadastreAuthorityUrl;
     @Value("${avws.webAppUrl}")
     private String webAppUrl;
-    @Value("${avws.canton:Solothurn}")
-    private String plrCanton;
     @Value("${avws.tmpdir:${java.io.tmpdir}}")
     private String oerebTmpdir;
     @Value("${avws.minIntersection:0.001}")
