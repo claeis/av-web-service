@@ -18,6 +18,9 @@ repositories {
     maven {
         url="https://jars.interlis.ch"
     }
+    maven {
+        url="https://jars.sogeo.services/snapshots/"
+    }
 }
 
 // to get the latest SNAPSHOT uncomment the following lines
@@ -64,6 +67,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework:spring-oxm'
     implementation 'org.postgresql:postgresql'
+    implementation 'ch.so.agi:pdf4av:0.0.1+'
     
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     

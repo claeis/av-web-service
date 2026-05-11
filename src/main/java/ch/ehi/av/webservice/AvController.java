@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TimeZone;
@@ -28,6 +29,7 @@ import java.util.Base64;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -98,6 +100,7 @@ import ch.ehi.av.webservice.jaxb.geometry._1_0.MultiSurfaceType;
 import ch.ehi.av.webservice.jaxb.versioning._1_0.GetVersionsResponse;
 import ch.ehi.av.webservice.jaxb.versioning._1_0.GetVersionsResponseType;
 import ch.ehi.av.webservice.jaxb.versioning._1_0.VersionType;
+import ch.so.agi.av.webservice.ConversionResult;
 // http://localhost:8080/extract/reduced/xml/geometry/CH693289470668
 
 
@@ -177,8 +180,8 @@ public class AvController {
     @Autowired
     Jaxb2Marshaller marshaller;
     
-    //@Autowired
-    //ch.so.agi.oereb.pdf4oereb.Converter extractXml2pdf;
+    @Autowired
+    ch.so.agi.av.webservice.PdfConverter extractXml2pdf;
     
     @Value("${spring.datasource.url}")
     private String dburl;
@@ -189,7 +192,7 @@ public class AvController {
     @Value("${avws.webAppUrl}")
     private String webAppUrl;
     @Value("${avws.tmpdir:${java.io.tmpdir}}")
-    private String oerebTmpdir;
+    private String avwsTmpdir;
     @Value("${avws.minIntersection:0.001}")
     private double minIntersection;
     @Value("${avws.dpi:300}")
@@ -714,27 +717,24 @@ public class AvController {
     }
     
     private ResponseEntity<?> createExtractAsPdf(Grundstueck parcel, GetExtractByIdResponse responseEle) {
-        java.io.File tmpFolder=new java.io.File(oerebTmpdir,TMP_FOLDER_PREFIX+Thread.currentThread().getId());
+        java.io.File tmpFolder=new java.io.File(avwsTmpdir,TMP_FOLDER_PREFIX+Thread.currentThread().getId());
         if(!tmpFolder.exists()) {
             tmpFolder.mkdirs();
         }
         logger.info("tmpFolder {}",tmpFolder.getAbsolutePath());
         java.io.File tmpExtractFile=new java.io.File(tmpFolder,parcel.getEgrid()+FILE_EXT_XML);
         marshaller.marshal(responseEle,new javax.xml.transform.stream.StreamResult(tmpExtractFile));
-        throw new IllegalStateException();
-/*        try {
-            java.io.File pdfFile=extractXml2pdf.runXml2Pdf(tmpExtractFile.getAbsolutePath(), tmpFolder.getAbsolutePath(), Locale.DE);
-            pdfFile.getName();
-            java.io.InputStream is = new java.io.FileInputStream(pdfFile);
-            return ResponseEntity
-                    .ok().header("content-disposition", "attachment; filename=" + pdfFile.getName())
-                    .contentLength(pdfFile.length())
-                    .contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(is));                
-        } catch (ConverterException e) {
-            throw new IllegalStateException(e);
-        } catch (FileNotFoundException e) {
-            throw new IllegalStateException(e);
-        } */
+            try {
+                ConversionResult result=extractXml2pdf.xmlToPdf(tmpExtractFile.toPath(), tmpFolder.toPath(), Locale.GERMAN);
+                java.nio.file.Path pdfFile=result.outputFile();
+                java.io.InputStream is = java.nio.file.Files.newInputStream(pdfFile);
+				return ResponseEntity
+				        .ok().header("content-disposition", "attachment; filename=" + pdfFile.getFileName())
+				        .contentLength(java.nio.file.Files.size(pdfFile))
+				        .contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(is));
+			} catch (IOException e) {
+	            throw new IllegalStateException(e);
+			}                
     }    
     private Extract createExtract(String egrid, Grundstueck parcel, java.sql.Date basedataDate,boolean withGeometry, boolean withImages,int dpi) {
         ExtractType extract=new ExtractType();
@@ -2068,7 +2068,7 @@ public class AvController {
     
     @Scheduled(cron="0 * * * * *")
     private void cleanUp() {    
-        java.io.File[] tmpDirs = new java.io.File(oerebTmpdir).listFiles();
+        java.io.File[] tmpDirs = new java.io.File(avwsTmpdir).listFiles();
         if(tmpDirs!=null) {
             for (java.io.File tmpDir : tmpDirs) {
                 if (tmpDir.getName().startsWith(TMP_FOLDER_PREFIX)) {

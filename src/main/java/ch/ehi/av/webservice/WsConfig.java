@@ -38,8 +38,8 @@ public class WsConfig {
         marshaller.setLazyInit(true);
         return marshaller;
     }
-    //@Bean 
-    //public ch.so.agi.oereb.pdf4oereb.Converter createExtractXml2pdfConverter(){
-    //    return new ch.so.agi.oereb.pdf4oereb.Converter();
-    //}
+    @Bean 
+    public ch.so.agi.av.webservice.PdfConverter createExtractXml2pdfConverter(){
+        return new ch.so.agi.av.webservice.DefaultPdfConverter();
+    }
 }
