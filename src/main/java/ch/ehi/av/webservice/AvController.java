@@ -88,6 +88,8 @@ import ch.ehi.av.webservice.jaxb.extractdata._1_0.MultilingualMText;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.MultilingualText;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.MultilingualUri;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Mutation;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.ObjectStatus;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.ObjectStatusCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Office;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.ProjectedProperty;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyType;
@@ -107,7 +109,7 @@ import ch.so.agi.av.webservice.ConversionResult;
 @Controller
 public class AvController {
     
-    private static final String LOCALISATION_V2_LOCALISEDBLOB = "localisation_v2_localisedblob";
+	private static final String LOCALISATION_V2_LOCALISEDBLOB = "localisation_v2_localisedblob";
 	private static final String LOCALISATION_V2_MULTILINGUALBLOB = "localisation_v2_multilingualblob";
 	private static final String AV_WBSRVC_V1_0KONFIGURATION_LOGO = "av_wbsrvc_v1_0konfiguration_logo";
 	private static final String AV_WBSRVC_V1_0KONFIGURATION_INFORMATION = "av_wbsrvc_v1_0konfiguration_information";
@@ -118,6 +120,7 @@ public class AvController {
 	private static final String DMKONFIG_GRUNDSTUECKSARTTXT = "av_wbsrvc_v1_0konfiguration_grundstuecksarttxt";
 	private static final String DMKONFIG_BODENBEDECKUNGSARTTXT = "av_wbsrvc_v1_0konfiguration_bodenbedeckungsarttxt";
 	private static final String DMKONFIG_EINZELOBJEKTARTTXT = "av_wbsrvc_v1_0konfiguration_einzelobjektarttxt";
+    private static final String DMKONFIG_OBJEKTSTATUSTXT = "av_wbsrvc_v1_0konfiguration_objektstatustxt";
 	private static final String DMADDR_STN = "offclndss_v2_2officlndxfddrsses_stn";
 	private static final String DMADDR_ZIP = "offclndss_v2_2officlndxfddrsses_zip";
 	private static final String DMADDR_ADDRESS = "offclndss_v2_2officlndxfddrsses_address";
@@ -1541,6 +1544,35 @@ public class AvController {
         }
         return null;
     }
+    private HashMap<String,ObjectStatus> objectStatusv=null;
+    private ObjectStatus mapObjectStatus(String gsArt) {
+        if(objectStatusv==null) {
+        	objectStatusv=new HashMap<String,ObjectStatus>();
+            java.util.List<java.util.Map<String,Object>> baseData=jdbcTemplate.queryForList(
+                    "SELECT acode,titel_de,titel_fr,titel_it,titel_rm,titel_en FROM "+getSchema()+"."+DMKONFIG_OBJEKTSTATUSTXT);
+            for(java.util.Map<String,Object> rs:baseData) {
+                MultilingualText codeTxt=createMultilingualTextType((String)rs.get("titel_de"));
+                ObjectStatus status=new ObjectStatus();
+                status.setText(codeTxt);
+                final String code = (String)rs.get("acode");
+                if("projektiert".equals(code)) {
+                    status.setCode(ObjectStatusCode.PLANNED);
+                }else if("real".equals(code)) {
+                    status.setCode(ObjectStatusCode.ACTUAL);
+                }else if("vergangen".equals(code)) {
+                    status.setCode(ObjectStatusCode.PAST);
+                }else {
+                    throw new IllegalStateException("unknown code '"+code+"'");
+                }
+                objectStatusv.put(code,status);
+            }
+        }
+        if(gsArt!=null) {
+            return objectStatusv.get(gsArt);
+        }
+        return null;
+    }
+    
     private void setRealEstateDPR(ExtractType extract, String egrid, Grundstueck parcel,Envelope bbox, boolean withGeometry,boolean withImages,int dpi) {
         
         RealEstateDPR gs = new  RealEstateDPR();
@@ -1726,7 +1758,7 @@ public class AvController {
 		}
         byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
         jdbcTemplate.query(
-        		"SELECT a.einzelobjektart as eoart, geometrie, egid  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
+        		"SELECT a.einzelobjektart as eoart, geometrie, egid, objektstatus  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
         				" JOIN  ("+
         					" SELECT dmav_nzkt_vkt_nzlbjekt_flaechenelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_FLAECHE+" AS f WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
         					" UNION ALL "+
@@ -1739,6 +1771,7 @@ public class AvController {
                     public void processRow(ResultSet rs) throws SQLException {
                     	SingleObject singleObject=new SingleObject();
                         singleObject.setType(mapSingleObjectType(rs.getString(1)));
+                        singleObject.setObjectstatus(mapObjectStatus(rs.getString(4)));
                         int egid=rs.getInt(3);
                         if(!rs.wasNull()) {
                         	singleObject.setEGID(egid);
@@ -1760,7 +1793,7 @@ public class AvController {
 		}
         byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
         jdbcTemplate.query(
-        		"SELECT ST_AsBinary(geometrie),bodenbedeckungsart,egid FROM "+getSchema()+"."+DMAV_BODENBEDECKUNG+" AS a "+" WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
+        		"SELECT ST_AsBinary(geometrie),bodenbedeckungsart,egid,objektstatus FROM "+getSchema()+"."+DMAV_BODENBEDECKUNG+" AS a "+" WHERE a.fiktiv=false AND ST_Intersects(ST_GeomFromWKB(?,2056),a.geometrie)"
     			, new RowCallbackHandler() {
 					@Override
 					public void processRow(ResultSet rs) throws SQLException {
@@ -1778,6 +1811,7 @@ public class AvController {
                             //intersection=geomFactory.createPolygon((Coordinate[])null);
                             LandCover landCover=new LandCover();
                             landCover.setType(mapLandCoverType(rs.getString(2)));
+                            landCover.setObjectstatus(mapObjectStatus(rs.getString(4)));
                     		landCover.setArea((int)Math.round(flaeche.getArea()));
                             landCover.setAreaShare((int)Math.round(intersection.getArea()));
                             int egid=rs.getInt(3);

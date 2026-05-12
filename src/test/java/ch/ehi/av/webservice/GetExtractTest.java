@@ -35,6 +35,7 @@ import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCover;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.LandCoverTypeCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Mutation;
+import ch.ehi.av.webservice.jaxb.extractdata._1_0.ObjectStatusCode;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.Office;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyType;
 import ch.ehi.av.webservice.jaxb.extractdata._1_0.PropertyTypeCode;
@@ -247,6 +248,7 @@ public class GetExtractTest {
             Assert.assertEquals(1,landcovers.size());
             LandCover landcover=landcovers.get(0);
         	Assert.assertEquals(LandCoverTypeCode.VEGETATED_ARABLE_MEADOW_PASTURE,landcover.getType().getCode());
+        	Assert.assertEquals(ObjectStatusCode.ACTUAL,landcover.getObjectstatus().getCode());
         	Assert.assertEquals(600,landcover.getArea());
         	Assert.assertEquals(600,landcover.getAreaShare());
         	Assert.assertEquals(Integer.valueOf(1701805),landcover.getEGID());
@@ -256,6 +258,7 @@ public class GetExtractTest {
             Assert.assertEquals(3,singleobjects.size());
             SingleObject singleobject=singleobjects.get(0);
         	Assert.assertEquals(SingleObjectTypeCode.WALL,singleobject.getType().getCode());
+        	Assert.assertEquals(ObjectStatusCode.ACTUAL,singleobject.getObjectstatus().getCode());
         	Assert.assertEquals(Integer.valueOf(502360563),singleobject.getEGID());
         }
         {

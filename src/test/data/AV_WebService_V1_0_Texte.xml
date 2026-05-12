@@ -1118,6 +1118,45 @@
         </AV_WebService_V1_0:Titel>
       </AV_WebService_V1_0:EinzelobjektartTxt>
 
+      <AV_WebService_V1_0:ObjektstatusTxt ili:tid="300">
+        <AV_WebService_V1_0:Code>projektiert</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>projektiert</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:ObjektstatusTxt>
+      <AV_WebService_V1_0:ObjektstatusTxt ili:tid="301">
+        <AV_WebService_V1_0:Code>real</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>real</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:ObjektstatusTxt>
+      <AV_WebService_V1_0:ObjektstatusTxt ili:tid="302">
+        <AV_WebService_V1_0:Code>vergangen</AV_WebService_V1_0:Code>
+        <AV_WebService_V1_0:Titel>
+          <LocalisationCH_V2:MultilingualText>
+            <Localisation_V2:LocalisedText>
+              <LocalisationCH_V2:LocalisedText>
+                <Localisation_V2:Language>de</Localisation_V2:Language>
+                <Localisation_V2:Text>vergangen</Localisation_V2:Text>
+              </LocalisationCH_V2:LocalisedText>
+            </Localisation_V2:LocalisedText>
+          </LocalisationCH_V2:MultilingualText>
+        </AV_WebService_V1_0:Titel>
+      </AV_WebService_V1_0:ObjektstatusTxt>
       
           </AV_WebService_V1_0:Konfiguration>
 	</ili:datasection>
