@@ -1765,7 +1765,7 @@ public class AvController {
         					" SELECT dmav_nzkt_vkt_nzlbjekt_linienelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_LINIE+" AS l WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
         					" UNION ALL "+
         					" SELECT dmav_nzkt_vkt_nzlbjekt_punktelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_PUNKT+" AS p WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
-        				" ) AS b ON a.t_id=b.parent WHERE a.objektstatus='real'"
+        				" ) AS b ON a.t_id=b.parent"
     			, new RowCallbackHandler() {
                     @Override
                     public void processRow(ResultSet rs) throws SQLException {
