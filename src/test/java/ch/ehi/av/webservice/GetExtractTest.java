@@ -255,11 +255,13 @@ public class GetExtractTest {
         }
         {
             java.util.List<SingleObject> singleobjects=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getSingleObject();
-            Assert.assertEquals(3,singleobjects.size());
+            Assert.assertEquals(1,singleobjects.size());
             SingleObject singleobject=singleobjects.get(0);
         	Assert.assertEquals(SingleObjectTypeCode.WALL,singleobject.getType().getCode());
         	Assert.assertEquals(ObjectStatusCode.ACTUAL,singleobject.getObjectstatus().getCode());
         	Assert.assertEquals(Integer.valueOf(502360563),singleobject.getEGID());
+        	Assert.assertEquals(Integer.valueOf(600),singleobject.getArea());
+        	Assert.assertEquals(Integer.valueOf(600),singleobject.getAreaShare());
         }
         {
             java.util.List<Building> buildings=response.getBody().getValue().getExtract().getValue().getRealEstateDPR().getBuilding();

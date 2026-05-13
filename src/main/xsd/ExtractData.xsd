@@ -515,6 +515,7 @@
       <xsd:element name="Type" type="SingleObjectType"/>
       <xsd:element name="Objectstatus" type="ObjectStatus"/>
       <xsd:element name="Area" type="Area" minOccurs="0"/>
+      <xsd:element name="AreaShare" type="Area" minOccurs="0"/>
       <xsd:element name="EGID" type="EGID" minOccurs="0"/>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>

@@ -56,6 +56,7 @@ import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.geom.PrecisionModel;
 import com.vividsolutions.jts.io.ByteOrderValues;
@@ -1756,9 +1757,10 @@ public class AvController {
 		for(Building bb:buildings) {
 			egids.put(bb.getEGID(), bb);
 		}
+		HashMap<Integer,SingleObject> singleObjects=new HashMap<Integer,SingleObject>();
         byte[] wkbGeometry=wkbEncoder.write(parcelGeometry);
         jdbcTemplate.query(
-        		"SELECT a.einzelobjektart as eoart, geometrie, egid, objektstatus  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
+        		"SELECT a.einzelobjektart as eoart, ST_AsBinary(geometrie), egid, objektstatus,a.t_id as t_id  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
         				" JOIN  ("+
         					" SELECT dmav_nzkt_vkt_nzlbjekt_flaechenelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_FLAECHE+" AS f WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
         					" UNION ALL "+
@@ -1769,20 +1771,58 @@ public class AvController {
     			, new RowCallbackHandler() {
                     @Override
                     public void processRow(ResultSet rs) throws SQLException {
-                    	SingleObject singleObject=new SingleObject();
-                        singleObject.setType(mapSingleObjectType(rs.getString(1)));
-                        singleObject.setObjectstatus(mapObjectStatus(rs.getString(4)));
-                        int egid=rs.getInt(3);
-                        if(!rs.wasNull()) {
-                        	singleObject.setEGID(egid);
-                        	if(!egids.containsKey(egid)) {
-                        		Building building=new Building();
-                            	building.setEGID(egid);
-                        		egids.put(egid, building);
-                        		buildings.add(building);
-                        	}
+                        int t_id=rs.getInt(5);
+                    	SingleObject singleObject=null;
+                        byte flaecheWkb[]=rs.getBytes(2);
+                        Geometry flaeche=null;
+                        Geometry intersection=null;
+                        
+                        try {
+                            flaeche = wkbDecoder.read(flaecheWkb);
+                        } catch (ParseException e) {
+                            throw new IllegalStateException(e);
                         }
-                    	bbs.add(singleObject);
+                    	if(singleObjects.containsKey(t_id)){
+                    		singleObject=singleObjects.get(t_id);
+                    		{
+                                if(flaeche instanceof Polygon || flaeche instanceof MultiPolygon) {
+                                    intersection=parcelGeometry.intersection(flaeche);
+                                    Integer area=singleObject.getArea();
+                                    if(area==null)area=0;
+                            		singleObject.setArea(area+(int)Math.round(flaeche.getArea()));
+                                    if(!intersection.isEmpty() && intersection.getArea()>minIntersection) {
+                                    	Integer areaShare=singleObject.getAreaShare();
+                                        if(areaShare==null)areaShare=0;
+                                        singleObject.setAreaShare(areaShare+(int)Math.round(intersection.getArea()));
+                                    }
+                                }
+                    		}
+                    	}else {
+                    		singleObject=new SingleObject();
+                            singleObject.setType(mapSingleObjectType(rs.getString(1)));
+                            singleObject.setObjectstatus(mapObjectStatus(rs.getString(4)));
+                    		{
+                                if(flaeche instanceof Polygon || flaeche instanceof MultiPolygon) {
+                                    intersection=parcelGeometry.intersection(flaeche);
+                            		singleObject.setArea((int)Math.round(flaeche.getArea()));
+                                    if(!intersection.isEmpty() && intersection.getArea()>minIntersection) {
+                                        singleObject.setAreaShare((int)Math.round(intersection.getArea()));
+                                    }
+                                }
+                    		}
+                            int egid=rs.getInt(3);
+                            if(!rs.wasNull()) {
+                            	singleObject.setEGID(egid);
+                            	if(!egids.containsKey(egid)) {
+                            		Building building=new Building();
+                                	building.setEGID(egid);
+                            		egids.put(egid, building);
+                            		buildings.add(building);
+                            	}
+                            }
+                        	bbs.add(singleObject);
+                        	singleObjects.put(t_id, singleObject);
+                    	}
                     }
                 },wkbGeometry,wkbGeometry,wkbGeometry);
 	}
