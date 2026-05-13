@@ -116,6 +116,38 @@
 				</DMAV_Einzelobjekte_V1_1:Geometrie>
 				</DMAV_Einzelobjekte_V1_1:Flaechenelement>
 				</DMAV_Einzelobjekte_V1_1:Flaechenelement>
+				<DMAV_Einzelobjekte_V1_1:Flaechenelement>
+				<DMAV_Einzelobjekte_V1_1:Flaechenelement>
+				<DMAV_Einzelobjekte_V1_1:Geometrie>
+					<geom:surface>
+						<geom:exterior>
+							<geom:polyline>
+								<geom:coord>
+									<geom:c1>2638300.0</geom:c1>
+									<geom:c2>1251400.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638300.0</geom:c1>
+									<geom:c2>1251410.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638310.0</geom:c1>
+									<geom:c2>1251410.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638310.0</geom:c1>
+									<geom:c2>1251400.0</geom:c2>
+								</geom:coord>
+								<geom:coord>
+									<geom:c1>2638300.0</geom:c1>
+									<geom:c2>1251400.0</geom:c2>
+								</geom:coord>
+							</geom:polyline>
+						</geom:exterior>
+					</geom:surface>
+				</DMAV_Einzelobjekte_V1_1:Geometrie>
+				</DMAV_Einzelobjekte_V1_1:Flaechenelement>
+				</DMAV_Einzelobjekte_V1_1:Flaechenelement>
 				<DMAV_Einzelobjekte_V1_1:Linienelement>
 				<DMAV_Einzelobjekte_V1_1:Linienelement>
 					<DMAV_Einzelobjekte_V1_1:Geometrie>

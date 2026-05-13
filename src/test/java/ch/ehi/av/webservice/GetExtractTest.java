@@ -260,7 +260,7 @@ public class GetExtractTest {
         	Assert.assertEquals(SingleObjectTypeCode.WALL,singleobject.getType().getCode());
         	Assert.assertEquals(ObjectStatusCode.ACTUAL,singleobject.getObjectstatus().getCode());
         	Assert.assertEquals(Integer.valueOf(502360563),singleobject.getEGID());
-        	Assert.assertEquals(Integer.valueOf(600),singleobject.getArea());
+        	Assert.assertEquals(Integer.valueOf(700),singleobject.getArea());
         	Assert.assertEquals(Integer.valueOf(600),singleobject.getAreaShare());
         }
         {

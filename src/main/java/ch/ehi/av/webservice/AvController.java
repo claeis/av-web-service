@@ -1762,12 +1762,18 @@ public class AvController {
         jdbcTemplate.query(
         		"SELECT a.einzelobjektart as eoart, ST_AsBinary(geometrie), egid, objektstatus,a.t_id as t_id  FROM "+getSchema()+"."+DMAV_EINZELOBJEKT+" AS a "+
         				" JOIN  ("+
-        					" SELECT dmav_nzkt_vkt_nzlbjekt_flaechenelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_FLAECHE+" AS f WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
+        					" SELECT dmav_nzkt_vkt_nzlbjekt_flaechenelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_FLAECHE+
         					" UNION ALL "+
-        					" SELECT dmav_nzkt_vkt_nzlbjekt_linienelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_LINIE+" AS l WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
+        					" SELECT dmav_nzkt_vkt_nzlbjekt_linienelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_LINIE+
         					" UNION ALL "+
-        					" SELECT dmav_nzkt_vkt_nzlbjekt_punktelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_PUNKT+" AS p WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
-        				" ) AS b ON a.t_id=b.parent"
+        					" SELECT dmav_nzkt_vkt_nzlbjekt_punktelement as parent,geometrie FROM "+getSchema()+"."+DMAV_EO_PUNKT+
+        				" ) AS b ON a.t_id=b.parent WHERE a.t_id in ("+
+    					" SELECT dmav_nzkt_vkt_nzlbjekt_flaechenelement as parent FROM "+getSchema()+"."+DMAV_EO_FLAECHE+" AS f WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
+    					" UNION "+
+    					" SELECT dmav_nzkt_vkt_nzlbjekt_linienelement as parent FROM "+getSchema()+"."+DMAV_EO_LINIE+" AS l WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
+    					" UNION "+
+    					" SELECT dmav_nzkt_vkt_nzlbjekt_punktelement as parent FROM "+getSchema()+"."+DMAV_EO_PUNKT+" AS p WHERE ST_Intersects(ST_GeomFromWKB(?,2056),geometrie)"+
+        				")"
     			, new RowCallbackHandler() {
                     @Override
                     public void processRow(ResultSet rs) throws SQLException {
