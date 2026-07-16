@@ -4,7 +4,7 @@
   targetNamespace="http://schemas.geo.admin.ch/V_D/AV/1.0/ExtractData"
   xmlns:geom="http://www.interlis.ch/geometry/1.0" elementFormDefault="qualified"
   attributeFormDefault="qualified"
-  version="20250729">
+  version="20260716">
   <xsd:import namespace="http://www.interlis.ch/geometry/1.0"
     schemaLocation="geometry.xsd"/>
   <xsd:element name="extensions">
@@ -118,20 +118,6 @@
       <xsd:enumeration value="FL"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="CommunityTypeCode">
-    <xsd:restriction base="xsd:normalizedString">
-      <xsd:enumeration value="OrdinaryCommunity"/>
-      <xsd:enumeration value="CommunityOfProperty"/>
-      <xsd:enumeration value="CommunityOfHeirs"/>
-      <xsd:enumeration value="OwnershipInUndividedShares"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:complexType name="CommunityType">
-    <xsd:sequence>
-      <xsd:element name="Code" type="CommunityTypeCode"> </xsd:element>
-      <xsd:element name="Text" type="MultilingualText"> </xsd:element>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="Date">
     <xsd:restriction base="xsd:date"/>
   </xsd:simpleType>
@@ -154,20 +140,6 @@
       <xsd:maxLength value="12"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="OwnershipFormCode">
-    <xsd:restriction base="xsd:normalizedString">
-      <xsd:enumeration value="JointOwnership"/>
-      <xsd:enumeration value="CoOwnership"/>
-      <xsd:enumeration value="ExclusiveOwnership"/>
-      <xsd:enumeration value="Unowned"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:complexType name="OwnershipForm">
-    <xsd:sequence>
-      <xsd:element name="Code" type="OwnershipFormCode"> </xsd:element>
-      <xsd:element name="Text" type="MultilingualText"> </xsd:element>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="ParcelNumber">
     <xsd:restriction base="xsd:normalizedString">
       <xsd:maxLength value="12"/>
@@ -176,7 +148,6 @@
   <xsd:simpleType name="PropertyTypeCode">
     <xsd:restriction base="xsd:normalizedString">
       <xsd:enumeration value="RealEstate"/>
-      <xsd:enumeration value="CoOwnership"/>
       <xsd:enumeration value="DistinctPermanentRight"/>
       <xsd:enumeration value="Mine"/>
     </xsd:restriction>
@@ -343,17 +314,6 @@
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="Community">
-    <xsd:sequence>
-      <xsd:element name="Type" type="CommunityType" minOccurs="0"/>
-      <xsd:element name="Name" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element ref="extensions" minOccurs="0"/>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="Disclaimer">
     <xsd:sequence>
       <xsd:element name="Content" type="MultilingualText"/>
@@ -367,27 +327,7 @@
       <xsd:element name="Area" type="Area"/>
       <xsd:element name="AreaShare" type="Area"/>
       <xsd:element name="EGID" type="EGID" minOccurs="0"/>
-      <xsd:element ref="extensions" minOccurs="0"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="LegalPerson">
-    <xsd:sequence>
-      <xsd:element name="Name">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="RegisteredOffice" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="LegalForm" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="UID" type="UID" minOccurs="0"/>
+      <xsd:element name="Limit" minOccurs="0" type="geom:SurfaceType"/>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -399,21 +339,6 @@
         </xsd:simpleType>
       </xsd:element>
       <xsd:element name="LegendText" type="MultilingualText"/>
-      <xsd:element ref="extensions" minOccurs="0"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="NaturalPerson">
-    <xsd:sequence>
-      <xsd:element name="Name">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="FirstName">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString"> </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -467,49 +392,6 @@
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="PropertyReference">
-    <xsd:sequence>
-      <xsd:element name="EGRID" type="EGRID" minOccurs="0"/>
-      <xsd:element name="Number" type="ParcelNumber"/>
-      <xsd:element name="NumberSupplement" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString">
-            <xsd:maxLength value="12"/>
-          </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="SubDistrict" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString">
-            <xsd:maxLength value="15"/>
-          </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="Lot" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString">
-            <xsd:maxLength value="15"/>
-          </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="MunicipalityCode" type="MunicipalityCode" minOccurs="0"/>
-      <xsd:element name="MunicipalityName" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString">
-            <xsd:maxLength value="60"/>
-          </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element name="SubUnitOfLandRegister" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:normalizedString">
-            <xsd:maxLength value="80"/>
-          </xsd:restriction>
-        </xsd:simpleType>
-      </xsd:element>
-      <xsd:element ref="extensions" minOccurs="0"/>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="SingleObject">
     <xsd:sequence>
       <xsd:element name="Type" type="SingleObjectType"/>
@@ -517,6 +399,7 @@
       <xsd:element name="Area" type="Area" minOccurs="0"/>
       <xsd:element name="AreaShare" type="Area" minOccurs="0"/>
       <xsd:element name="EGID" type="EGID" minOccurs="0"/>
+      <xsd:element name="Limit" minOccurs="0" type="geom:SurfaceType"/>
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
@@ -538,30 +421,15 @@
       <xsd:element ref="extensions" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="Ownership">
-    <xsd:sequence>
-      <xsd:element name="OwnershipForm" type="OwnershipForm"/>
-      <xsd:element name="DateOfAquisition" type="Date" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="owner" minOccurs="0">
-        <xsd:complexType>
-          <xsd:choice>
-            <xsd:element name="NaturalPerson" type="NaturalPerson" />
-            <xsd:element name="LegalPerson" type="LegalPerson" />
-            <xsd:element name="Community" type="Community" />
-            <xsd:element name="propertyReference" type="PropertyReference" />
-          </xsd:choice>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element ref="extensions" minOccurs="0"/>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:complexType name="ProjectedProperty">
     <xsd:sequence>
       <xsd:element name="Number" type="ParcelNumber"/>
+      <xsd:element name="IdentDN" type="IdentDN" minOccurs="0"/>
       <xsd:element name="EGRID" type="EGRID" minOccurs="0"/>
       <xsd:element name="Type" type="PropertyType"/>
       <xsd:element name="newParcelArea" type="Area"/>
       <xsd:element name="Limit" type="geom:MultiSurfaceType"/>
+      <xsd:element name="BuildingRight" type="xsd:boolean" minOccurs="0"/>
       <xsd:element name="Building" type="Building" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="LandCover" type="LandCover" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="SingleObject" type="SingleObject" minOccurs="0" maxOccurs="unbounded"/>
@@ -610,6 +478,7 @@
       <xsd:element name="MetadataOfGeographicalBaseData" type="xsd:anyURI" minOccurs="0"/>
       <xsd:element name="LandRegistryArea" type="Area"/>
       <xsd:element name="Limit" minOccurs="0" type="geom:MultiSurfaceType"/>
+      <xsd:element name="BuildingRight" type="xsd:boolean" minOccurs="0"/>
       <xsd:element name="Toponym" minOccurs="0" maxOccurs="unbounded">
         <xsd:simpleType>
           <xsd:restriction base="xsd:normalizedString">
@@ -620,12 +489,10 @@
       <xsd:element name="Building" type="Building" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="LandCover" type="LandCover" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="Mutation" type="Mutation" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="Ownership" type="Ownership" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="PlanForMainPage" type="Map"/>
       <xsd:element name="PlanForLandDescription" type="Map"/>
       <xsd:element name="PlanForProjectedObjects" type="Map"/>
       <xsd:element name="ResponsibleOffice" type="Office"/>
-      <xsd:element name="OwnershipDisclaimer" type="Disclaimer" minOccurs="0"/>
       <xsd:element name="LandRegisterOffice" type="Office"/>
       <xsd:element name="SingleObject" type="SingleObject" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element name="covers" type="BaseRealEstate" minOccurs="0" maxOccurs="unbounded"/>
