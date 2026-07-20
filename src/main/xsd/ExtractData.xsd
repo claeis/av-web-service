@@ -202,14 +202,14 @@
       <xsd:enumeration value="track_path"/>
       <xsd:enumeration value="overhead_power_line"/>
       <xsd:enumeration value="hydro_power_pipe"/>
-      <xsd:enumeration value="railway"/>
+      <xsd:enumeration value="railway_track"/>
       <xsd:enumeration value="aerial_ropeway"/>
       <xsd:enumeration value="cable_car_chairlift"/>
       <xsd:enumeration value="industrial_cableway"/>
       <xsd:enumeration value="ski_lift"/>
       <xsd:enumeration value="ferry"/>
       <xsd:enumeration value="cave_pothole_entrance"/>
-      <xsd:enumeration value="main_road"/>
+      <xsd:enumeration value="axis"/>
       <xsd:enumeration value="important_tree"/>
       <xsd:enumeration value="shrine_crucifix"/>
       <xsd:enumeration value="spring"/>

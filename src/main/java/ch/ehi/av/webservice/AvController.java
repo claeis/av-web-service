@@ -1473,7 +1473,7 @@ public class AvController {
                 }else if("Druckleitung".equals(code)) {
                     gsType.setCode(SingleObjectTypeCode.HYDRO_POWER_PIPE);
                 }else if("Bahngeleise".equals(code)) {
-                    gsType.setCode(SingleObjectTypeCode.RAILWAY);
+                    gsType.setCode(SingleObjectTypeCode.RAILWAY_TRACK);
                 }else if("Luftseilbahn".equals(code)) {
                     gsType.setCode(SingleObjectTypeCode.AERIAL_ROPEWAY);
                 }else if("Gondelbahn_Sesselbahn".equals(code)) {
@@ -1487,7 +1487,7 @@ public class AvController {
                 }else if("Grotte_Hoehleneingang".equals(code)) {
                     gsType.setCode(SingleObjectTypeCode.CAVE_POTHOLE_ENTRANCE);
                 }else if("Achse".equals(code)) {
-                    gsType.setCode(SingleObjectTypeCode.MAIN_ROAD);
+                    gsType.setCode(SingleObjectTypeCode.AXIS);
                 }else if("wichtiger_Einzelbaum".equals(code)) {
                     gsType.setCode(SingleObjectTypeCode.IMPORTANT_TREE);
                 }else if("Bildstock_Kruzifix".equals(code)) {
